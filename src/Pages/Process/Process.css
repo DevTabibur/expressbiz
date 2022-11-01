@@ -1,0 +1,10 @@
+.process{
+    /* border */
+}
+.process span{
+    text-align: center;
+    width: 90px;
+    color: red;
+    height: 2px;
+    font-size: 30px;
+}

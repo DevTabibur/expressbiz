@@ -1,0 +1,13 @@
+.footer {
+    background-color: #2f2f2f;
+    color: #fff;
+}
+
+.footer-links li {
+    transition: .5s;
+}
+
+.footer-links li:hover {
+    letter-spacing: 2px;
+    color: #eb0028;
+}

@@ -13,7 +13,7 @@ const MappingServices = ({ service }) => {
           <h2 className="card-title">{title}</h2>
           <p>{description && description.slice(0, 100)}...</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Read More</button>
+            <button className="btn btn-accent text-white font-serif">Read More</button>
           </div>
         </div>
       </div>

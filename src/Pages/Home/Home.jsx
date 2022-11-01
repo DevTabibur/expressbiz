@@ -1,9 +1,16 @@
-import './Home.css'
+import BookShipping from "./BookShipping";
+import "./Home.css";
+import Services from '../Services/Services';
+import Contact from '../Contact/Contact'
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+    <Services/>
+      <BookShipping />
+      <Contact/>
+    </>
+  );
+};
 
-export default Home
+export default Home;

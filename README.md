@@ -7,3 +7,4 @@
 2. npm i daisyui
 3. npm install react-router-dom@6
 4. Font Awesome
+5. npm install react-hook-form
