@@ -1,14 +1,16 @@
-import BookShipping from "./BookShipping";
+import BookShipping from "../../Shared/BookShipping/BookShipping";
 import "./Home.css";
-import Services from '../Services/Services';
-import Contact from '../Contact/Contact'
+import Services from "../Services/Services";
+import Contact from "../Contact/Contact";
+import WhyChooseUs from "../../Shared/WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
   return (
     <>
-    <Services/>
+      {/* <Services/>
       <BookShipping />
-      <Contact/>
+      <Contact/> */}
+      <WhyChooseUs/>
     </>
   );
 };
