@@ -4,15 +4,18 @@ import Services from "../Services/Services";
 import Contact from "../Contact/Contact";
 import WhyChooseUs from "../../Shared/WhyChooseUs/WhyChooseUs";
 import GetQuote from "../../Shared/GetQuote/GetQuote";
+import Testimonial from "../../Shared/Testimonial/Testimonial";
 
 const Home = () => {
   return (
     <>
-      {/* <Services/>
+      {/* <Services /> */}
+      {/* 
       <BookShipping />
       <Contact/>
       <WhyChooseUs/>
       <GetQuote /> */}
+      <Testimonial/>
     </>
   );
 };

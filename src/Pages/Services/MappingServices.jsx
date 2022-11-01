@@ -1,8 +1,9 @@
-import React from "react";
-
+import "./MappingServices.css";
+import { useNavigate } from "react-router-dom";
 const MappingServices = ({ service }) => {
   // console.log('service', service)
-  const { title, description, image } = service;
+  const navigate = useNavigate();
+  const { id, title, description, image } = service;
   return (
     <>
       <div className="card w-full bg-base-100 shadow-xl">
@@ -13,7 +14,12 @@ const MappingServices = ({ service }) => {
           <h2 className="card-title">{title}</h2>
           <p>{description && description.slice(0, 100)}...</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-accent text-white font-serif">Read More</button>
+            <button
+              onClick={() => navigate(`/service/${id}`)}
+              className="btn btn-accent text-white font-serif"
+            >
+              Read More
+            </button>
           </div>
         </div>
       </div>

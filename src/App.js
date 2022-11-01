@@ -14,6 +14,7 @@ import Shipping from "./Pages/Shipping/Shipping";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
+import SingleService from "./Pages/Services/SingleService";
 function App() {
   return (
     <>
@@ -27,6 +28,7 @@ function App() {
           <Route path="/tracking" element={<Tracking />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/service/:id" element={<SingleService />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />

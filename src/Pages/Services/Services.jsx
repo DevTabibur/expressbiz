@@ -7,14 +7,14 @@ const Services = () => {
   // console.log('services', services)
   return (
     <>
-     <div className="page-title shadow">
+     {/* <div className="page-title shadow">
         <div className="container mx-auto px-4">
           <div className=" text-center my-12">
             <h2 className="text-4xl font-bold text-white font-serif">Our Services</h2>
             <p className="mb-4 text-center text-sm font-mono text-white">You can see our service list here</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-serif font-bold text-center">
