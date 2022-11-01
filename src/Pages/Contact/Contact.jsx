@@ -148,12 +148,12 @@ const Contact = () => {
                 <div className="form-control">
                   <input
                     type="text"
-                    placeholder="Number"
+                    placeholder="Mobile Number"
                     className="input input-bordered font-mono"
                     {...register("number", {
                       required: {
                         value: true,
-                        message: "Number is Required",
+                        message: "Mobile Number is Required",
                       },
                       pattern: {
                         value:
@@ -177,7 +177,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* number */}
+              {/* message */}
               <div className="form-control">
                 <textarea
                   type="text"
