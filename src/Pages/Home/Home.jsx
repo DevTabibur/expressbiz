@@ -5,17 +5,20 @@ import Contact from "../Contact/Contact";
 import WhyChooseUs from "../../Shared/WhyChooseUs/WhyChooseUs";
 import GetQuote from "../../Shared/GetQuote/GetQuote";
 import Testimonial from "../../Shared/Testimonial/Testimonial";
+import Footer from "../../Shared/Footer/Footer";
 
 const Home = () => {
   return (
     <>
-      {/* <Services /> */}
-      {/* 
+      {/* <Services />
+
       <BookShipping />
-      <Contact/>
-      <WhyChooseUs/>
-      <GetQuote /> */}
-      <Testimonial/>
+      <Contact />
+      <WhyChooseUs />
+      <GetQuote />
+       */}
+       {/* <Testimonial /> */}
+      <Footer/>
     </>
   );
 };
