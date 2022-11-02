@@ -33,7 +33,7 @@ const Login = () => {
               </p>
               <Link
                 to="/register"
-                className="hover:underline font-md font-sans font-bold text-primary"
+                className="hover:underline font-md font-sans font-bold text-primary hover:text-white"
               >
                 Create a New Account
               </Link>
@@ -113,7 +113,7 @@ const Login = () => {
                   // await sendPasswordResetEmail(email);
                 }}
               >
-                <p className="label-text-alt link link-hover font-semibold font-serif text-primary">
+                <p className="label-text-alt link link-hover font-semibold font-serif text-primary hover:text-accent">
                   Forgot password?
                 </p>
               </label>

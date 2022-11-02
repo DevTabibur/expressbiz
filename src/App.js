@@ -15,6 +15,7 @@ import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
 import SingleService from "./Pages/Services/SingleService";
+import Register from "./Pages/Register/Register";
 function App() {
   return (
     <>
@@ -31,6 +32,7 @@ function App() {
           <Route path="/service/:id" element={<SingleService />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
           {/* dashboard routes */}
           <Route path="/dashboard" element={<Dashboard />}>
