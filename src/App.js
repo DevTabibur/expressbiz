@@ -18,8 +18,8 @@ import SingleService from "./Pages/Services/SingleService";
 function App() {
   return (
     <>
-      {/* <HeaderTop />
-      <HeaderNav> */}
+      <HeaderTop />
+      <HeaderNav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -37,7 +37,7 @@ function App() {
             {/* <Route path="test1" element={<Footer />} /> */}
           </Route>
         </Routes>
-      {/* </HeaderNav> */}
+      </HeaderNav>
 
       {/* <Footer /> */}
     </>

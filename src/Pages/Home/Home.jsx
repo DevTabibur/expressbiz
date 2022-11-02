@@ -6,19 +6,19 @@ import WhyChooseUs from "../../Shared/WhyChooseUs/WhyChooseUs";
 import GetQuote from "../../Shared/GetQuote/GetQuote";
 import Testimonial from "../../Shared/Testimonial/Testimonial";
 import Footer from "../../Shared/Footer/Footer";
+import HeroCarousel from "../../Shared/HeroCarousel/HeroCarousel";
 
 const Home = () => {
   return (
     <>
+    {/* <HeroCarousel/> */}
       {/* <Services />
-
       <BookShipping />
-      <Contact />
       <WhyChooseUs />
       <GetQuote />
-       */}
-       {/* <Testimonial /> */}
-      <Footer/>
+      <Testimonial />
+      <Contact />
+      <Footer /> */}
     </>
   );
 };

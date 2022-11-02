@@ -5,11 +5,20 @@ import {
   faPhone,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from "react-router-dom";
 
 const HeaderTop = () => {
+  const { pathname } = useLocation();
   return (
     <>
-      <div className="headerTop">
+      <div
+        style={
+          pathname.includes("/login")
+            ? { display: "none" }
+            : { display: "flex" }
+        }
+        className="headerTop"
+      >
         <div className="container mx-auto px-4">
           <div className="md:flex flex-row gap-4">
             <div className="basis-2/3">
