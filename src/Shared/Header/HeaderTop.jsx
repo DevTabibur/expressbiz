@@ -5,18 +5,48 @@ import {
   faPhone,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import useActiveUser from "../../Hooks/useActiveUser";
+import Swal from "sweetalert2";
 
 const HeaderTop = () => {
   const { pathname } = useLocation();
+  const [user] = useActiveUser();
+  console.log("user on headerTop", user);
+  // const user = true;
+
+  const logOut = () => {
+    const getIdLocally = localStorage.getItem("user_id");
+    const id = JSON.parse(getIdLocally);
+    if (id) {
+      const url = `http://localhost:5000/register/${id}`;
+      fetch(url, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ user: false }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("data log out", data);
+          localStorage.removeItem("user_id");
+          Swal.fire({
+            title: "Log Out Successfully",
+            icon: "success",
+          });
+          window.location.reload();
+        });
+    }
+  };
   return (
     <>
       <div
-        style={
-          pathname.includes("/login")
-            ? { display: "none" }
-            : { display: "flex" }
-        }
+        // style={
+        //   pathname.includes("/login")
+        //     ? { display: "none" }
+        //     : { display: "flex" }
+        // }
         className="headerTop"
       >
         <div className="container mx-auto px-4">
@@ -47,8 +77,19 @@ const HeaderTop = () => {
               </div>
             </div>
             <div className="basis-1/3">
-              <span className="md:mr-6">Login</span>
-              <span className="md:mr-6">Registration</span>
+              {user ? (
+                <button onClick={logOut} className="md:mr-6">
+                  Logout
+                </button>
+              ) : (
+                <Link to="/login" className="md:mr-6">
+                  Login
+                </Link>
+              )}
+
+              <Link to="/register" className="md:mr-6">
+                Registration
+              </Link>
             </div>
           </div>
         </div>

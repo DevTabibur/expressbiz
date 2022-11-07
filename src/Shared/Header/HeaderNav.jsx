@@ -60,9 +60,9 @@ const HeaderNav = ({ children }) => {
 
           <div
             className="w-full navbar bg-white shadow-lg"
-            style={
-              pathname.includes((`/login`)) ? { display: "none" } : { display: "flex" }
-            }
+            // style={
+            //   pathname.includes((`/login`)) ? { display: "none" } : { display: "flex" }
+            // }
           >
             <div className="container mx-auto px-4">
               <label

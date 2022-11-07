@@ -9,16 +9,17 @@ import Footer from "../../Shared/Footer/Footer";
 import HeroCarousel from "../../Shared/HeroCarousel/HeroCarousel";
 
 const Home = () => {
+  
   return (
     <>
-    {/* <HeroCarousel/> */}
-      {/* <Services />
+      <HeroCarousel />
+      <Services />
       <BookShipping />
       <WhyChooseUs />
       <GetQuote />
       <Testimonial />
       <Contact />
-      <Footer /> */}
+      <Footer />
     </>
   );
 };

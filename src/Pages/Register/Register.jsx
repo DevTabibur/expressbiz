@@ -8,9 +8,12 @@ import {
   faFax,
   faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
+import Swal from "sweetalert2";
 const Register = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,12 +24,63 @@ const Register = () => {
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
   const [confirmPassword, setConfirmPassword] = useState([]);
+
   const onSubmit = async (data, e) => {
-    // console.log(data);
+    const name = data.name;
+    const email = data.email;
     const password = data.password;
     const confirmPassword = data.confirmPassword;
+    const isActive = localStorage.getItem("user_id");
+
     if (password !== confirmPassword) {
-      alert("Password is not matched");
+      return Swal.fire({
+        title: "Password is not matched",
+        icon: "error",
+      });
+    } else if (isActive) {
+      // if user is register once, then he'll not register again before logout.
+      Swal.fire({
+        title: "Authentication is failed",
+        text: "PLease logout for again registration",
+        icon: "error",
+      });
+    } else {
+      const url = `http://localhost:5000/register`;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ name, email, confirmPassword }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("data", data);
+
+          if (data.code === 300) {
+            // error registration
+            Swal.fire({
+              title: "User already Exists!",
+              text: "Try another email",
+              icon: "error",
+            });
+          } else if (data.acknowledged) {
+            // success registration
+            console.log("success", data);
+            Swal.fire({
+              title: "Registration Done",
+              icon: "success",
+            });
+            navigate("/");
+            const id = data?.insertedId;
+            // set active user id on localStorage
+            localStorage.setItem("user_id", JSON.stringify(id));
+
+            // for reload the page
+            // window.location.reload();
+            // e.target.reset();
+          }
+        });
     }
   };
 

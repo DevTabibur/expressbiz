@@ -16,6 +16,12 @@ import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
 import SingleService from "./Pages/Services/SingleService";
 import Register from "./Pages/Register/Register";
+import CreateShipment from "./Pages/CreatShipment/CreateShipment";
+import { createContext, useState } from "react";
+import RequireUser from "./Authentication/RequireUser";
+
+export const BlogContext = createContext();
+
 function App() {
   return (
     <>
@@ -26,18 +32,23 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about-us" element={<About />} />
-          <Route path="/tracking" element={<Tracking />} />
+          <Route
+            path="/tracking"
+            element={
+              <RequireUser>
+                <Tracking />
+              </RequireUser>
+            }
+          />
           <Route path="/shipping" element={<Shipping />} />
+          <Route path="/create-shipment" element={<CreateShipment />} />
           <Route path="/services" element={<Services />} />
           <Route path="/service/:id" element={<SingleService />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
-          {/* dashboard routes */}
-          <Route path="/dashboard" element={<Dashboard />}>
-            {/* <Route path="test1" element={<Footer />} /> */}
-          </Route>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
         </Routes>
       </HeaderNav>
 
