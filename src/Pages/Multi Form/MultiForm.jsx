@@ -7,22 +7,40 @@ import Details from "./STEPS/Details";
 import { StepperContexts } from "./contexts/StepperContexts";
 import Final from "./STEPS/Final";
 import { current } from "daisyui/src/colors";
-
-// 28 minute porjonto sob thik ase, kono code error nai
+import "./MultiForm.css";
+import WhereFrom from "./STEPS/WhereFrom";
+import WhereGoing from "./STEPS/WhereGoing";
+import What from "./STEPS/What";
+import How from "./STEPS/How";
+import Payment from "./STEPS/Payment";
+import Review from "./STEPS/Review";
 
 const MultiForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState("");
   const [finalData, setFinalData] = useState([]);
-  const steps = ["Account Information", "Personal Details", "Complete"];
+  const steps = [
+    "Where from",
+    "where going",
+    "what",
+    "payment",
+    "review",
+    "complete",
+  ];
 
   const displayStep = (step) => {
     switch (step) {
       case 1:
-        return <Account />;
+        return <WhereFrom />;
       case 2:
-        return <Details />;
+        return <WhereGoing />;
       case 3:
+        return <What />;
+      case 4:
+        return <Payment />;
+      case 5:
+        return <Review />;
+      case 6:
         return <Final />;
       default:
     }
@@ -35,33 +53,37 @@ const MultiForm = () => {
     // check if steps are within bounds
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
+
   return (
-    <>
-      <div className="w-1/2 mx-auto shadow rounded-2xl pb-2 bg-yellow-300">
-        {/* stepper */}
-        <div className="container horizontal mt-5">
-          <Stepper steps={steps} currentStep={currentStep} />
-          {/* Display Components */}
-          <div className="my-10 p-10">
-            <StepperContexts.Provider
-              value={{ userData, setUserData, finalData, setFinalData }}
-            >
-              {displayStep(currentStep)}
-            </StepperContexts.Provider>
+    <div className="">
+      {/* stepper */}
+      <div className="container mx-auto px-4 mt-12">
+        <div className="grid md:grid-cols-1 ">
+          <div>
+            <Stepper steps={steps} currentStep={currentStep} />
+            {/* Display Components */}
+            <div className="container mx-auto px-4 mt-14 background pb-4">
+              <StepperContexts.Provider
+                value={{ userData, setUserData, finalData, setFinalData }}
+              >
+                {displayStep(currentStep)}
+              </StepperContexts.Provider>
+              {/* Navigation Controls */}
+
+              <div className="mt-6 bg-red-200 mb-4">
+                {current !== steps.length && (
+                  <StepperControls
+                    handleClick={handleClick}
+                    currentStep={currentStep}
+                    steps={steps}
+                  />
+                )}
+              </div>
+            </div>
           </div>
         </div>
-
-
-        {/* Navigation Controls */}
-        {current !== steps.length && (
-          <StepperControls
-            handleClick={handleClick}
-            currentStep={currentStep}
-            steps={steps}
-          />
-        )}
       </div>
-    </>
+    </div>
   );
 };
 
