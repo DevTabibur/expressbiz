@@ -19,6 +19,11 @@ import Register from "./Pages/Register/Register";
 import CreateShipment from "./Pages/CreatShipment/CreateShipment";
 import { createContext, useState } from "react";
 import RequireUser from "./Authentication/RequireUser";
+import QuotationList from "./Pages/Dashboard/QuotationList";
+import Users from "./Pages/Admin Routes/Users";
+import AddServices from "./Pages/Admin Routes/AddServices";
+import ManageServices from "./Pages/Admin Routes/ManageServices";
+import ClientReviews from "./Pages/Admin Routes/ClientReviews";
 
 export const BlogContext = createContext();
 
@@ -31,6 +36,18 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route  element={<RequireUser />}>
+            <Route path="/dashboard" element={<Dashboard />}>
+              {/* nested route */}
+              {/* by default Order component will render */}
+              <Route index element={<QuotationList />} />
+              <Route path="quotation-list" element={<QuotationList />} />
+              <Route path="users" element={<Users />} />
+              <Route path="add-services" element={<AddServices />} />
+              <Route path="manage-services" element={<ManageServices />} />
+              <Route path="client-review" element={<ClientReviews />} />
+            </Route>
+          </Route>
           <Route path="/about-us" element={<About />} />
           <Route
             path="/tracking"

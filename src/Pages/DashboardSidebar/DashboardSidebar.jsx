@@ -2,68 +2,64 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const DashboardSidebar = ({ children }) => {
+  const admin = true;
+  const menu = (
+    <>
+      {/* user route */}
+      {/* {!admin && ( */}
+        <>
+          <li className="text-accent my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/quotation-list">Quotation List</NavLink>
+          </li>
+          <li className="text-accent my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/review">Review</NavLink>
+          </li>
+          <li className="text-accent my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/checkout">Checkout</NavLink>
+          </li>
+          <li className="text-accent my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/payment-history">Payment History</NavLink>
+          </li>
+        </>
+      {/* )} */}
+
+      {/* admin route */}
+      {admin && (
+        <>
+          <li className="text-accent my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/users">Users</NavLink>
+          </li>
+          <li className="text-accent my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/add-services">Add Services</NavLink>
+          </li>
+          <li className="text-accent my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
+          </li>
+          <li className="text-accent my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/client-review">Client Review</NavLink>
+          </li>
+        </>
+      )}
+    </>
+  );
   return (
     <>
+      <>
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content p-10 custom-bg">
+        <div className="drawer-content  p-12">
           {/* <!-- Page content here --> */}
           {children}
         </div>
-        <div className="drawer-side border-collapse  h-auto">
+        <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu w-52 bg-accent rounded text-primary">
+          <ul className="menu p-4 overflow-y-auto w-80 bg-neutral-focus">
             {/* <!-- Sidebar content here --> */}
-
-            <div className="collapse collapse-arrow bg-secondary">
-              <input type="checkbox" className="peer" />
-              <div className="collapse-title font-medium">Dashboard</div>
-              <div className="collapse-content peer-checked:bg-accent">
-                <li className="mt-0.5">
-                  <NavLink to="/dashboard/admin">Admin</NavLink>
-                </li>
-                <li className="mt-0.5 ">
-                  <NavLink to="/dashboard/users">Users</NavLink>
-                </li>
-                <li className="mt-0.5 ">
-                  <NavLink to="/dashboard/bookings">Bookings</NavLink>
-                </li>
-                <li className="mt-0.5 ">
-                  <NavLink to="/dashboard/upload-tuitions">
-                    Post Tuitions
-                  </NavLink>
-                </li>
-              </div>
-            </div>
-            {/* not admin */}
-            <>
-              <li className="bg-secondary  ">
-                <NavLink to="/dashboard/tuitions">Tuitions</NavLink>
-              </li>
-              <li className="bg-secondary mt-0.5">
-                <NavLink to="/dashboard/library">Library</NavLink>
-              </li>
-
-              <li className="bg-secondary mt-0.5">
-                <NavLink to="/dashboard/account">Account</NavLink>
-              </li>
-
-              <li className="bg-secondary mt-0.5">
-                <NavLink to="/dashboard/subjects">Subjects</NavLink>
-              </li>
-              <li className="bg-secondary mt-0.5">
-                <NavLink to="/dashboard/attendance">Attendance</NavLink>
-              </li>
-              <li className="bg-secondary mt-0.5">
-                <NavLink to="/dashboard/exam">Exam</NavLink>
-              </li>
-              <li className="bg-secondary mt-0.5">
-                <NavLink to="/dashboard/messenger">Messenger</NavLink>
-              </li>
-            </>
+            {menu}
           </ul>
         </div>
       </div>
+    </>
     </>
   );
 };

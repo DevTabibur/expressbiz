@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const MappingServices = ({ service }) => {
   // console.log('service', service)
   const navigate = useNavigate();
-  const { id, title, description, image } = service;
+  const { _id, title, description, image } = service;
   return (
     <>
       <div className="card w-full bg-base-100 shadow-xl">
@@ -15,7 +15,7 @@ const MappingServices = ({ service }) => {
           <p>{description && description.slice(0, 100)}...</p>
           <div className="card-actions justify-end">
             <button
-              onClick={() => navigate(`/service/${id}`)}
+              onClick={() => navigate(`/service/${_id}`)}
               className="btn btn-accent text-white font-serif"
             >
               Read More

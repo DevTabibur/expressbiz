@@ -6,7 +6,7 @@ const useActiveUser = () => {
 
   const getIdLocally = localStorage.getItem("user_id");
   const id = JSON.parse(getIdLocally);
-  console.log("id", id);
+  // console.log("id", id);
 
   useEffect(() => {
     if (id) {
@@ -19,7 +19,7 @@ const useActiveUser = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("use active user inside hook data", data);
+          // console.log("use active user inside hook data", data);
           if (data.user === true || data.user === "true") {
             setActiveUser(true);
           } else {

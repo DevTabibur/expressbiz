@@ -30,24 +30,24 @@ const HeaderNav = ({ children }) => {
       >
         SHIPPING
       </NavLink>
-      <NavLink
+      {/* <NavLink
         className="m-2  btn btn-accent text-white font-serif rounded-md"
         to="/about-us"
       >
         ABOUT US
-      </NavLink>
+      </NavLink> */}
       <NavLink
         className="m-2  btn btn-accent text-white font-serif rounded-md"
         to="/contact-us"
       >
         CONTACT US
       </NavLink>
-      {/* <NavLink
+      <NavLink
         className="m-2  btn btn-accent text-white font-serif rounded-md"
         to="/dashboard"
       >
         Dashboard
-      </NavLink> */}
+      </NavLink>
     </>
   );
 
