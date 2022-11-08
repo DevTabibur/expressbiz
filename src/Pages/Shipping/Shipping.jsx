@@ -1,8 +1,11 @@
+import MultiForm from '../Multi Form/MultiForm'
 import './Shipping.css'
 
 const Shipping = () => {
   return (
-    <div>Shipping</div>
+   <div className='shipping'>
+    <MultiForm/>
+   </div>
   )
 }
 
