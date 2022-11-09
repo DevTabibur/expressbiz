@@ -1,121 +1,95 @@
 import "./HeroCarousel.css";
+import carousel1 from "../../Assets/images/air freight.png";
+import carousel2 from "../../Assets/images/logistic freight 11.jpg";
+import carousel3 from "../../Assets/images/ocean_freight_feat.jpg";
+import carousel4 from "../../Assets/carousel/client-4.jpg";
+import carousel5 from "../../Assets/carousel/client-5.jpg";
+import carousel6 from "../../Assets/carousel/client-6.jpg";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Important modules do not delete
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 
 const HeroCarousel = () => {
-  // $('.owl-carousel').owlCarousel({
-  //     loop:true,
-  //     margin:10,
-  //     dots:false,
-  //     nav:true,
-  //     mouseDrag:false,
-  //     autoplay:true,
-  //     animateOut: 'slideOutUp',
-  //     responsive:{
-  //         0:{
-  //             items:1
-  //         },
-  //         600:{
-  //             items:1
-  //         },
-  //         1000:{
-  //             items:1
-  //         }
-  //     }
-  // });
-
+  SwiperCore.use([Autoplay]);
   return (
     <>
-      {/* <header>
-        <div class="owl-carousel owl-theme">
-          <div class="item">
-            <img
-              src="https://cdn.pixabay.com/photo/2017/10/24/10/30/business-2884023_960_720.jpg"
-              alt="images not found"
-            />
-            <div class="cover">
-              <div class="container">
-                <div class="header-content">
-                  <div class="line"></div>
-                  <h2>Teimagine Digital Experience with</h2>
-                  <h1>Start-ups and solutions</h1>
-                  <h4>
-                    We help entrepreneurs, start-ups and enterprises shape their
-                    ideas into products
-                  </h4>
-                </div>
-              </div>
+      <div className="container-full">
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper shadow-2xl"
+        >
+          <SwiperSlide className="relative overflow-hidden ">
+            <div className="image-div">
+              <img className="" src={carousel1} alt="Slider1" />
             </div>
-          </div>
-          <div class="item">
-            <img
-              src="https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg"
-              alt="images not found"
-            />
-            <div class="cover">
-              <div class="container">
-                <div class="header-content">
-                  <div class="line animated bounceInLeft"></div>
-                  <h2>Reimagine Digital Experience with</h2>
-                  <h1>Intelligent solutions</h1>
-                  <h4>
-                    We help entrepreneurs, start-ups and enterprises shape their
-                    ideas into products
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img
-              src="https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_960_720.jpg"
-              alt="images not found"
-            />
-            <div class="cover">
-              <div class="container">
-                <div class="header-content">
-                  <div class="line animated bounceInLeft"></div>
-                  <h2>Peimagine Digital Experience with</h2>
-                  <h1>Intelligent Solutions</h1>
-                  <h4>
-                    We help entrepreneurs, start-ups and enterprises shape their
-                    ideas into products
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header> */}
+            <div className="swiper-inner-info ">
+              <p className="my-4 text-white font-sans font-semibold md:text-5xl">
+                We are proud
+              </p>
 
-      <div className="carousel w-full">
-  <div id="slide1" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide4" className="btn btn-circle">❮</a> 
-      <a href="#slide2" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide2" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide1" className="btn btn-circle">❮</a> 
-      <a href="#slide3" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide3" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide2" className="btn btn-circle">❮</a> 
-      <a href="#slide4" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide4" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide3" className="btn btn-circle">❮</a> 
-      <a href="#slide1" className="btn btn-circle">❯</a>
-    </div>
-  </div>
-</div>
+              <h1 className="md:text-7xl my-2 font-bold font-sans text-primary ">
+                TO BE ALWAYS ON DEMAND
+              </h1>
+              <button className="px-14 py-4 border-1 border-primary-focus text-white font-serif font-bold bg-accent rounded shadow-2xl mt-4 hover:bg-white hover:text-accent">
+                GET FREE QUOTE
+              </button>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide className="relative overflow-hidden ">
+            <div className="image-div">
+              <img className="" src={carousel2} alt="Slider1" />
+            </div>
+            <div className="swiper-inner-info ">
+              <p className="my-4 text-white font-sans font-semibold md:text-5xl">
+                We are active
+              </p>
+
+              <h1 className="md:text-7xl my-2 font-bold font-sans text-primary uppercase">
+                TO ship you product trusted
+              </h1>
+              <button className="px-14 py-4 border-1 border-primary-focus text-white font-serif font-bold bg-accent rounded shadow-2xl mt-4 hover:bg-white hover:text-accent">
+                GET FREE QUOTE
+              </button>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide className="relative overflow-hidden ">
+            <div className="image-div">
+              <img className="" src={carousel3} alt="Slider1" />
+            </div>
+            <div className="swiper-inner-info ">
+              <p className="my-4 text-white font-sans font-semibold md:text-5xl">
+                We are proud
+              </p>
+
+              <h1 className="md:text-7xl my-2 font-bold font-sans text-primary ">
+                TO BE ALWAYS ON DEMAND
+              </h1>
+              <button className="px-14 py-4 border-1 border-primary-focus text-white font-serif font-bold bg-accent rounded shadow-2xl mt-4 hover:bg-white hover:text-accent">
+                GET FREE QUOTE
+              </button>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </>
   );
 };

@@ -10,6 +10,7 @@
 5. npm install react-hook-form
 6. npm install sweetalert2
 7. npm i bcrypt
+8. npm i swiper
 
 
 
