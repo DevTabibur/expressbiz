@@ -7,7 +7,7 @@ const DashboardSidebar = ({ children }) => {
     <>
       {/* user route */}
       {/* {!admin && ( */}
-        <>
+        {/* <>
           <li className="text-accent my-1 font-semibold font-sans">
             <NavLink to="/dashboard/quotation-list">Quotation List</NavLink>
           </li>
@@ -20,7 +20,7 @@ const DashboardSidebar = ({ children }) => {
           <li className="text-accent my-1 font-semibold font-sans">
             <NavLink to="/dashboard/payment-history">Payment History</NavLink>
           </li>
-        </>
+        </> */}
       {/* )} */}
 
       {/* admin route */}

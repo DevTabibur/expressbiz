@@ -51,7 +51,9 @@ const Register = () => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ name, email, confirmPassword }),
+        body: JSON.stringify({
+          registerUser: { name, email, confirmPassword },
+        }),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -66,11 +68,7 @@ const Register = () => {
             });
           } else if (data.acknowledged) {
             // success registration
-            console.log("success", data);
-            Swal.fire({
-              title: "Registration Done",
-              icon: "success",
-            });
+            // console.log("success", data);
             navigate("/");
             const id = data?.insertedId;
             // set active user id on localStorage
@@ -87,7 +85,7 @@ const Register = () => {
   return (
     <>
       <div className="container m-auto">
-        <div className="grid md:grid-cols-2 gap-0 ">
+        <div className="grid md:grid-cols-2 shadow-2xl gap-0 ">
           {/* first col */}
           <div className="login-left-col">
             <div className="login-info p-12 text-center">

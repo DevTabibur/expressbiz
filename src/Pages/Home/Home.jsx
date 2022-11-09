@@ -13,13 +13,13 @@ const Home = () => {
   return (
     <>
       <HeroCarousel />
-      {/* <Services />
+      <Services />
       <BookShipping />
       <WhyChooseUs />
       <GetQuote />
       <Testimonial />
       <Contact />
-      <Footer /> */}
+      <Footer />
     </>
   );
 };

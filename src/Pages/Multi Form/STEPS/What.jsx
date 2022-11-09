@@ -43,7 +43,7 @@ const What = () => {
                     </span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Weight (kg)*"
                     className="input input-bordered font-mono"
                     {...register("weight", {
@@ -52,7 +52,7 @@ const What = () => {
                         message: "Weight (kg) is required",
                       },
                       pattern: {
-                        value: /^(0|[1-9]\d*)(,\d+)?$/,
+                        value: /^-?\d*\.?\d*$/,
                         message: "Please Weight is need in kg",
                       },
                     })}
@@ -79,7 +79,7 @@ const What = () => {
                     </span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Height (inch)*"
                     className="input input-bordered font-mono"
                     {...register("height")}
@@ -94,7 +94,7 @@ const What = () => {
                     </span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Width (inch)*"
                     className="input input-bordered font-mono"
                     {...register("width")}
@@ -109,7 +109,7 @@ const What = () => {
                     </span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Length (inch)*"
                     className="input input-bordered font-mono"
                     {...register("length")}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Stepper from "./Stepper";
 import StepperControls from "./StepperControls";
 import Account from "./STEPS/Account";
@@ -47,12 +47,29 @@ const MultiForm = () => {
   };
 
   const handleClick = (direction) => {
+    // e.preventDefault()
     let newStep = currentStep;
     direction === "next" ? newStep++ : newStep--;
 
     // check if steps are within bounds
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
+
+  // send userData to server
+  useEffect(() => {
+    const url = `http://localhost:5000/create-shipping`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ userData: userData }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("use create shipping hook posted data", data);
+      });
+  }, [userData]);
 
   return (
     <div className="">
@@ -70,7 +87,7 @@ const MultiForm = () => {
               </StepperContexts.Provider>
               {/* Navigation Controls */}
 
-              <div className="mt-6 bg-red-200 mb-4">
+              <div className="mt-6 mb-4">
                 {current !== steps.length && (
                   <StepperControls
                     handleClick={handleClick}

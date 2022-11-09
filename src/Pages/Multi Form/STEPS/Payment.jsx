@@ -29,6 +29,8 @@ const Payment = () => {
         <p className="text-neutral-focus font-mono mb-8">
           *indicates require file
         </p>
+
+        
         
       </div>
     </>

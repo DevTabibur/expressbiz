@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { StepperContexts } from "../contexts/StepperContexts";
 
 const Final = () => {
+  const { userData, setUserData } = useContext(StepperContexts);
+
+  // send data to server
+  useEffect(() => {
+    const url = `http://localhost:5000/create-shipping`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json([userData]))
+      .then((data) => {
+        console.log("use create shipping hook posted data", data);
+      });
+  }, [userData]);
+
+  console.log('final user data', userData)
+
   return (
     <div className="container md:mt-10">
       <div className="flex flex-col items-center">
-        <div className="text-green-400">
+        <div className="text-green-400 py-12">
           <svg
             className="w-24 h-24"
             fill="currentColor"
@@ -20,11 +41,11 @@ const Final = () => {
         </div>
 
         <div className="mt-3 text-xl font-semibold uppercase text-green-500">
-          Congratulations!
+          Thank you for create Shipping!
         </div>
 
         <div className="text-lg font-semibold text-gray-500">
-          Your Account has been created
+          Please pay from your dashboard
         </div>
 
         <a className="mt-10" href="/">
@@ -32,7 +53,6 @@ const Final = () => {
             Close
           </button>
         </a>
-        
       </div>
     </div>
   );

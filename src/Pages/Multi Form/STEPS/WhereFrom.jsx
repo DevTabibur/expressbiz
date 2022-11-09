@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { StepperContexts } from "../contexts/StepperContexts";
 const WhereFrom = () => {
@@ -12,13 +12,15 @@ const WhereFrom = () => {
   } = useForm();
 
   const onSubmit = async (data, e) => {
+    e.preventDefault();
     const shippingFrom = data;
     setUserData({ ...userData, shippingFrom });
-    reset();
+    // reset();
   };
 
-  console.log('WhereFrom data', userData)
+  // console.log('WhereFrom data', userData)
 
+  
 
   return (
     <div className="container mx-auto px-4 py-6">
