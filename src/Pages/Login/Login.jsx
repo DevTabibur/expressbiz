@@ -19,14 +19,8 @@ const Login = () => {
   const onSubmit = async (data, e) => {
     const email = data.email;
     const password = data.password;
-    console.log("data", email, password);
 
     const url = `http://localhost:5000/login`;
-    // fetch(url)
-    // .then(res => res.json())
-    // .then(data =>{
-    //   console.log('login data', data)
-    // })
 
     fetch(url, {
       method: "POST",
@@ -37,7 +31,6 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('login data', data)
         if (data.code === 401) {
           Swal.fire({
             title: "Authentication Problem",
@@ -45,9 +38,8 @@ const Login = () => {
             icon: "error",
           });
         } else if (data.code === 200) {
-          console.log("data", data);
+          // console.log("data", data);
           const id = data?.id;
-          localStorage.setItem("user_id", JSON.stringify(id))
           const url = `http://localhost:5000/register/${id}`;
           fetch(url, {
             method: "PATCH",
@@ -58,7 +50,9 @@ const Login = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log("user is activated", data);
+              // console.log("user is activated", data);
+              localStorage.setItem("user_id", JSON.stringify(id));
+              navigate("/");
             });
         }
       });
