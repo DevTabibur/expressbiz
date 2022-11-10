@@ -4,6 +4,7 @@ import {
   faEnvelope,
   faPhone,
   faTimes,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 import useActiveUser from "../../Hooks/useActiveUser";
@@ -11,8 +12,8 @@ import Swal from "sweetalert2";
 
 const HeaderTop = () => {
   const { pathname } = useLocation();
-  const [user] = useActiveUser();
-  // console.log("user on headerTop", user);
+  const [activeUser, activeUserData] = useActiveUser();
+  console.log("user on headerTop data", activeUserData);
   // const user = true;
 
   const logOut = () => {
@@ -74,10 +75,19 @@ const HeaderTop = () => {
                   />
                   05:00 am - 05:00 pm
                 </p>
+                {activeUserData && (
+                  <p className="md:mr-6">
+                    <FontAwesomeIcon
+                      className="mr-2 text-primary"
+                      icon={faUser}
+                    />
+                    {activeUserData.email}
+                  </p>
+                )}
               </div>
             </div>
             <div className="basis-1/3">
-              {user ? (
+              {activeUser ? (
                 <button onClick={logOut} className="md:mr-6">
                   Logout
                 </button>

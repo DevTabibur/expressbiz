@@ -52,7 +52,10 @@ const Register = () => {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          registerUser: { name, email, confirmPassword },
+          name,
+          email,
+          confirmPassword,
+          user: true,
         }),
       })
         .then((res) => res.json())
