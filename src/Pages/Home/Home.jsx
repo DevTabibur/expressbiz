@@ -7,19 +7,20 @@ import GetQuote from "../../Shared/GetQuote/GetQuote";
 import Testimonial from "../../Shared/Testimonial/Testimonial";
 import Footer from "../../Shared/Footer/Footer";
 import HeroCarousel from "../../Shared/HeroCarousel/HeroCarousel";
+import Process from "../Process/Process";
 
 const Home = () => {
-  
   return (
     <>
-      <HeroCarousel />
-      <Services />
-      <BookShipping />
-      <WhyChooseUs />
-      <GetQuote />
-      <Testimonial />
-      <Contact />
-      <Footer />
+      {/* <HeroCarousel /> */}
+      {/* <Services /> */}
+      {/* <BookShipping /> */}
+      {/* <WhyChooseUs /> */}
+      <Process />
+      {/* <GetQuote /> */}
+      {/* <Testimonial /> */}
+      {/* <Contact /> */}
+      {/* <Footer /> */}
     </>
   );
 };
