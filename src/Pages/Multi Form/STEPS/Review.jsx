@@ -1,11 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StepperContexts } from "../contexts/StepperContexts";
 
 const Review = () => {
   const { userData, setUserData } = useContext(StepperContexts);
   console.log("userData on review", userData);
   const review = [userData];
-  // console.log("review", userData?.what);
+  console.log("review", userData);
+
+  // send userData to server
+  useEffect(() => {
+    const url = `http://localhost:5000/create-shipping`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("use create shipping hook posted data", data);
+      });
+  }, [userData]);
+
   return (
     <>
       <div className="container mx-auto px-4 py-6">
@@ -118,7 +135,7 @@ const Review = () => {
               Bill Shipping Charge To : Card
             </p>
             <p className="text-accent font-serif mt-2">
-             Bill Duties and Taxes To : Receive company
+              Bill Duties and Taxes To : Receive company
             </p>
           </div>
         </div>

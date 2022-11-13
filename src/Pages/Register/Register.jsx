@@ -76,7 +76,7 @@ const Register = () => {
           } else if (data.acknowledged) {
             // success registration
             // console.log("success", data);
-            navigate("/");
+            // navigate("/");
             const id = data?.insertedId;
             // set active user id on localStorage
             localStorage.setItem("user_id", JSON.stringify(id));
@@ -89,19 +89,21 @@ const Register = () => {
     }
   };
 
-  console.log(
-    "user on register compo data",
-    activeUser,
-    activeUserData
-  );
-
+  console.log("user on register compo data", activeUserData);
+  let user;
+  if (activeUserData?.email) {
+    user = activeUserData?.email;
+  }
+  console.log("user", user);
   // // token
-  // useEffect(() => {
-  //   const [token] = useToken("hi");
-  //   if (token) {
-  //     navigate("/home");
-  //   }
-  // }, []);
+  const [token] = useToken(user);
+
+  useEffect(() => {
+    if (token) {
+      // navigate("/home");
+      console.log("token is get");
+    }
+  }, []);
 
   return (
     <>

@@ -18,7 +18,7 @@ const WhereFrom = () => {
     // reset();
   };
 
-  // console.log('WhereFrom data', userData)
+  console.log('WhereFrom data', userData)
 
   
 

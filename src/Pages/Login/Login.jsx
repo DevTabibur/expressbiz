@@ -2,10 +2,11 @@ import "./Login.css";
 import LoginImage from "../../Assets/images/login.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLockOpen } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const {
@@ -15,6 +16,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const location = useLocation()
 
   const onSubmit = async (data, e) => {
     const email = data.email;
@@ -57,6 +59,16 @@ const Login = () => {
         }
       });
   };
+
+
+  const [token] = useToken();
+  let from = location.state?.from?.pathname || "/"
+  // token
+  // useEffect(() =>{
+  //   if(token){
+  //     navigate(from, {replace: true})
+  //   }
+  // }, [token, from, navigate])
 
   return (
     <>

@@ -12,6 +12,7 @@
 6. npm install sweetalert2
 7. npm i bcrypt
 8. npm i swiper
+9. npm install @emailjs/browser --save
 
 ### Done page
 
@@ -19,6 +20,7 @@
 2. services
 3. not found page
 4. book shipping component
+5. contact page is done with EmailJS
 
 ### special works
 

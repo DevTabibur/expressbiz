@@ -2,30 +2,33 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const DashboardSidebar = ({ children }) => {
-  const admin = true;
+  const admin = false;
   const menu = (
     <>
       {/* user route */}
-      {/* {!admin && ( */}
-        {/* <>
-          <li className="text-accent my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/quotation-list">Quotation List</NavLink>
+      {!admin && (
+        <>
+          <li className="text-white my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/quotation-history">Quotation history</NavLink>
           </li>
-          <li className="text-accent my-1 font-semibold font-sans">
+          <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/review">Review</NavLink>
           </li>
-          <li className="text-accent my-1 font-semibold font-sans">
+          <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/checkout">Checkout</NavLink>
           </li>
-          <li className="text-accent my-1 font-semibold font-sans">
+          <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/payment-history">Payment History</NavLink>
           </li>
-        </> */}
-      {/* )} */}
+          <li className="text-white my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/shipment-history">Shipment History</NavLink>
+          </li>
+        </>
+      )}
 
       {/* admin route */}
-      {admin && (
-        <>
+      {/* {admin && ( */}
+        {/* <>
           <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/users">Users</NavLink>
           </li>
@@ -38,28 +41,28 @@ const DashboardSidebar = ({ children }) => {
           <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/client-review">Client Review</NavLink>
           </li>
-        </>
-      )}
+        </> */}
+      {/* )} */}
     </>
   );
   return (
     <>
       <>
-      <div className="drawer drawer-mobile">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content  p-12 bg-success">
-          {/* <!-- Page content here --> */}
-          {children}
+        <div className="drawer drawer-mobile">
+          <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content  p-12 bg-success">
+            {/* <!-- Page content here --> */}
+            {children}
+          </div>
+          <div className="drawer-side">
+            <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+            <ul className="menu p-4 overflow-y-auto w-80 bg-info">
+              {/* <!-- Sidebar content here --> */}
+              {menu}
+            </ul>
+          </div>
         </div>
-        <div className="drawer-side">
-          <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-80 bg-info">
-            {/* <!-- Sidebar content here --> */}
-            {menu}
-          </ul>
-        </div>
-      </div>
-    </>
+      </>
     </>
   );
 };

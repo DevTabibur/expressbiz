@@ -55,21 +55,7 @@ const MultiForm = () => {
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
 
-  // send userData to server
-  useEffect(() => {
-    const url = `http://localhost:5000/create-shipping`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ userData: userData }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("use create shipping hook posted data", data);
-      });
-  }, [userData]);
+  
 
   return (
     <div className="">

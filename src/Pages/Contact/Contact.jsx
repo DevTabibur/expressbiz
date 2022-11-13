@@ -8,16 +8,46 @@ import {
   faPhone,
   faFax,
 } from "@fortawesome/free-solid-svg-icons";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 const Contact = () => {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
+  const form = useRef();
   const onSubmit = async (data, e) => {
-    console.log(data);
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_h592u8a_expressb",
+        "template_4wpv3xa",
+        form.current,
+        "rd2NWclvqL6ALdj-T"
+      )
+      .then(
+        (result) => {
+          Swal.fire({
+            title: "Message Sent",
+            icon: "success",
+          });
+          reset();
+        },
+        (error) => {
+          const err = error.text;
+          Swal.fire({
+            title: "Something went wrong",
+            text: err,
+            icon: "success",
+          });
+        }
+      );
   };
 
   // for error showing message
@@ -37,8 +67,12 @@ const Contact = () => {
       <div className="page-title shadow">
         <div className="container mx-auto px-4">
           <div className=" text-center my-12">
-            <h2 className="text-4xl font-bold text-white font-serif">Contact With Us</h2>
-            <p className="mb-4 text-center text-sm font-mono text-white">You can contact with us via this</p>
+            <h2 className="text-4xl font-bold text-white font-serif">
+              Contact With Us
+            </h2>
+            <p className="mb-4 text-center text-sm font-mono text-white">
+              You can contact with us via this
+            </p>
           </div>
         </div>
       </div>
@@ -65,16 +99,17 @@ const Contact = () => {
 
             {/* form */}
             <form
+              ref={form}
               className="bg-neutral p-4 rounded shadow-lg"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-4">
                 {/* name */}
                 <div className="form-control">
                   <input
                     type="text"
                     placeholder="Enter your full name"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered input-success font-mono"
                     {...register("name", {
                       required: {
                         value: true,
@@ -96,7 +131,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Email"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered input-success font-mono"
                     {...register("email", {
                       required: {
                         value: true,
@@ -123,57 +158,23 @@ const Contact = () => {
                 </div>
 
                 {/* company name */}
-                <div className="form-control">
+                <div className="form-control mb-5">
                   <input
                     type="text"
                     placeholder="Company Name / Shop Name"
-                    className="input input-bordered font-mono"
-                    {...register("company", {
-                      required: {
-                        value: true,
-                        message: "Company Name / Shop Name etc. is Required",
-                      },
-                    })}
+                    className="input input-bordered input-success font-mono"
+                    {...register("company")}
                   />
-                  <label className="label my-1 py-0">
-                    {errors.company?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.company.message}
-                      </span>
-                    )}
-                  </label>
                 </div>
 
                 {/* number */}
-                <div className="form-control">
+                <div className="form-control mb-5">
                   <input
                     type="text"
                     placeholder="Mobile Number"
-                    className="input input-bordered font-mono"
-                    {...register("number", {
-                      required: {
-                        value: true,
-                        message: "Mobile Number is Required",
-                      },
-                      pattern: {
-                        value:
-                          /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-                        message: "Provide a valid Number",
-                      },
-                    })}
+                    className="input input-bordered input-success font-mono"
+                    {...register("number")}
                   />
-                  <label className="label my-1 py-0">
-                    {errors.number?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.number.message}
-                      </span>
-                    )}
-                    {errors.number?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.number.message}
-                      </span>
-                    )}
-                  </label>
                 </div>
               </div>
 
@@ -182,7 +183,7 @@ const Contact = () => {
                 <textarea
                   type="text"
                   placeholder="Write Here"
-                  className="textarea textarea-bordered font-mono"
+                  className="textarea textarea-bordered  input-success font-mono"
                   {...register("message", {
                     required: {
                       value: true,
