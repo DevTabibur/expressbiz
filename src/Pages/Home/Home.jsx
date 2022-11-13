@@ -15,8 +15,8 @@ const Home = () => {
       {/* <HeroCarousel /> */}
       {/* <Services /> */}
       {/* <BookShipping /> */}
-      {/* <WhyChooseUs /> */}
-      <Process />
+      <WhyChooseUs />
+      {/* <Process /> */}
       {/* <GetQuote /> */}
       {/* <Testimonial /> */}
       {/* <Contact /> */}

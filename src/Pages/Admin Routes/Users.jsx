@@ -9,6 +9,10 @@ const Users = () => {
   const removeUser = (id) => {
     const localID = localStorage.getItem("user_id");
     const getID = JSON.parse(localID);
+    console.log('localID', localID)
+    console.log('getID', getID)
+
+    console.log('first', id === getID)
 
     if (id === getID) {
       Swal.fire({
