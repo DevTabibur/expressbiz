@@ -9,9 +9,13 @@ import {
   faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
+import useActiveUser from "../../Hooks/useActiveUser";
+import useToken from "../../Hooks/useToken";
 const Register = () => {
+  const [activeUser, activeUserData] = useActiveUser();
+
   const location = useLocation();
   const navigate = useNavigate();
   const {
@@ -84,6 +88,20 @@ const Register = () => {
         });
     }
   };
+
+  console.log(
+    "user on register compo data",
+    activeUser,
+    activeUserData
+  );
+
+  // // token
+  // useEffect(() => {
+  //   const [token] = useToken("hi");
+  //   if (token) {
+  //     navigate("/home");
+  //   }
+  // }, []);
 
   return (
     <>

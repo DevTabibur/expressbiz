@@ -26,16 +26,16 @@ const DashboardSidebar = ({ children }) => {
       {/* admin route */}
       {admin && (
         <>
-          <li className="text-accent my-1 font-semibold font-sans">
+          <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/users">Users</NavLink>
           </li>
-          <li className="text-accent my-1 font-semibold font-sans">
+          <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/add-services">Add Services</NavLink>
           </li>
-          <li className="text-accent my-1 font-semibold font-sans">
+          <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
           </li>
-          <li className="text-accent my-1 font-semibold font-sans">
+          <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/client-review">Client Review</NavLink>
           </li>
         </>
@@ -47,13 +47,13 @@ const DashboardSidebar = ({ children }) => {
       <>
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content  p-12">
+        <div className="drawer-content  p-12 bg-success">
           {/* <!-- Page content here --> */}
           {children}
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-80 bg-neutral-focus">
+          <ul className="menu p-4 overflow-y-auto w-80 bg-info">
             {/* <!-- Sidebar content here --> */}
             {menu}
           </ul>

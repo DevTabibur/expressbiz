@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 const HeaderTop = () => {
   const { pathname } = useLocation();
   const [activeUser, activeUserData] = useActiveUser();
-  console.log("user on headerTop data", activeUserData);
+  // console.log("user on headerTop data", activeUserData);
   // const user = true;
 
   const logOut = () => {
