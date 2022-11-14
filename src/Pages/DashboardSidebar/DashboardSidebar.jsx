@@ -6,11 +6,13 @@ const DashboardSidebar = ({ children }) => {
   const menu = (
     <>
       {/* user route */}
-      {/* {!admin && (
+      {!admin && (
         <>
           <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/quotation-history">Quotation history</NavLink>
-          </li>
+            <NavLink to="/dashboard/quotation-history">
+              Quotation history
+            </NavLink>
+        </li>
           <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/review">Review</NavLink>
           </li>
@@ -24,24 +26,24 @@ const DashboardSidebar = ({ children }) => {
             <NavLink to="/dashboard/shipment-history">Shipment History</NavLink>
           </li>
         </>
-      )} */}
+      )}
 
       {/* admin route */}
       {/* {admin && ( */}
-        <>
-          <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/users">Users</NavLink>
-          </li>
-          <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/add-services">Add Services</NavLink>
-          </li>
-          <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
-          </li>
-          <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/client-review">Client Review</NavLink>
-          </li>
-        </>
+      <>
+        <li className="text-white my-1 font-semibold font-sans">
+          <NavLink to="/dashboard/users">Users</NavLink>
+        </li>
+        <li className="text-white my-1 font-semibold font-sans">
+          <NavLink to="/dashboard/add-services">Add Services</NavLink>
+        </li>
+        <li className="text-white my-1 font-semibold font-sans">
+          <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
+        </li>
+        <li className="text-white my-1 font-semibold font-sans">
+          <NavLink to="/dashboard/client-review">Client Review</NavLink>
+        </li>
+      </>
       {/* )} */}
     </>
   );

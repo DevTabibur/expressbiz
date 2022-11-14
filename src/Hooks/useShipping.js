@@ -2,24 +2,23 @@ import React, { useContext, useEffect, useState } from "react";
 import { StepperContexts } from "../Pages/Multi Form/contexts/StepperContexts";
 
 const useCreateShipping = () => {
-  const { userData, setUserData } = useContext(StepperContexts);
-  const [createShipping, setCreateShipping] = useState(userData);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/create-shipping`;
+    const url = `http://localhost:5000/shipping`;
     fetch(url, {
-      method: "POST",
+      method: "GET",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(createShipping),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("use create shipping hook posted data", data);
+        // console.log("use create shipping hook posted data", data);
+        setOrders(data);
       });
-  }, [userData , createShipping]);
-  return [userData, createShipping];
+  }, [orders]);
+  return [orders];
 };
 
 export default useCreateShipping;

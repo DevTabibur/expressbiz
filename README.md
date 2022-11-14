@@ -13,6 +13,7 @@
 7. npm i bcrypt
 8. npm i swiper
 9. npm install @emailjs/browser --save
+10. npm install --save @stripe/react-stripe-js @stripe/stripe-js
 
 ### Done page
 
@@ -32,4 +33,5 @@
 ### PROBLEMS
 
 1. headerTop e page refresh dile user er name dekhasse na (solved)
-2. registration is completely done
+2. registration is completely done (solved)
+3. user k remove dile swal fire hoi na, and automatic logout hoi jasse, tai jakei remove kori na keno?

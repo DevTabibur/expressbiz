@@ -5,41 +5,34 @@ import ShowUserTable from "./ShowUserTable";
 
 const Users = () => {
   const [users] = useUser();
+  const localID = localStorage.getItem("user_id");
+  const getID = JSON.parse(localID);
+
+  console.log("localID", localID);
+  console.log("getID", getID);
 
   const removeUser = (id) => {
-    const localID = localStorage.getItem("user_id");
-    const getID = JSON.parse(localID);
-    console.log('localID', localID)
-    console.log('getID', getID)
+    console.log("first", id !== getID);
 
-    console.log('first', id === getID)
-
-    if (id === getID) {
-      Swal.fire({
-        title: "Can't remove user",
-        icon: "error",
+    const url = `http://localhost:5000/register/${id}`;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log("data deleted", data);
+        if (data.deletedCount) {
+          Swal.fire({
+            title: "DELETED",
+            icon: "success",
+          });
+        }
+        // user automatically logout
+        localStorage.removeItem("user_id");
       });
-    } else {
-      const url = `http://localhost:5000/register/${id}`;
-      fetch(url, {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log("data deleted", data);
-          if (data.deletedCount) {
-            Swal.fire({
-              title: "DELETED",
-              icon: "success",
-            });
-          }
-          // user automatically logout
-          localStorage.removeItem("user_id");
-        });
-    }
   };
 
   const makeAdmin = (id) => {

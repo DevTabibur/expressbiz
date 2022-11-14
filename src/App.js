@@ -28,6 +28,7 @@ import GiveReview from "./Pages/User Routes/GiveReview";
 import ShipmentHistory from "./Pages/User Routes/ShipmentHistory";
 import PaymentHistory from "./Pages/User Routes/PaymentHistory";
 import Checkout from "./Pages/User Routes/Checkout";
+import Payment from "./Pages/User Routes/Payment";
 
 export const BlogContext = createContext();
 
@@ -52,6 +53,7 @@ function App() {
               {/* user routes */}
               <Route path="review" element={<GiveReview />} />
               <Route path="shipment-history" element={<ShipmentHistory />} />
+              <Route path="payment/:id" element={<Payment />} />
               <Route path="payment-history" element={<PaymentHistory />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="quotation-history" element={<QuotationList />} />
