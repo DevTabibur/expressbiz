@@ -7,13 +7,16 @@ import {
 import { useEffect, useState } from "react";
 
 const CheckoutForm = ({ singleOrder }) => {
-  const price = 200;
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
+  const [processing, setProcessing] = useState(false);
   const [transactionID, setTransactionID] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+
+  const price = 200;
+  const { _id } = singleOrder;
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -37,6 +40,10 @@ const CheckoutForm = ({ singleOrder }) => {
     clientSecret,
     appearance,
   };
+
+  if (processing) {
+    return alert("PROCESSING...");
+  }
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -65,6 +72,7 @@ const CheckoutForm = ({ singleOrder }) => {
 
     setCardError(error?.message || "");
     setSuccess("");
+    setProcessing(true);
 
     // confirm card payment
     const { paymentIntent, error: intentError } =
@@ -80,10 +88,32 @@ const CheckoutForm = ({ singleOrder }) => {
 
     if (intentError) {
       setCardError(intentError?.message);
+      setProcessing(false);
     } else {
       setCardError("");
       setTransactionID(paymentIntent.id);
       setSuccess("Congrats!. Your payment is completed");
+
+      //store payment on database
+
+      const payment = {
+        shippingOrder: _id,
+        transactionId: paymentIntent.id,
+      };
+
+      const url = `http://localhost:5000/shipping/${_id}`;
+      fetch(url, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProcessing(false);
+          // console.log("data updated patch", data);
+        });
     }
   };
 

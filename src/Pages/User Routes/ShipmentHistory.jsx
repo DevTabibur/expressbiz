@@ -38,9 +38,23 @@ const ShipmentHistory = () => {
                     <td>Name</td>
                     <td>Air</td>
                     <td>Pending</td>
-                    <td>
-                      <Link to={`/dashboard/payment/${order._id}`}>Pay </Link>
-                    </td>
+                    {order.price && !order.paid && (
+                      <td>
+                        <Link to={`/dashboard/payment/${order._id}`}>Pay </Link>{" "}
+                      </td>
+                    )}
+                    {order.price && order.paid && (
+                      <div>
+                        <p>
+                          {" "}
+                          <span className="text-green-500 font-semibold">
+                            PAID
+                          </span>{" "}
+                        </p>
+                        <p>Your transactionID : {order.transactionId}</p>
+                      </div>
+                    )}
+
                     <td>Delete</td>
                   </tr>
                 </tbody>
