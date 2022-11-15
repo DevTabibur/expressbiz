@@ -15,16 +15,15 @@ import Testimonials from "../../Shared/Testimonials/Testimonials";
 const Home = () => {
   return (
     <>
-      {/* <HeroCarousel /> */}
-      {/* <Services /> */}
-      {/* <BookShipping /> */}
-      {/* <WhyChooseUs /> */}
-      {/* <Testimonials /> */}
-      {/* <Process /> */}
-      {/* <GetQuote /> */}
-      {/* <Testimonial /> */}
-      {/* <Contact /> */}
-      {/* <Footer /> */}
+      <HeroCarousel />
+      <Services />
+      <BookShipping />
+      <WhyChooseUs />
+      <Process />
+      <GetQuote />
+      <Testimonials />
+      <Contact />
+      <Footer />
     </>
   );
 };

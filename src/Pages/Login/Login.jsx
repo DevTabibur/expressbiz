@@ -7,8 +7,13 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 import useToken from "../../Hooks/useToken";
+import useActiveUser from "../../Hooks/useActiveUser";
 
 const Login = () => {
+  const [activeUser, activeUserData] = useActiveUser();
+
+  console.log("active users data", activeUser, activeUserData);
+
   const {
     register,
     handleSubmit,
@@ -16,7 +21,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
   const onSubmit = async (data, e) => {
     const email = data.email;
@@ -60,9 +65,8 @@ const Login = () => {
       });
   };
 
-
   const [token] = useToken();
-  let from = location.state?.from?.pathname || "/"
+  let from = location.state?.from?.pathname || "/";
   // token
   // useEffect(() =>{
   //   if(token){

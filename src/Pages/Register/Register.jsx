@@ -13,8 +13,10 @@ import { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import useActiveUser from "../../Hooks/useActiveUser";
 import useToken from "../../Hooks/useToken";
+import Loader from "../../Shared/Loader/Loader";
 const Register = () => {
   const [activeUser, activeUserData] = useActiveUser();
+  const [registerLoading, setRegisterLoading] = useState(true);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,10 +26,6 @@ const Register = () => {
     watch,
     formState: { errors },
   } = useForm();
-
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
-  const [confirmPassword, setConfirmPassword] = useState([]);
 
   const onSubmit = async (data, e) => {
     const name = data.name;
@@ -89,21 +87,29 @@ const Register = () => {
     }
   };
 
-  console.log("user on register compo data", activeUserData);
+  console.log("user on register compo data", activeUser, activeUserData);
   let user;
-  if (activeUserData?.email) {
-    user = activeUserData?.email;
+  if (activeUser === true) {
+    console.log("activeUser", activeUser);
+    // alert();
   }
-  console.log("user", user);
+  // if (activeUserData?.email) {
+  //   user = activeUserData?.email;
+  // }
   // // token
-  const [token] = useToken(user);
+  // const [token] = useToken();
 
-  useEffect(() => {
-    if (token) {
-      // navigate("/home");
-      console.log("token is get");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (token) {
+  //     // navigate("/home");
+  //     console.log("token is get");
+  //   }
+  // }, []);
+
+  // for loading
+  if (registerLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

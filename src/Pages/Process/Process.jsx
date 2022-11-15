@@ -7,60 +7,60 @@ const Process = () => {
   return (
     <div className="bg-success">
       {/* <!-- component --> */}
-      <div class="container py-12 mx-auto px-4">
+      <div className="container py-12 mx-auto px-4">
         <h1 className="text-4xl font-serif font-bold text-center text-accent">
           OUR SERVICE PROCESS
         </h1>
         <p className="text-center pt-2 pb-6 font-sans">
           or continuous professional and business development, I obtained a{" "}
         </p>
-        <div class="relative wrap overflow-hidden md:p-10 ">
+        <div className="relative wrap overflow-hidden md:p-10 ">
           <div
-            class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border"
+            className="border-2-2 absolute border-opacity-20 border-gray-700 h-full border"
             style={{ left: "50%" }}
           ></div>
 
           {/* <!-- right timeline --> */}
-          <div class="mb-8 flex justify-between items-center w-full right-timeline">
-            <div class="order-1 w-5/12"></div>
-            <div class="z-20 flex items-center order-1 bg-accent shadow-xl w-12 h-12 rounded-full hover:scale-105 duration-500 ease-in-out">
-              <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+          <div className="mb-8 flex justify-between items-center w-full right-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-accent shadow-xl w-12 h-12 rounded-full hover:scale-105 duration-500 ease-in-out">
+              <h1 className="mx-auto font-semibold text-lg text-white">1</h1>
             </div>
-            <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 p-6 hover:scale-105 duration-500 ease-in-out">
-              <h3 class="font-bold text-gray-800 text-xl">Select Freight</h3>
+            <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 p-6 hover:scale-105 duration-500 ease-in-out">
+              <h3 className="font-bold text-gray-800 text-xl">Select Freight</h3>
             </div>
           </div>
 
           {/* <!-- left timeline --> */}
-          <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-            <div class="order-1 w-5/12"></div>
-            <div class="z-20 flex items-center order-1 bg-accent shadow-xl w-12 h-12 rounded-full hover:scale-105 duration-500 ease-in-out">
-              <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
+          <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-accent shadow-xl w-12 h-12 rounded-full hover:scale-105 duration-500 ease-in-out">
+              <h1 className="mx-auto text-white font-semibold text-lg">2</h1>
             </div>
-            <div class="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 p-6 hover:scale-105 duration-500 ease-in-out">
-              <h3 class="font-bold text-white text-xl">Create Invoice</h3>
+            <div className="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 p-6 hover:scale-105 duration-500 ease-in-out">
+              <h3 className="font-bold text-white text-xl">Create Invoice</h3>
             </div>
           </div>
 
           {/* <!-- right timeline --> */}
-          <div class="mb-8 flex justify-between items-center w-full right-timeline">
-            <div class="order-1 w-5/12"></div>
-            <div class="z-20 flex items-center order-1 bg-accent shadow-xl w-12 h-12 rounded-full hover:scale-105 duration-500 ease-in-out">
-              <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+          <div className="mb-8 flex justify-between items-center w-full right-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-accent shadow-xl w-12 h-12 rounded-full hover:scale-105 duration-500 ease-in-out">
+              <h1 className="mx-auto font-semibold text-lg text-white">3</h1>
             </div>
-            <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 p-6 hover:scale-105 duration-500 ease-in-out">
-              <h3 class="font-bold text-gray-800 text-xl">Secure Payment</h3>
+            <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 p-6 hover:scale-105 duration-500 ease-in-out">
+              <h3 className="font-bold text-gray-800 text-xl">Secure Payment</h3>
             </div>
           </div>
 
           {/* <!-- left timeline --> */}
-          <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
-            <div class="order-1 w-5/12"></div>
-            <div class="z-20 flex items-center order-1 bg-accent shadow-xl w-12 h-12 rounded-full hover:scale-105 duration-500 ease-in-out">
-              <h1 class="mx-auto text-white font-semibold text-lg">4</h1>
+          <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-accent shadow-xl w-12 h-12 rounded-full hover:scale-105 duration-500 ease-in-out">
+              <h1 className="mx-auto text-white font-semibold text-lg">4</h1>
             </div>
-            <div class="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 p-6 hover:scale-105 duration-500 ease-in-out">
-              <h3 class=" font-bold text-white text-xl">Fast Delivery</h3>
+            <div className="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 p-6 hover:scale-105 duration-500 ease-in-out">
+              <h3 className=" font-bold text-white text-xl">Fast Delivery</h3>
             </div>
           </div>
         </div>

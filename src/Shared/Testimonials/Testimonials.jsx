@@ -27,26 +27,26 @@ const Testimonials = () => {
   // })
 
   return (
-    <section class="bg-gray-100">
-      <div class="mx-auto max-w-[1340px] px-4 py-16 sm:px-6 sm:py-24 lg:mr-0 lg:pl-8 lg:pr-0">
-        <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-3 lg:items-center lg:gap-x-16">
-          <div class="max-w-xl text-center sm:text-left">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+    <section className="bg-gray-100">
+      <div className="mx-auto max-w-[1340px] px-4 py-16 sm:px-6 sm:py-24 lg:mr-0 lg:pl-8 lg:pr-0">
+        <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-3 lg:items-center lg:gap-x-16">
+          <div className="max-w-xl text-center sm:text-left">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Don't just take our word for it...
-              <br class="hidden sm:block lg:hidden" />
+              <br className="hidden sm:block lg:hidden" />
               Read reviews from our customers
             </h2>
 
-            <p class="mt-4 text-gray-500">
+            <p className="mt-4 text-gray-500">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas
               veritatis illo placeat harum porro optio fugit a culpa sunt id!
             </p>
 
-            <div class="hidden lg:mt-8 lg:flex lg:gap-4">
-              <button class="prev-button rounded-full border border-pink-600 p-3 text-pink-600 hover:bg-pink-600 hover:text-white">
-                <span class="sr-only">Previous Slide</span>
+            <div className="hidden lg:mt-8 lg:flex lg:gap-4">
+              <button className="prev-button rounded-full border border-pink-600 p-3 text-pink-600 hover:bg-pink-600 hover:text-white">
+                <span className="sr-only">Previous Slide</span>
                 <svg
-                  class="h-5 w-5 -rotate-180 transform"
+                  className="h-5 w-5 -rotate-180 transform"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -54,17 +54,17 @@ const Testimonials = () => {
                 >
                   <path
                     d="M9 5l7 7-7 7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                 </svg>
               </button>
 
-              <button class="next-button rounded-full border border-pink-600 p-3 text-pink-600 hover:bg-pink-600 hover:text-white">
-                <span class="sr-only">Next Slide</span>
+              <button className="next-button rounded-full border border-pink-600 p-3 text-pink-600 hover:bg-pink-600 hover:text-white">
+                <span className="sr-only">Next Slide</span>
                 <svg
-                  class="h-5 w-5"
+                  className="h-5 w-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -72,24 +72,24 @@ const Testimonials = () => {
                 >
                   <path
                     d="M9 5l7 7-7 7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                 </svg>
               </button>
             </div>
           </div>
 
-          <div class="-mx-6 lg:col-span-2 lg:mx-0">
-            <div class="swiper-container !overflow-hidden">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <blockquote class="flex h-full flex-col justify-between bg-white p-12">
+          <div className="-mx-6 lg:col-span-2 lg:mx-0">
+            <div className="swiper-container !overflow-hidden">
+              <div className="swiper-wrapper">
+                <div className="swiper-slide">
+                  <blockquote className="flex h-full flex-col justify-between bg-white p-12">
                     <div>
-                      <div class="flex gap-0.5 text-green-500">
+                      <div className="flex gap-0.5 text-green-500">
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -134,12 +134,12 @@ const Testimonials = () => {
                         </svg>
                       </div>
 
-                      <div class="mt-4">
-                        <p class="text-2xl font-bold text-pink-600 sm:text-3xl">
+                      <div className="mt-4">
+                        <p className="text-2xl font-bold text-pink-600 sm:text-3xl">
                           Stayin' Alive
                         </p>
 
-                        <p class="mt-4 leading-relaxed text-gray-500">
+                        <p className="mt-4 leading-relaxed text-gray-500">
                           No, Rose, they are not breathing. And they have no
                           arms or legs … Where are they? You know what? If we
                           come across somebody with no arms or legs, do we
@@ -149,18 +149,18 @@ const Testimonials = () => {
                       </div>
                     </div>
 
-                    <footer class="mt-8 text-sm text-gray-500">
+                    <footer className="mt-8 text-sm text-gray-500">
                       &mdash; Michael Scott
                     </footer>
                   </blockquote>
                 </div>
 
-                <div class="swiper-slide">
-                  <blockquote class="flex h-full flex-col justify-between bg-white p-12">
+                <div className="swiper-slide">
+                  <blockquote className="flex h-full flex-col justify-between bg-white p-12">
                     <div>
-                      <div class="flex gap-0.5 text-green-500">
+                      <div className="flex gap-0.5 text-green-500">
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +169,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +178,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +187,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +196,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -205,12 +205,12 @@ const Testimonials = () => {
                         </svg>
                       </div>
 
-                      <div class="mt-4">
-                        <p class="text-2xl font-bold text-pink-600 sm:text-3xl">
+                      <div className="mt-4">
+                        <p className="text-2xl font-bold text-pink-600 sm:text-3xl">
                           Stayin' Alive
                         </p>
 
-                        <p class="mt-4 leading-relaxed text-gray-500">
+                        <p className="mt-4 leading-relaxed text-gray-500">
                           No, Rose, they are not breathing. And they have no
                           arms or legs … Where are they? You know what? If we
                           come across somebody with no arms or legs, do we
@@ -220,18 +220,18 @@ const Testimonials = () => {
                       </div>
                     </div>
 
-                    <footer class="mt-8 text-sm text-gray-500">
+                    <footer className="mt-8 text-sm text-gray-500">
                       &mdash; Michael Scott
                     </footer>
                   </blockquote>
                 </div>
 
-                <div class="swiper-slide">
-                  <blockquote class="flex h-full flex-col justify-between bg-white p-12">
+                <div className="swiper-slide">
+                  <blockquote className="flex h-full flex-col justify-between bg-white p-12">
                     <div>
-                      <div class="flex gap-0.5 text-green-500">
+                      <div className="flex gap-0.5 text-green-500">
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -240,7 +240,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +249,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +258,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +267,7 @@ const Testimonials = () => {
                         </svg>
 
                         <svg
-                          class="h-5 w-5"
+                          className="h-5 w-5"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -276,12 +276,12 @@ const Testimonials = () => {
                         </svg>
                       </div>
 
-                      <div class="mt-4">
-                        <p class="text-2xl font-bold text-pink-600 sm:text-3xl">
+                      <div className="mt-4">
+                        <p className="text-2xl font-bold text-pink-600 sm:text-3xl">
                           Stayin' Alive
                         </p>
 
-                        <p class="mt-4 leading-relaxed text-gray-500">
+                        <p className="mt-4 leading-relaxed text-gray-500">
                           No, Rose, they are not breathing. And they have no
                           arms or legs … Where are they? You know what? If we
                           come across somebody with no arms or legs, do we
@@ -291,7 +291,7 @@ const Testimonials = () => {
                       </div>
                     </div>
 
-                    <footer class="mt-8 text-sm text-gray-500">
+                    <footer className="mt-8 text-sm text-gray-500">
                       &mdash; Michael Scott
                     </footer>
                   </blockquote>
@@ -301,13 +301,13 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <div class="mt-8 flex justify-center gap-4 lg:hidden">
+        <div className="mt-8 flex justify-center gap-4 lg:hidden">
           <button
             aria-label="Previous slide"
-            class="prev-button rounded-full border border-pink-600 p-4 text-pink-600 hover:bg-pink-600 hover:text-white"
+            className="prev-button rounded-full border border-pink-600 p-4 text-pink-600 hover:bg-pink-600 hover:text-white"
           >
             <svg
-              class="h-5 w-5 -rotate-180 transform"
+              className="h-5 w-5 -rotate-180 transform"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -315,19 +315,19 @@ const Testimonials = () => {
             >
               <path
                 d="M9 5l7 7-7 7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
             </svg>
           </button>
 
           <button
             aria-label="Next slide"
-            class="next-button rounded-full border border-pink-600 p-4 text-pink-600 hover:bg-pink-600 hover:text-white"
+            className="next-button rounded-full border border-pink-600 p-4 text-pink-600 hover:bg-pink-600 hover:text-white"
           >
             <svg
-              class="h-5 w-5"
+              className="h-5 w-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -335,9 +335,9 @@ const Testimonials = () => {
             >
               <path
                 d="M9 5l7 7-7 7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
               />
             </svg>
           </button>
