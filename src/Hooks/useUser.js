@@ -22,12 +22,11 @@ const useUser = () => {
         return res.json();
       })
       .then((data) => {
-        // console.log("inside use users hooks", data);
-        // if(data.message === 'forbidden'  || data.message === 'UnAuthorized'){
-        //   localStorage.removeItem("accessToken")
-        //   signOut(auth)
-        //   navigate("/login")
-        // }
+        console.log("inside use users hooks", data);
+        if (data.message === "forbidden" || data.message === "UnAuthorized") {
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
         setUsers(data);
       });
   }, [users, navigate]);

@@ -32,6 +32,7 @@ const HeaderTop = () => {
         .then((data) => {
           // console.log("data log out", data);
           localStorage.removeItem("user_id");
+          localStorage.removeItem("accessToken");
           Swal.fire({
             title: "Log Out Successfully",
             icon: "success",

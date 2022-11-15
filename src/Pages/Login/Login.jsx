@@ -12,8 +12,6 @@ import useActiveUser from "../../Hooks/useActiveUser";
 const Login = () => {
   const [activeUser, activeUserData] = useActiveUser();
 
-  console.log("active users data", activeUser, activeUserData);
-
   const {
     register,
     handleSubmit,
@@ -59,20 +57,26 @@ const Login = () => {
             .then((data) => {
               // console.log("user is activated", data);
               localStorage.setItem("user_id", JSON.stringify(id));
-              navigate("/");
+              navigate("/home");
+              // window.location.reload();
             });
         }
       });
   };
 
-  const [token] = useToken();
-  let from = location.state?.from?.pathname || "/";
-  // token
-  // useEffect(() =>{
-  //   if(token){
-  //     navigate(from, {replace: true})
+  // console.log("activeUser", activeUser);
+  // console.log("activeUserData", activeUserData);
+
+  const emailToken = activeUserData?.email;
+
+  const [token] = useToken(emailToken);
+
+  // useEffect(() => {
+  //   if (token) {
+  //     // navigate("/home");
+  //     console.log("token is get");
   //   }
-  // }, [token, from, navigate])
+  // }, []);
 
   return (
     <>

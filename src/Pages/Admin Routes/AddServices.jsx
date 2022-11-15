@@ -1,10 +1,11 @@
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useActiveUser from "../../Hooks/useActiveUser";
 const AddServices = () => {
   const [activeUse, activeUserData] = useActiveUser();
-  // console.log("activeUserData", activeUserData);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,12 +19,17 @@ const AddServices = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
         // console.log("data posted", data);
+        if (data.code === 401 || data.code === 403) {
+          localStorage.removeItem("user_id");
+          navigate("/login");
+        }
         if (data.acknowledged) {
           Swal.fire({
             title: "Service added",
@@ -80,7 +86,7 @@ const AddServices = () => {
                 type="text"
                 placeholder="Email"
                 className="input input-bordered font-mono"
-                value={activeUserData?.email}
+                defaultValue={activeUserData?.email}
                 readOnly
                 {...register("email")}
               />

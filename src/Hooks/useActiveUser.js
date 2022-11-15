@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom";
 const useActiveUser = () => {
   const [activeUser, setActiveUser] = useState([]);
   const [activeUserData, setActiveUserData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const getIdLocally = localStorage.getItem("user_id");
   const id = JSON.parse(getIdLocally);

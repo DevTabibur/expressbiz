@@ -15,8 +15,7 @@ import useActiveUser from "../../Hooks/useActiveUser";
 import useToken from "../../Hooks/useToken";
 import Loader from "../../Shared/Loader/Loader";
 const Register = () => {
-  const [activeUser, activeUserData] = useActiveUser();
-  const [registerLoading, setRegisterLoading] = useState(true);
+  const [activeUser, activeUserData, loading] = useActiveUser();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,8 +38,9 @@ const Register = () => {
         title: "Password is not matched",
         icon: "error",
       });
-    } else if (isActive) {
-      // if user is register once, then he'll not register again before logout.
+    }
+    // if user is register once, then he'll not register again before logout.
+    else if (isActive) {
       Swal.fire({
         title: "Authentication is failed",
         text: "PLease logout for again registration",
@@ -57,7 +57,6 @@ const Register = () => {
           name,
           email,
           confirmPassword,
-          user: true,
         }),
       })
         .then((res) => res.json())
@@ -72,42 +71,36 @@ const Register = () => {
               icon: "error",
             });
           } else if (data.acknowledged) {
-            // success registration
-            // console.log("success", data);
-            // navigate("/");
             const id = data?.insertedId;
             // set active user id on localStorage
             localStorage.setItem("user_id", JSON.stringify(id));
-
-            // for reload the page
-            // window.location.reload();
-            // e.target.reset();
+            Swal.fire({
+              title: "Registration Success",
+              icon: "success",
+            });
+            navigate("/home");
+            window.location.reload();
           }
         });
     }
   };
 
-  console.log("user on register compo data", activeUser, activeUserData);
-  let user;
-  if (activeUser === true) {
-    console.log("activeUser", activeUser);
-    // alert();
-  }
-  // if (activeUserData?.email) {
-  //   user = activeUserData?.email;
-  // }
-  // // token
-  // const [token] = useToken();
+  // console.log("activeUser", activeUser);
+  // console.log("activeUserData", activeUserData);
 
-  // useEffect(() => {
-  //   if (token) {
-  //     // navigate("/home");
-  //     console.log("token is get");
-  //   }
-  // }, []);
+  const emailToken = activeUserData?.email;
+
+  const [token] = useToken(emailToken);
+
+  useEffect(() => {
+    if (token) {
+      // navigate("/home");
+      // console.log("token is get");
+    }
+  }, []);
 
   // for loading
-  if (registerLoading) {
+  if (loading) {
     return <Loader />;
   }
 

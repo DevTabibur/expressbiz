@@ -1,28 +1,34 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useService from "../../Hooks/useService";
 import ShowManageServices from "./ShowManageServices";
 
 const ManageServices = () => {
+  const navigate = useNavigate();
   const [services] = useService();
   // console.log("service", services);
   const deleteService = (id) => {
-
     const url = `http://localhost:5000/services/${id}`;
     fetch(url, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
         // console.log("data deleted", data);
-        if(data.deletedCount) {
+        if (data.code === 401 || data.code === 403) {
+          localStorage.removeItem("user_id");
+          navigate("/login");
+        }
+        if (data.deletedCount) {
           Swal.fire({
             title: "Service Deleted",
-            icon:"success"
-          })
+            icon: "success",
+          });
         }
       });
   };

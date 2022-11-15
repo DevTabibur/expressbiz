@@ -35,3 +35,4 @@
 1. headerTop e page refresh dile user er name dekhasse na (solved)
 2. registration is completely done (solved)
 3. user k remove dile swal fire hoi na, and automatic logout hoi jasse, tai jakei remove kori na keno?
+4. useToken automatic get hosse, and undefinde value thakleu automatic peye jasse... jar jonne auto redirect and accessToken set kora jasse na..
