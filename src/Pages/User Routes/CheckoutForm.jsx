@@ -5,6 +5,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import Loader from "../../Shared/Loader/Loader";
 
 const CheckoutForm = ({ singleOrder }) => {
   const stripe = useStripe();
@@ -40,10 +41,6 @@ const CheckoutForm = ({ singleOrder }) => {
     clientSecret,
     appearance,
   };
-
-  if (processing) {
-    return alert("PROCESSING...");
-  }
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -116,6 +113,10 @@ const CheckoutForm = ({ singleOrder }) => {
         });
     }
   };
+
+  if (processing) {
+    <Loader />;
+  }
 
   return (
     <>

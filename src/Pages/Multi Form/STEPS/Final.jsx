@@ -6,7 +6,7 @@ const Final = () => {
 
   // send data to server
   useEffect(() => {
-    const url = `http://localhost:5000/create-shipping`;
+    const url = `http://localhost:5000/shipping`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -20,7 +20,7 @@ const Final = () => {
       });
   }, [userData]);
 
-  console.log('final user data', userData)
+  console.log("final user data", userData);
 
   return (
     <div className="container md:mt-10">

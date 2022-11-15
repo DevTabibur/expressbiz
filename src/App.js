@@ -17,7 +17,7 @@ import NotFound from "./Pages/NotFound/NotFound";
 import SingleService from "./Pages/Services/SingleService";
 import Register from "./Pages/Register/Register";
 import CreateShipment from "./Pages/CreatShipment/CreateShipment";
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import RequireUser from "./Authentication/RequireUser";
 import QuotationList from "./Pages/User Routes/QuotationList";
 import Users from "./Pages/Admin Routes/Users";
@@ -26,8 +26,6 @@ import ManageServices from "./Pages/Admin Routes/ManageServices";
 import ClientReviews from "./Pages/Admin Routes/ClientReviews";
 import GiveReview from "./Pages/User Routes/GiveReview";
 import ShipmentHistory from "./Pages/User Routes/ShipmentHistory";
-import PaymentHistory from "./Pages/User Routes/PaymentHistory";
-import Checkout from "./Pages/User Routes/Checkout";
 import Payment from "./Pages/User Routes/Payment";
 
 export const BlogContext = createContext();
@@ -54,10 +52,7 @@ function App() {
               <Route path="review" element={<GiveReview />} />
               <Route path="shipment-history" element={<ShipmentHistory />} />
               <Route path="payment/:id" element={<Payment />} />
-              <Route path="payment-history" element={<PaymentHistory />} />
-              <Route path="checkout" element={<Checkout />} />
               <Route path="quotation-history" element={<QuotationList />} />
-
             </Route>
           </Route>
           <Route path="/about-us" element={<About />} />

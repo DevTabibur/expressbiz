@@ -20,14 +20,9 @@ const DashboardSidebar = ({ children }) => {
             </NavLink>
           </li>
           <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/review">GIve Your Feedback</NavLink>
+            <NavLink to="/dashboard/review">Give Your Feedback</NavLink>
           </li>
-          <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/checkout">Checkout</NavLink>
-          </li>
-          <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/payment-history">Payment History</NavLink>
-          </li>
+
           <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/shipment-history">Shipment History</NavLink>
           </li>
