@@ -1,8 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import useActiveUser from "../../Hooks/useActiveUser";
+import useAdmin from "../../Hooks/useAdmin";
+import Loader from "../../Shared/Loader/Loader";
 
 const DashboardSidebar = ({ children }) => {
-  const admin = false;
+  const [activeUser, activeUserData] = useActiveUser();
+
+  const [admin, adminLoading] = useAdmin(activeUserData);
+
   const menu = (
     <>
       {/* user route */}
@@ -12,9 +18,9 @@ const DashboardSidebar = ({ children }) => {
             <NavLink to="/dashboard/quotation-history">
               Quotation history
             </NavLink>
-        </li>
+          </li>
           <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/review">Review</NavLink>
+            <NavLink to="/dashboard/review">GIve Your Feedback</NavLink>
           </li>
           <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/checkout">Checkout</NavLink>
@@ -29,24 +35,29 @@ const DashboardSidebar = ({ children }) => {
       )}
 
       {/* admin route */}
-      {/* {admin && ( */}
-      <>
-        <li className="text-white my-1 font-semibold font-sans">
-          <NavLink to="/dashboard/users">Users</NavLink>
-        </li>
-        <li className="text-white my-1 font-semibold font-sans">
-          <NavLink to="/dashboard/add-services">Add Services</NavLink>
-        </li>
-        <li className="text-white my-1 font-semibold font-sans">
-          <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
-        </li>
-        <li className="text-white my-1 font-semibold font-sans">
-          <NavLink to="/dashboard/client-review">Client Review</NavLink>
-        </li>
-      </>
-      {/* )} */}
+      {admin && (
+        <>
+          <li className="text-white my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/users">Users</NavLink>
+          </li>
+          <li className="text-white my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/add-services">Add Services</NavLink>
+          </li>
+          <li className="text-white my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
+          </li>
+          <li className="text-white my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/client-review">Client Review</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
+
+  // for loader
+  if (adminLoading) {
+    return <Loader />;
+  }
   return (
     <>
       <>

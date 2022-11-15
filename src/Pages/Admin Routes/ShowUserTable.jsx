@@ -1,12 +1,11 @@
 import React from "react";
 
 const ShowUserTable = ({ user, idx, removeUser, makeAdmin }) => {
-  const { name, email, _id } = user;
+  const { name, email, _id, role } = user;
   return (
     <>
       <tr>
-        {/* <th>{idx + 1}</th> */}
-        <td className="font-semibold text-accent font-sans text-xl">{name}</td>
+        <td>{idx + 1}</td>
         <td>{email}</td>
         <td>
           <button
@@ -16,14 +15,18 @@ const ShowUserTable = ({ user, idx, removeUser, makeAdmin }) => {
             Remove user
           </button>
         </td>
-        <td>
-          <button
-            onClick={() => makeAdmin(_id)}
-            className="btn btn-sm bg-primary hover:shadow text-accent transition duration-150 hover:bg-accent hover:text-white"
-          >
-            Make Admin
-          </button>
-        </td>
+        {role === "admin" ? (
+          <td><button className="btn text-white bg-orange-500 rounded">Already Admin</button></td>
+        ) : (
+          <td>
+            <button
+              onClick={() => makeAdmin(email)}
+              className="btn btn-sm bg-primary hover:shadow text-accent transition duration-150 hover:bg-accent hover:text-white"
+            >
+              Make Admin
+            </button>
+          </td>
+        )}
       </tr>
     </>
   );

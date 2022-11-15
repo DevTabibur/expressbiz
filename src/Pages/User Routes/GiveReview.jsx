@@ -1,10 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useActiveUser from "../../Hooks/useActiveUser";
 
 const GiveReview = () => {
   const [activeUse, activeUserData] = useActiveUser();
+  const navigate = useNavigate();
+
   // console.log("activeUserData", activeUserData);
   const {
     register,
@@ -19,12 +22,17 @@ const GiveReview = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
         // console.log("data posted", data);
+        if (data.code === 401 || data.code === 403) {
+          localStorage.removeItem("user_id");
+          navigate("/login");
+        }
         if (data.acknowledged) {
           Swal.fire({
             title: "Review submitted",

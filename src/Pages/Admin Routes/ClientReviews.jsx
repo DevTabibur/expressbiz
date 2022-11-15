@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useReview from "../../Hooks/useReview";
 import ShoClientReviews from "./ShowClientReviews";
 
 const ClientReviews = () => {
+  const navigate = useNavigate();
   const [reviews] = useReview();
   const deleteReview = (id) => {
     const url = `http://localhost:5000/review/${id}`;
@@ -11,12 +13,16 @@ const ClientReviews = () => {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
-        // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
         // console.log("review deleted", data);
+        if (data.code === 401 || data.code === 403) {
+          localStorage.removeItem("user_id");
+          navigate("/login");
+        }
         if (data.deletedCount) {
           Swal.fire({
             title: "Review Deleted",

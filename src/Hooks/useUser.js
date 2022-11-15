@@ -22,9 +22,9 @@ const useUser = () => {
         return res.json();
       })
       .then((data) => {
-        console.log("inside use users hooks", data);
-        if (data.message === "forbidden" || data.message === "UnAuthorized") {
-          localStorage.removeItem("accessToken");
+        // console.log("inside use users hooks", data);
+        if (data.code === 401 || data.code === 403) {
+          localStorage.removeItem("user_id");
           navigate("/login");
         }
         setUsers(data);

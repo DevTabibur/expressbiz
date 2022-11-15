@@ -8,8 +8,8 @@ const Users = () => {
   const localID = localStorage.getItem("user_id");
   const getID = JSON.parse(localID);
 
-  console.log("localID", localID);
-  console.log("getID", getID);
+  // console.log("localID", localID);
+  // console.log("getID", getID);
 
   const removeUser = (id) => {
     console.log("first", id !== getID);
@@ -35,8 +35,36 @@ const Users = () => {
       });
   };
 
-  const makeAdmin = (id) => {
-    alert(id);
+  const makeAdmin = (email) => {
+    const confirmation = window.confirm("Are you want to make admin?");
+    if (confirmation) {
+      const url = `http://localhost:5000/user/admin/${email}`;
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => {
+          if (res.status === 403) {
+            Swal.fire({
+              title: "Failed to make admin",
+              icon: "error",
+            });
+          }
+          return res.json();
+        })
+        .then((data) => {
+          // console.log("data posted admin", data);
+          if (data.modifiedCount > 0) {
+            Swal.fire({
+              title: "Made an Admin",
+              icon: "success",
+            });
+          }
+        });
+    }
   };
   return (
     <>
@@ -49,8 +77,7 @@ const Users = () => {
             <table className="table table-compact w-full">
               <thead>
                 <tr>
-                  <th></th>
-                  <th>Name</th>
+                  <th>SL</th>
                   <th>Email</th>
                   <th>Action</th>
                   <th>Action</th>
@@ -68,8 +95,7 @@ const Users = () => {
               </tbody>
               <tfoot>
                 <tr>
-                  <th></th>
-                  <th>Name</th>
+                  <th>SL</th>
                   <th>Email</th>
                   <th>Action</th>
                   <th>Action</th>

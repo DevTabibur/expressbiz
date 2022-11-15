@@ -1,7 +1,5 @@
-import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import auth from "../Firebase/firebase.init";
 
 const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
@@ -19,18 +17,16 @@ const useAdmin = (user) => {
         },
       })
         .then((res) => {
-          // if(res.status === 401 || res.status === 403){
-          //   navigate("/login")
-          //   signOut(auth);
-          //   localStorage.removeItem("accessToken")
-          // }
+          if (res.status === 401 || res.status === 403) {
+            navigate("/login");
+            localStorage.removeItem("accessToken");
+          }
           return res.json();
-          console.log("res", res);
         })
         .then((data) => {
-          console.log("check admin hooks inside", data);
-          // setAdmin(data.admin);
-          // setAdminLoading(false);
+          // console.log("check admin hooks inside", data);
+          setAdmin(data.admin);
+          setAdminLoading(false);
         });
     }
   }, [user, navigate]);
