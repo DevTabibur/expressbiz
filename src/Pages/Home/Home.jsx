@@ -6,7 +6,7 @@ import WhyChooseUs from "../../Shared/WhyChooseUs/WhyChooseUs";
 import GetQuote from "../../Shared/GetQuote/GetQuote";
 import Footer from "../../Shared/Footer/Footer";
 import HeroCarousel from "../../Shared/HeroCarousel/HeroCarousel";
-import Process from "../Process/Process";
+import Process from "../../Shared/Process/Process";
 import Testimonials from "../../Shared/Testimonials/Testimonials";
 
 // home slider review testimonial

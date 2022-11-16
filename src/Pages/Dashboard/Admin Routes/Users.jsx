@@ -1,6 +1,6 @@
 import React from "react";
 import Swal from "sweetalert2";
-import useUser from "../../Hooks/useUser";
+import useUser from "../../../Hooks/useUser";
 import ShowUserTable from "./ShowUserTable";
 
 const Users = () => {

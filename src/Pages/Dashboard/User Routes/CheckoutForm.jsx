@@ -5,7 +5,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
-import Loader from "../../Shared/Loader/Loader";
+import Loader from "../../../Shared/Loader/Loader";
 
 const CheckoutForm = ({ singleOrder }) => {
   const stripe = useStripe();

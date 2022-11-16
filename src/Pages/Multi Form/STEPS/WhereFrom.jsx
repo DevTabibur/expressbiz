@@ -18,9 +18,7 @@ const WhereFrom = () => {
     // reset();
   };
 
-  console.log('WhereFrom data', userData)
-
-  
+  console.log("WhereFrom data", userData);
 
   return (
     <div className="container mx-auto px-4 py-6">

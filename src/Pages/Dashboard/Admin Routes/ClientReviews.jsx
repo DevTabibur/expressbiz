@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import useReview from "../../Hooks/useReview";
+import useReview from "../../../Hooks/useReview";
 import ShoClientReviews from "./ShowClientReviews";
 
 const ClientReviews = () => {

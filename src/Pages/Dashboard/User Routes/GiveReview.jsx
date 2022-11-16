@@ -1,11 +1,14 @@
-import { icon } from "@fortawesome/fontawesome-svg-core";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import useActiveUser from "../../Hooks/useActiveUser";
-const AddServices = () => {
+import useActiveUser from "../../../Hooks/useActiveUser";
+
+const GiveReview = () => {
   const [activeUse, activeUserData] = useActiveUser();
   const navigate = useNavigate();
+
+  // console.log("activeUserData", activeUserData);
   const {
     register,
     handleSubmit,
@@ -14,7 +17,7 @@ const AddServices = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data, e) => {
-    const url = `http://localhost:5000/services`;
+    const url = `http://localhost:5000/review`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -32,54 +35,21 @@ const AddServices = () => {
         }
         if (data.acknowledged) {
           Swal.fire({
-            title: "Service added",
+            title: "Review submitted",
             icon: "success",
           });
           reset();
         }
       });
   };
-
   return (
     <>
-      {" "}
       <h1 className="text-accent text-5xl font-bold font-serif">
-        Add Services
+        Give Us Your Review
       </h1>
       <div className="container mx-auto px-4 py-12">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid md:grid-cols-2 gap-4">
-            {/* title */}
-            <div className="form-control">
-              <input
-                type="text"
-                placeholder="Service Title"
-                className="input input-bordered font-mono"
-                {...register("title", {
-                  required: {
-                    value: true,
-                    message: "Service Title is Required",
-                  },
-                  pattern: {
-                    value: /^[a-zA-Z0-9 ]*$/,
-                    message: "Service Title should be unique",
-                  },
-                })}
-              />
-              <label className="label my-1 py-0">
-                {errors.title?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.title.message}
-                  </span>
-                )}
-                {errors.title?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.title.message}
-                  </span>
-                )}
-              </label>
-            </div>
-
             {/* email */}
             <div className="form-control">
               <input
@@ -91,46 +61,46 @@ const AddServices = () => {
                 {...register("email")}
               />
             </div>
+
+            {/* your name */}
+            <div className="form-control">
+              <input
+                type="text"
+                placeholder="your Name"
+                className="input input-bordered font-mono"
+                {...register("reviewer", {
+                  required: {
+                    value: true,
+                    message: "Name is Required",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z0-9 ]*$/,
+                    message: "Name should be unique",
+                  },
+                })}
+              />
+              <label className="label my-1 py-0">
+                {errors.reviewer?.type === "required" && (
+                  <span className="label-text-alt text-red-500 font-mono">
+                    {errors.reviewer.message}
+                  </span>
+                )}
+                {errors.reviewer?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500 font-mono">
+                    {errors.reviewer.message}
+                  </span>
+                )}
+              </label>
+            </div>
           </div>
 
-          {/* imageLink */}
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="Image Link (l ike: imgbb)"
-              className="input input-bordered font-mono"
-              {...register("image", {
-                required: {
-                  value: true,
-                  message: "image Link is Required",
-                },
-                pattern: {
-                  value:
-                    /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/,
-                  message: "Image Link start with https",
-                },
-              })}
-            />
-            <label className="label my-1 py-0">
-              {errors.image?.type === "required" && (
-                <span className="label-text-alt text-red-500 font-mono">
-                  {errors.image.message}
-                </span>
-              )}
-              {errors.image?.type === "pattern" && (
-                <span className="label-text-alt text-red-500 font-mono">
-                  {errors.image.message}
-                </span>
-              )}
-            </label>
-          </div>
           {/* description */}
           <div className="form-control">
             <textarea
               type="text"
-              placeholder="Write Here"
+              placeholder="Write Review"
               className="textarea textarea-bordered font-mono"
-              {...register("description", {
+              {...register("review", {
                 required: {
                   value: true,
                   message: "description is Required",
@@ -138,9 +108,9 @@ const AddServices = () => {
               })}
             />
             <label className="label my-1 py-0">
-              {errors.description?.type === "required" && (
+              {errors.review?.type === "required" && (
                 <span className="label-text-alt text-red-500 font-mono">
-                  {errors.description.message}
+                  {errors.review.message}
                 </span>
               )}
             </label>
@@ -149,7 +119,7 @@ const AddServices = () => {
             <input
               className="btn btn-accent text-white"
               type="submit"
-              value="ADD SERVICE"
+              value="SUBMIT REVIEW"
             ></input>
           </div>
         </form>
@@ -158,4 +128,4 @@ const AddServices = () => {
   );
 };
 
-export default AddServices;
+export default GiveReview;

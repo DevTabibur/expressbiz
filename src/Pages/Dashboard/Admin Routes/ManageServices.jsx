@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import useService from "../../Hooks/useService";
+import useService from "../../../Hooks/useService";
 import ShowManageServices from "./ShowManageServices";
 
 const ManageServices = () => {

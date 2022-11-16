@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import useQuotation from "../../Hooks/useQuotation";
+import useQuotation from "../../../Hooks/useQuotation";
 import ShowQuotation from "./ShowQuotation";
 
 const QuotationList = () => {

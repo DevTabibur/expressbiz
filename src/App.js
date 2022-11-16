@@ -4,7 +4,7 @@ import Home from "./Pages/Home/Home";
 import { Routes, Route, Link } from "react-router-dom";
 import HeaderTop from "./Shared/Header/HeaderTop";
 import Services from "./Pages/Services/Services";
-import Process from "./Pages/Process/Process";
+import Process from "./Shared/Process/Process";
 import Footer from "./Shared/Footer/Footer";
 import HeaderNav from "./Shared/Header/HeaderNav";
 import Dashboard from "./Pages/Dashboard/Dashboard";
@@ -19,14 +19,15 @@ import Register from "./Pages/Register/Register";
 import CreateShipment from "./Pages/CreatShipment/CreateShipment";
 import { createContext } from "react";
 import RequireUser from "./Authentication/RequireUser";
-import QuotationList from "./Pages/User Routes/QuotationList";
-import Users from "./Pages/Admin Routes/Users";
-import AddServices from "./Pages/Admin Routes/AddServices";
-import ManageServices from "./Pages/Admin Routes/ManageServices";
-import ClientReviews from "./Pages/Admin Routes/ClientReviews";
-import GiveReview from "./Pages/User Routes/GiveReview";
-import ShipmentHistory from "./Pages/User Routes/ShipmentHistory";
-import Payment from "./Pages/User Routes/Payment";
+import QuotationList from "./Pages/Dashboard/User Routes/QuotationList";
+import Users from "./Pages/Dashboard/Admin Routes/Users";
+import AddServices from "./Pages/Dashboard/Admin Routes/AddServices";
+import ManageServices from "./Pages/Dashboard/Admin Routes/ManageServices";
+import ClientReviews from "./Pages/Dashboard/Admin Routes/ClientReviews";
+import GiveReview from "./Pages/Dashboard/User Routes/GiveReview"
+import ShipmentHistory from "./Pages/Dashboard/User Routes/ShipmentHistory";
+import Payment from "./Pages/Dashboard/User Routes/Payment";
+import publicRoutes from "./Routes/publicRoutes";
 
 export const BlogContext = createContext();
 
@@ -36,19 +37,22 @@ function App() {
       <HeaderTop />
       <HeaderNav>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* public routes */}
+          {publicRoutes.map(({ path, name, Component }, idx) => (
+            <Route key={idx} path={path} element={<Component />} />
+          ))}
+
+          {/* <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route element={<RequireUser />}>
             <Route path="/dashboard" element={<Dashboard />}>
-              {/* nested route */}
-              {/* by default Order component will render */}
+              
               <Route index element={<QuotationList />} />
               <Route path="users" element={<Users />} />
               <Route path="add-services" element={<AddServices />} />
               <Route path="manage-services" element={<ManageServices />} />
               <Route path="client-review" element={<ClientReviews />} />
-              {/* user routes */}
               <Route path="review" element={<GiveReview />} />
               <Route path="shipment-history" element={<ShipmentHistory />} />
               <Route path="payment/:id" element={<Payment />} />
@@ -72,7 +76,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/dashboard" element={<Dashboard />}></Route> */}
         </Routes>
       </HeaderNav>
 

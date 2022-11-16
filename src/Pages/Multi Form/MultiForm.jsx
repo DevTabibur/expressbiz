@@ -55,8 +55,6 @@ const MultiForm = () => {
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
 
-  
-
   return (
     <div className="">
       {/* stepper */}
