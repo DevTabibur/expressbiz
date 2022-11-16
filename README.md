@@ -40,3 +40,5 @@
 4. useToken automatic get hosse, and undefined value thakleu automatic peye jasse... jar jonne auto redirect and accessToken set kora jasse na..
 
 5. login and register korle just id ta locally set hosse, and email data register collectiion e jasse, kintu user collection e jasse na.. bcz token call houyar agai page navigate hoi jasse.. pore jdi register/login compo te jai, tkhn abr token call hoi, and jwt ti locally set hoi
+
+6. logout korar pore Dashboard link vanish holeu, keu jdi url e dashboard likhe, taile tw sha automatic redirect korbe, but oikhane loader dekhasse....oikhane loader na dekhiye, user jdi inactive thake, taile automatic redirect kora uchit

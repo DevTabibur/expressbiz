@@ -6,15 +6,18 @@ import {
   faTimes,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useActiveUser from "../../Hooks/useActiveUser";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hooks/useAdmin";
 
 const HeaderTop = () => {
   const { pathname } = useLocation();
   const [activeUser, activeUserData] = useActiveUser();
-  // console.log("user on headerTop data", activeUser, activeUserData);
-  // const user = true;
+
+  const [admin] = useAdmin(activeUserData);
+  console.log('is user admin?', admin)
+  const navigate = useNavigate();
 
   const logOut = () => {
     const getIdLocally = localStorage.getItem("user_id");
@@ -37,7 +40,7 @@ const HeaderTop = () => {
             title: "Log Out Successfully",
             icon: "success",
           });
-          window.location.reload();
+          navigate("/");
         });
     }
   };

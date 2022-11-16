@@ -1,14 +1,23 @@
-
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import GiveReview from "../Pages/Dashboard/User Routes/GiveReview";
+import Payment from "../Pages/Dashboard/User Routes/Payment";
+import QuotationList from "../Pages/Dashboard/User Routes/QuotationList";
+import ShipmentHistory from "../Pages/Dashboard/User Routes/ShipmentHistory";
+import Tracking from "../Pages/Tracking/Tracking";
 
 export const privateRoutes = [
-  // {path:"/dashboard/admin", name: Admin, Component: Admin},
-  
-//   { path: "/dashboard/account", name: Account, Component: Account },
-//   { path: "/dashboard/messenger", name: Messenger, Component: Messenger },
-//   { path: "/dashboard/chat", name: Chat, Component: Chat },
-  // {path:"/dashboard/users", name: Users, Component: Users},
-  // {path:"/dashboard/bookings", name: Bookings, Component: Bookings},
-  // {path:"/dashboard/users/:id", name: Users, Component: UserDetails},
+  { path: "/dashboard/review", name: GiveReview, Component: GiveReview },
+  {
+    path: "/dashboard/shipment-history",
+    name: ShipmentHistory,
+    Component: ShipmentHistory,
+  },
+  { path: "/dashboard/payment/:id", name: Payment, Component: Payment },
+  {
+    path: "/dashboard//quotation-history",
+    name: QuotationList,
+    Component: QuotationList,
+  },
 ];
 
 export default privateRoutes;

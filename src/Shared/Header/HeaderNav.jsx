@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../../Assets/Logos/EXPRESS.webp";
+import useActiveUser from "../../Hooks/useActiveUser";
 
 const HeaderNav = ({ children }) => {
   const { pathname } = useLocation();
+  const [activeUser, activeUserData] = useActiveUser();
   const menu = (
     <>
       <NavLink
@@ -42,12 +44,15 @@ const HeaderNav = ({ children }) => {
       >
         CONTACT US
       </NavLink>
-      <NavLink
-        className="m-2  btn btn-accent text-white font-serif rounded-md"
-        to="/dashboard"
-      >
-        Dashboard
-      </NavLink>
+
+      {activeUser && (
+        <NavLink
+          className="m-2  btn btn-accent text-white font-serif rounded-md"
+          to="/dashboard"
+        >
+          Dashboard
+        </NavLink>
+      )}
     </>
   );
 
