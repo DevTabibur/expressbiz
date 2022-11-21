@@ -7,12 +7,9 @@ import Loader from "../../Shared/Loader/Loader";
 const DashboardSidebar = ({ children }) => {
   const [activeUser, activeUserData, isLoading] = useActiveUser();
 
-  console.log('dashboard activeUserData', activeUserData)
-  console.log('dashboard isLoading', activeUserData)
-
   const [admin, adminLoading] = useAdmin(activeUserData);
 
-  console.log('dashboard side bar admin', admin)
+  console.log("dashboard side bar admin", admin);
 
   const menu = (
     <>
@@ -55,9 +52,9 @@ const DashboardSidebar = ({ children }) => {
   );
 
   // for loader
-  // if (adminLoading) {
-  //   return <Loader />;
-  // }
+  if (adminLoading) {
+    return <Loader />;
+  }
   return (
     <>
       <>

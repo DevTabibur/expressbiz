@@ -43,7 +43,7 @@ const HeaderTop = () => {
           localStorage.removeItem("user_id");
           localStorage.removeItem("accessToken");
           Swal.fire({
-            title: "Log Out Successfully",
+            title: "Logout Successfully",
             icon: "success",
           });
           navigate("/");

@@ -27,8 +27,8 @@ function App() {
           ))}
 
           {/* user route */}
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route element={<RequireUser></RequireUser>}>
+          <Route element={<RequireUser></RequireUser>}>
+            <Route path="/dashboard" element={<Dashboard />}>
               {privateRoutes.map(({ path, name, Component }, idx) => (
                 <Route key={idx} path={path} element={<Component />} />
               ))}
@@ -51,7 +51,7 @@ function App() {
           </Route>
         </Routes>
       </HeaderNav>
-      <Footer/>
+      <Footer />
     </>
   );
 }

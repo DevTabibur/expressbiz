@@ -50,3 +50,7 @@
 7. overflow y hosse...page venge jai...footer er jonne problem hosse maybe..footer ta app.js e last deyar jonne hote pare
 
 8. register compo te loader set (solved)
+
+9. shipment history route e loader dekhate hbe
+
+10. keu url e /dashboard likhle , loader ta automatic choltei thake  (solved)

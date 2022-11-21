@@ -4,7 +4,6 @@ import useActiveUser from "../Hooks/useActiveUser";
 
 const RequireUser = () => {
   const [user] = useActiveUser();
-  console.log('useActiveUser hooks user', user)
 
   const location = useLocation();
 
