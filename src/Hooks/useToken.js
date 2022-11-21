@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import useActiveUser from "./useActiveUser";
 
-const useToken = (userEmail) => {
-  const [token, setToken] = useState([]);
+const useToken = () => {
+  const [activeUser, activeUserData, isLoading] = useActiveUser();
 
-  // console.log("get token data", userEmail);
+  const [token, setToken] = useState("");
+
   useEffect(() => {
-    const email = userEmail;
+    const email = activeUserData?.email;
 
     const currentUser = { email: email };
 
@@ -26,7 +28,7 @@ const useToken = (userEmail) => {
           setToken(accessToken);
         });
     }
-  }, [userEmail]);
+  }, [activeUser, activeUserData]);
   return [token];
 };
 

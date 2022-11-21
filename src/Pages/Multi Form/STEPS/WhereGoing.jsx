@@ -39,7 +39,7 @@ const WhereGoing = () => {
               <input
                 type="text"
                 placeholder="Email"
-                className="input input-bordered font-mono"
+                className="input  input-bordered input-success font-mono"
                 {...register("email", {
                   required: {
                     value: true,
@@ -75,7 +75,7 @@ const WhereGoing = () => {
               <input
                 type="text"
                 placeholder="Company or Name*"
-                className="input input-bordered font-mono"
+                className="input  input-bordered input-success font-mono"
                 {...register("companyName", {
                   required: {
                     value: true,
@@ -111,7 +111,7 @@ const WhereGoing = () => {
               <input
                 type="text"
                 placeholder="Contact number"
-                className="input input-bordered font-mono"
+                className="input  input-bordered input-success font-mono"
                 {...register("number", {
                   required: {
                     value: true,
@@ -149,30 +149,10 @@ const WhereGoing = () => {
               <input
                 type="text"
                 placeholder="Country*"
-                className="input input-bordered font-mono"
-                {...register("country", {
-                  required: {
-                    value: true,
-                    message: "Country is Required",
-                  },
-                  pattern: {
-                    value: /^[a-zA-Z0-9 ]*$/,
-                    message: "Country should be unique",
-                  },
-                })}
+                defaultValue="Bangladesh"
+                className="input  input-bordered input-success font-mono"
+                {...register("country")}
               />
-              <label className="label my-1 py-0">
-                {errors.country?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.country.message}
-                  </span>
-                )}
-                {errors.country?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.country.message}
-                  </span>
-                )}
-              </label>
             </div>
 
             {/* address */}
@@ -180,13 +160,13 @@ const WhereGoing = () => {
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-semibold font-sans text-accent">
-                  Address*
+                  Office Address*
                 </span>
               </label>
               <input
                 type="text"
-                placeholder="Address*"
-                className="input input-bordered font-mono"
+                placeholder="Office Address*"
+                className="input  input-bordered input-success font-mono"
                 {...register("address", {
                   required: {
                     value: true,
@@ -194,7 +174,7 @@ const WhereGoing = () => {
                   },
                   pattern: {
                     value: /^[a-zA-Z0-9 ]*$/,
-                    message: "Address should be unique",
+                    message: "Address should be without comma, dot etc",
                   },
                 })}
               />
@@ -222,75 +202,8 @@ const WhereGoing = () => {
               <input
                 type="text"
                 placeholder="Postal Code / Zip Code"
-                className="input input-bordered font-mono"
+                className="input  input-bordered input-success font-mono"
                 {...register("postalCode")}
-              />
-            </div>
-
-            {/* city */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-semibold font-sans text-accent">
-                  City*
-                </span>
-              </label>
-              <input
-                type="text"
-                placeholder="City*"
-                className="input input-bordered font-mono"
-                {...register("city", {
-                  required: {
-                    value: true,
-                    message: "City is Required",
-                  },
-                  pattern: {
-                    value: /^[a-zA-Z0-9 ]*$/,
-                    message: "City should be unique",
-                  },
-                })}
-              />
-              <label className="label my-1 py-0">
-                {errors.city?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.city.message}
-                  </span>
-                )}
-                {errors.city?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.city.message}
-                  </span>
-                )}
-              </label>
-            </div>
-
-            {/*telephone number */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-semibold font-sans text-accent">
-                  Telephone
-                </span>
-              </label>
-              <input
-                type="text"
-                placeholder="Telephone"
-                className="input input-bordered font-mono"
-                {...register("telephoneNumber")}
-              />
-            </div>
-
-            {/* ext */}
-            {/* city */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-semibold font-sans text-accent">
-                  Ext.
-                </span>
-              </label>
-              <input
-                type="text"
-                placeholder="Ext"
-                className="input input-bordered font-mono"
-                {...register("ext")}
               />
             </div>
           </div>

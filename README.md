@@ -14,6 +14,9 @@
 8. npm i swiper
 9. npm install @emailjs/browser --save
 10. npm install --save @stripe/react-stripe-js @stripe/stripe-js
+11. npm install geo-distance-helper
+12. npm install @mui/material @emotion/react @emotion/styled
+13.
 
 ### Done page
 
@@ -31,14 +34,19 @@
 2. authentication using node, express and mongodb
 3. password Bcrypt is done with Bcrypt.js
 4. User can't provide quotation before login / register
+5. An Admin can't make shipment
+6. Destination routing with google maps api for shipment
 
 ### PROBLEMS
 
 1. headerTop e page refresh dile user er name dekhasse na (solved)
 2. registration is completely done (solved)
 3. user k remove dile swal fire hoi na, and automatic logout hoi jasse, tai jakei remove kori na keno?
-4. useToken automatic get hosse, and undefined value thakleu automatic peye jasse... jar jonne auto redirect and accessToken set kora jasse na..
+4. useToken automatic get hosse, and undefined value thakleu automatic peye jasse... jar jonne auto redirect and accessToken set kora jasse na.. (solved different way..) (solved)
 
-5. login and register korle just id ta locally set hosse, and email data register collectiion e jasse, kintu user collection e jasse na.. bcz token call houyar agai page navigate hoi jasse.. pore jdi register/login compo te jai, tkhn abr token call hoi, and jwt ti locally set hoi
 
 6. logout korar pore Dashboard link vanish holeu, keu jdi url e dashboard likhe, taile tw sha automatic redirect korbe, but oikhane loader dekhasse....oikhane loader na dekhiye, user jdi inactive thake, taile automatic redirect kora uchit
+
+7. overflow y hosse...page venge jai...footer er jonne problem hosse maybe..footer ta app.js e last deyar jonne hote pare
+
+8. register compo te loader set (solved)

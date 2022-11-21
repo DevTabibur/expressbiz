@@ -15,14 +15,15 @@ import useActiveUser from "../../Hooks/useActiveUser";
 import useToken from "../../Hooks/useToken";
 import Loader from "../../Shared/Loader/Loader";
 const Register = () => {
-  const [activeUser, activeUserData, loading] = useActiveUser();
+  const [activeUser, activeUserData, isLoading] = useActiveUser();
+  const [registerLoading, setRegisterLoading] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -43,11 +44,12 @@ const Register = () => {
     else if (isActive) {
       Swal.fire({
         title: "Authentication is failed",
-        text: "PLease logout for again registration",
+        text: "Please logout for again registration",
         icon: "error",
       });
     } else {
       const url = `http://localhost:5000/register`;
+      setRegisterLoading(true);
       fetch(url, {
         method: "POST",
         headers: {
@@ -61,8 +63,7 @@ const Register = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log("data", data);
-
+          setRegisterLoading(false);
           if (data.code === 300) {
             // error registration
             Swal.fire({
@@ -70,37 +71,25 @@ const Register = () => {
               text: "Try another email",
               icon: "error",
             });
-          } else if (data.acknowledged) {
-            const id = data?.insertedId;
-            // set active user id on localStorage
+          } else if (data.result.acknowledged) {
+            const id = data.result?.insertedId;
+            const accessToken = data.accessToken;
+            // 1. set Token
+            localStorage.setItem("accessToken", accessToken);
+            // set user _id
             localStorage.setItem("user_id", JSON.stringify(id));
             Swal.fire({
               title: "Registration Success",
               icon: "success",
             });
-            navigate("/home");
-            window.location.reload();
+            navigate("/");
           }
         });
     }
   };
 
-  // console.log("activeUser", activeUser);
-  // console.log("activeUserData", activeUserData);
-
-  const emailToken = activeUserData?.email;
-
-  const [token] = useToken(emailToken);
-
-  useEffect(() => {
-    if (token) {
-      // navigate("/home");
-      // console.log("token is get");
-    }
-  }, []);
-
   // for loading
-  if (loading) {
+  if (registerLoading) {
     return <Loader />;
   }
 

@@ -1,5 +1,5 @@
 import BookShipping from "../../Shared/BookShipping/BookShipping";
-import "./Home.css";
+import './Home.css'
 import Services from "../Services/Services";
 import Contact from "../Contact/Contact";
 import WhyChooseUs from "../../Shared/WhyChooseUs/WhyChooseUs";
@@ -8,11 +8,14 @@ import Footer from "../../Shared/Footer/Footer";
 import HeroCarousel from "../../Shared/HeroCarousel/HeroCarousel";
 import Process from "../../Shared/Process/Process";
 import Testimonials from "../../Shared/Testimonials/Testimonials";
+import MappingServices from "../Services/MappingServices";
+import { useState } from "react";
 
 // home slider review testimonial
 // https://www.hyperui.dev/components/marketing/testimonials
 
 const Home = () => {
+
   return (
     <>
       <HeroCarousel />
@@ -23,7 +26,7 @@ const Home = () => {
       <GetQuote />
       <Testimonials />
       <Contact />
-      <Footer />
+      <Footer/>
     </>
   );
 };

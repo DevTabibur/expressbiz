@@ -3,7 +3,6 @@ import GiveReview from "../Pages/Dashboard/User Routes/GiveReview";
 import Payment from "../Pages/Dashboard/User Routes/Payment";
 import QuotationList from "../Pages/Dashboard/User Routes/QuotationList";
 import ShipmentHistory from "../Pages/Dashboard/User Routes/ShipmentHistory";
-import Tracking from "../Pages/Tracking/Tracking";
 
 export const privateRoutes = [
   { path: "/dashboard/review", name: GiveReview, Component: GiveReview },

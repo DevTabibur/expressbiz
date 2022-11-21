@@ -10,13 +10,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useActiveUser from "../../Hooks/useActiveUser";
 import Swal from "sweetalert2";
 import useAdmin from "../../Hooks/useAdmin";
+import { useState } from "react";
+import Loader from "../Loader/Loader";
 
 const HeaderTop = () => {
   const { pathname } = useLocation();
   const [activeUser, activeUserData] = useActiveUser();
+  const [loading, setLoading] = useState(false);
+
+  console.log("activeUser", activeUser);
 
   const [admin] = useAdmin(activeUserData);
-  console.log('is user admin?', admin)
   const navigate = useNavigate();
 
   const logOut = () => {
@@ -24,6 +28,7 @@ const HeaderTop = () => {
     const id = JSON.parse(getIdLocally);
     if (id) {
       const url = `http://localhost:5000/register/${id}`;
+      setLoading(true);
       fetch(url, {
         method: "PATCH",
         headers: {
@@ -34,6 +39,7 @@ const HeaderTop = () => {
         .then((res) => res.json())
         .then((data) => {
           // console.log("data log out", data);
+          setLoading(false);
           localStorage.removeItem("user_id");
           localStorage.removeItem("accessToken");
           Swal.fire({
@@ -44,6 +50,10 @@ const HeaderTop = () => {
         });
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <>
       <div

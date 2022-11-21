@@ -2,28 +2,33 @@ import React, { useEffect, useState } from "react";
 import Stepper from "./Stepper";
 import StepperControls from "./StepperControls";
 import Account from "./STEPS/Account";
-import Complete from "./STEPS/Complete";
 import Details from "./STEPS/Details";
 import { StepperContexts } from "./contexts/StepperContexts";
-import Final from "./STEPS/Final";
+import Final from "./STEPS/Complete";
 import { current } from "daisyui/src/colors";
 import "./MultiForm.css";
 import WhereFrom from "./STEPS/WhereFrom";
 import WhereGoing from "./STEPS/WhereGoing";
 import What from "./STEPS/What";
 import How from "./STEPS/How";
-import Payment from "./STEPS/Payment";
 import Review from "./STEPS/Review";
+import useActiveUser from "../../Hooks/useActiveUser";
+import useAdmin from "../../Hooks/useAdmin";
+import Swal from "sweetalert2";
+import DestinationMap from "./STEPS/DestinationMap";
 
 const MultiForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState("");
   const [finalData, setFinalData] = useState([]);
+  const [activeUser, activeUserData] = useActiveUser();
+
+  const [admin] = useAdmin(activeUserData);
+
   const steps = [
     "Where from",
     "where going",
-    "what",
-    "payment",
+    "what & How",
     "review",
     "complete",
   ];
@@ -37,16 +42,22 @@ const MultiForm = () => {
       case 3:
         return <What />;
       case 4:
-        return <Payment />;
-      case 5:
         return <Review />;
-      case 6:
+      case 5:
         return <Final />;
       default:
     }
   };
 
   const handleClick = (direction) => {
+    if (admin === "true" || admin === true) {
+      return Swal.fire({
+        title: "You are an Admin",
+        text: `Admin can't make shipment`,
+        icon: "error",
+      });
+    }
+
     // e.preventDefault()
     let newStep = currentStep;
     direction === "next" ? newStep++ : newStep--;
@@ -56,9 +67,9 @@ const MultiForm = () => {
   };
 
   return (
-    <div className="">
+    <div className="bg-success">
       {/* stepper */}
-      <div className="container mx-auto px-4 mt-12">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-1 ">
           <div>
             <Stepper steps={steps} currentStep={currentStep} />

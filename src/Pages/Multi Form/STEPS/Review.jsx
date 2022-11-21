@@ -3,25 +3,21 @@ import { StepperContexts } from "../contexts/StepperContexts";
 
 const Review = () => {
   const { userData, setUserData } = useContext(StepperContexts);
-  console.log("userData on review", userData);
   const review = [userData];
-  console.log("review", userData);
 
-  // send userData to server
-  useEffect(() => {
-    const url = `http://localhost:5000/create-shipping`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("use create shipping hook posted data", data);
-      });
-  }, [userData]);
+  let price;
+
+  const weight = userData?.what?.weight;
+  const distance = userData?.distance;
+
+  if (weight && distance) {
+    // 1kg = 5tk
+
+    price = weight * 5;
+    // 1 km => 2.40 tk
+
+    price = distance * 2.4;
+  }
 
   return (
     <>
@@ -38,62 +34,118 @@ const Review = () => {
 
         {/* basic info about shipping */}
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-white shadow p-4 rounded">
-            <h2 className="text-accent font-semibold mb-2">Ship From</h2>
-            <hr></hr>
+          {/* grid 1 */}
+          {userData?.shippingFrom ? (
+            <div className="bg-white shadow p-4 rounded">
+              <h2 className="text-accent font-semibold mb-2">Ship From</h2>
+              <hr></hr>
+              {userData?.shippingFrom?.address && (
+                <p className="text-accent font-serif mt-2">
+                  {userData?.shippingFrom?.address},
+                  {userData?.shippingFrom?.country}
+                </p>
+              )}
+              {userData?.shippingFrom?.email && (
+                <p className="text-accent font-serif mt-2">
+                  Email : {userData?.shippingFrom?.email}
+                </p>
+              )}
+              {userData?.shippingFrom?.companyName && (
+                <p className="text-accent font-serif mt-2">
+                  Company / Name : {userData?.shippingFrom?.companyName}
+                </p>
+              )}
+              {userData?.shippingFrom?.postalCode && (
+                <p className="text-accent font-serif mt-2">
+                  Postal Code : {userData?.shippingFrom?.postalCode}
+                </p>
+              )}
+              {userData?.shippingFrom?.number && (
+                <p className="text-accent font-serif mt-2">
+                  Number : {userData?.shippingFrom?.number}
+                </p>
+              )}
+            </div>
+          ) : (
+            <h2 className="text-center text-accent font-semibold text-2xl">
+              Please fill up your shipment
+            </h2>
+          )}
 
-            <p className="text-accent font-serif mt-2">
-              {userData?.shippingFrom?.address},
-              {userData?.shippingFrom?.country}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Email : {userData?.shippingFrom?.email}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Company / Name : {userData?.shippingFrom?.companyName}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Number : {userData?.shippingFrom?.number}
-            </p>
-          </div>
+          {/* grid 2 */}
+          {userData?.shippingGoing ? (
+            <div className="bg-white shadow p-4 rounded">
+              <h2 className="text-accent font-semibold mb-2">Ship To</h2>
+              <hr></hr>
 
-          <div className="bg-white shadow p-4 rounded">
-            <h2 className="text-accent font-semibold mb-2">Ship To</h2>
-            <hr></hr>
+              {userData?.shippingGoing?.address && (
+                <p className="text-accent font-serif mt-2">
+                  {userData?.shippingGoing?.address},
+                  {userData?.shippingGoing?.country}
+                </p>
+              )}
 
-            <p className="text-accent font-serif mt-2">
-              {userData?.shippingGoing?.address},
-              {userData?.shippingGoing?.country}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Email : {userData?.shippingGoing?.email}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Company / Name : {userData?.shippingGoing?.companyName}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Number : {userData?.shippingGoing?.number}
-            </p>
-          </div>
+              {userData?.shippingGoing?.email && (
+                <p className="text-accent font-serif mt-2">
+                  Email : {userData?.shippingGoing?.email}
+                </p>
+              )}
 
-          <div className="bg-white shadow p-4 rounded">
-            <h2 className="text-accent font-semibold mb-2">Return To</h2>
-            <hr></hr>
+              {userData?.shippingGoing?.companyName && (
+                <p className="text-accent font-serif mt-2">
+                  Company / Name : {userData?.shippingGoing?.companyName}
+                </p>
+              )}
 
-            <p className="text-accent font-serif mt-2">
-              {userData?.shippingFrom?.address},
-              {userData?.shippingFrom?.country}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Email : {userData?.shippingFrom?.email}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Company / Name : {userData?.shippingFrom?.companyName}
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Number : {userData?.shippingFrom?.number}
-            </p>
-          </div>
+              {userData?.shippingGoing?.number && (
+                <p className="text-accent font-serif mt-2">
+                  Number : {userData?.shippingGoing?.number}
+                </p>
+              )}
+            </div>
+          ) : (
+            <h2 className="text-center text-accent font-semibold text-2xl">
+              Please fill up your shipment
+            </h2>
+          )}
+
+          {/* grid 3 */}
+          {userData?.shippingFrom ? (
+            <div className="bg-white shadow p-4 rounded">
+              <h2 className="text-accent font-semibold mb-2">Return To</h2>
+              <hr></hr>
+              {userData?.shippingFrom?.address && (
+                <p className="text-accent font-serif mt-2">
+                  {userData?.shippingFrom?.address},
+                  {userData?.shippingFrom?.country}
+                </p>
+              )}
+              {userData?.shippingFrom?.email && (
+                <p className="text-accent font-serif mt-2">
+                  Email : {userData?.shippingFrom?.email}
+                </p>
+              )}
+              {userData?.shippingFrom?.companyName && (
+                <p className="text-accent font-serif mt-2">
+                  Company / Name : {userData?.shippingFrom?.companyName}
+                </p>
+              )}
+              {userData?.shippingFrom?.postalCode && (
+                <p className="text-accent font-serif mt-2">
+                  Postal Code : {userData?.shippingFrom?.postalCode}
+                </p>
+              )}
+              {userData?.shippingFrom?.number && (
+                <p className="text-accent font-serif mt-2">
+                  Number : {userData?.shippingFrom?.number}
+                </p>
+              )}
+            </div>
+          ) : (
+            <h2 className="text-center text-accent font-semibold text-2xl">
+              Please fill up your shipment
+            </h2>
+          )}
         </div>
 
         <div className="grid md:grid-cols-1 mt-8 gap-4">
@@ -107,22 +159,34 @@ const Review = () => {
             <hr></hr>
 
             <p className="text-accent font-serif mt-2">
+              Product Name : {userData?.what?.productName}
+            </p>
+            <p className="text-accent font-serif mt-2">
+              Shipping Type : {userData?.what?.shipmentType} Freight
+            </p>
+            <p className="text-accent font-serif mt-2">
               Weight : {userData?.what?.weight} kg
             </p>
             <p className="text-accent font-serif mt-2">
-              Height : {userData?.what?.height} inch
+              Distance : {userData?.distance} km
             </p>
-            <p className="text-accent font-serif mt-2">
-              Width : {userData?.what?.width} inch
-            </p>
-            <p className="text-accent font-serif mt-2">
-              Length : {userData?.what?.length} inch
-            </p>
+
+            {userData?.what?.width && (
+              <p className="text-accent font-serif mt-2">
+                Width : {userData?.what?.width} inch
+              </p>
+            )}
           </div>
 
           <h1 className="font-bold text-accent text-xl font-sans mb-2">
             Payment
           </h1>
+          <p className="text-neutral-focus font-mono mb-8">
+            <strong>
+              Confirm Your order. We'll send you how much you have to pay for
+              this shipment?
+            </strong>
+          </p>
           <hr className="mb-2"></hr>
 
           <div className="bg-white shadow p-4 rounded">
@@ -136,6 +200,9 @@ const Review = () => {
             </p>
             <p className="text-accent font-serif mt-2">
               Bill Duties and Taxes To : Receive company
+            </p>
+            <p className="text-accent font-serif mt-2">
+              Charge (Taxes) : tk {price}
             </p>
           </div>
         </div>

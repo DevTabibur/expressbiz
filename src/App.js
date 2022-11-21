@@ -8,14 +8,6 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Tracking from "./Pages/Tracking/Tracking";
 import { createContext } from "react";
 import RequireUser from "./Authentication/RequireUser";
-import QuotationList from "./Pages/Dashboard/User Routes/QuotationList";
-import Users from "./Pages/Dashboard/Admin Routes/Users";
-import AddServices from "./Pages/Dashboard/Admin Routes/AddServices";
-import ManageServices from "./Pages/Dashboard/Admin Routes/ManageServices";
-import ClientReviews from "./Pages/Dashboard/Admin Routes/ClientReviews";
-import GiveReview from "./Pages/Dashboard/User Routes/GiveReview";
-import ShipmentHistory from "./Pages/Dashboard/User Routes/ShipmentHistory";
-import Payment from "./Pages/Dashboard/User Routes/Payment";
 import publicRoutes from "./Routes/publicRoutes";
 import privateRoutes from "./Routes/privateRoutes";
 import RequireAdmin from "./Authentication/RequireAdmin";
@@ -59,8 +51,7 @@ function App() {
           </Route>
         </Routes>
       </HeaderNav>
-
-      {/* <Footer /> */}
+      <Footer/>
     </>
   );
 }

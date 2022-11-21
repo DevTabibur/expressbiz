@@ -4,13 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useToken from "../../Hooks/useToken";
 import useActiveUser from "../../Hooks/useActiveUser";
+import Loader from "../../Shared/Loader/Loader";
 
 const Login = () => {
-  const [activeUser, activeUserData] = useActiveUser();
+  const [activeUser, activeUserData] = useActiveUser(false);
+  const [loginLoading, setLoginLoading] = useState(false);
 
   const {
     register,
@@ -26,7 +28,7 @@ const Login = () => {
     const password = data.password;
 
     const url = `http://localhost:5000/login`;
-
+    setLoginLoading(true);
     fetch(url, {
       method: "POST",
       headers: {
@@ -36,6 +38,9 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        // console.log("login completed data", data);
+
+        setLoginLoading(false);
         if (data.code === 401) {
           Swal.fire({
             title: "Authentication Problem",
@@ -44,6 +49,9 @@ const Login = () => {
           });
         } else if (data.code === 200) {
           // console.log("data", data);
+          const accessToken = data.accessToken;
+          // 1. set Token
+          localStorage.setItem("accessToken", accessToken);
           const id = data?.id;
           const url = `http://localhost:5000/register/${id}`;
           fetch(url, {
@@ -58,25 +66,16 @@ const Login = () => {
               // console.log("user is activated", data);
               localStorage.setItem("user_id", JSON.stringify(id));
               navigate("/home");
-              // window.location.reload();
+              window.location.reload();
             });
         }
       });
   };
 
-  // console.log("activeUser", activeUser);
-  // console.log("activeUserData", activeUserData);
-
-  const emailToken = activeUserData?.email;
-
-  const [token] = useToken(emailToken);
-
-  // useEffect(() => {
-  //   if (token) {
-  //     // navigate("/home");
-  //     console.log("token is get");
-  //   }
-  // }, []);
+  // for loader
+  if (loginLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

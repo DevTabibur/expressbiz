@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 const useActiveUser = () => {
   const [activeUser, setActiveUser] = useState([]);
   const [activeUserData, setActiveUserData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getIdLocally = localStorage.getItem("user_id");
   const id = JSON.parse(getIdLocally);
@@ -11,6 +12,7 @@ const useActiveUser = () => {
 
   useEffect(() => {
     if (id) {
+      setIsLoading(true);
       const url = `http://localhost:5000/register/${id}`;
       fetch(url, {
         method: "GET",
@@ -20,7 +22,8 @@ const useActiveUser = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log("use active user inside hook data", data);
+          setIsLoading(false);
+
           if (data.user === true || data.user === "true") {
             setActiveUser(true);
             setActiveUserData(data);
@@ -29,11 +32,11 @@ const useActiveUser = () => {
           }
         });
     } else {
-      // console.log("activeUser is false; Please register or login");
       setActiveUser(false);
     }
   }, [id]);
-  return [activeUser, activeUserData];
+
+  return [activeUser, activeUserData, isLoading];
 };
 
 export default useActiveUser;

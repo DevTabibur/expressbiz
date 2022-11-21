@@ -1,19 +1,20 @@
-import { useContext, useState } from "react";
+import Loader from "../../../Shared/Loader/Loader";
+import "./DestinationMap.css";
+
+import { useContext, useEffect, useState } from "react";
+import geoDistance from "geo-distance-helper";
 import { useForm } from "react-hook-form";
 import { StepperContexts } from "../contexts/StepperContexts";
-import PackageImage from "../../../Assets/images/package.jpg";
-import geoDistance from "geo-distance-helper";
-const What = () => {
+
+const DestinationMap = () => {
+  const { userData, setUserData } = useContext(StepperContexts);
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [distance, setDistance] = useState("");
-
-  const { userData, setUserData } = useContext(StepperContexts);
   const {
     register,
     handleSubmit,
     watch,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -37,11 +38,6 @@ const What = () => {
   };
 
   const onSubmit = async (data, e) => {
-    const what = data;
-    setUserData({ ...userData, what });
-    reset();
-
-    //
     await setOrigin(data.origin);
     await setDestination(data.destination);
     const origin = await data.origin;
@@ -52,141 +48,26 @@ const What = () => {
     // console.log("getResponse origin", getResponse);
 
     handleDestination(data.destination, getResponse);
+    // handleOrigin(data.origin);
   };
 
-  console.log("What data", userData);
-  console.log("Distance", distance);
+  useEffect(() => {
+    setUserData({ ...userData, distance });
+  }, [distance]);
+
+  console.log("destination map data", userData);
 
   return (
     <>
-      <div className="container mx-auto px-4 py-6">
-        <h1 className="text-accent font-semibold text-2xl font-sans text-left">
-          what kind of packaging are you using?
-        </h1>
-        <p className="text-neutral-focus font-mono mb-8">
-          *indicates require file
-        </p>
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* form div */}
-          <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+      {/* <div className="hero  bg-base-200">
+        <div className="hero-content text-center">
+          <div className="w-full">
+            <h1 className="text-5xl font-bold mb-4">
+              Please provide us routes address
+            </h1>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="mb-8">
               <div className="grid md:grid-cols-2 gap-4">
-                {/* product Name */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-semibold font-sans text-accent">
-                      Product Name*
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Product Name*"
-                    className="input  input-bordered input-success font-mono"
-                    {...register("productName", {
-                      required: {
-                        value: true,
-                        message: "Product Name must be included",
-                      },
-                    })}
-                  />
-                  <label className="label my-1 py-0">
-                    {errors.productName?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.productName.message}
-                      </span>
-                    )}
-                  </label>
-                </div>
-
-                {/* shipment type */}
-
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-semibold font-sans text-accent">
-                      Shipment Type*
-                    </span>
-                  </label>
-                  <select
-                    className="select select-bordered select-success w-full max-w-xs"
-                    {...register("shipmentType", {
-                      required: {
-                        value: true,
-                      },
-                      message: "Shipment Type must be included",
-                    })}
-                  >
-                    <option disabled>Pick your Shipment</option>
-                    <option value="Air">Air Freight</option>
-                    <option value="Ocean">Ocean Freight</option>
-                    <option value="Logistic Service">
-                      Logistic Service Freight
-                    </option>
-                    <option value="Supply Service">
-                      Supply Service Freight
-                    </option>
-                    <option value="Others Service">Others Freight</option>
-                  </select>
-                  <label className="label my-1 py-0">
-                    {errors.shipmentType?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.shipmentType.message}
-                      </span>
-                    )}
-                  </label>
-                </div>
-
-                {/* weight */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-semibold font-sans text-accent">
-                      Weight (kg)*
-                    </span>
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="Weight (kg)*"
-                    className="input  input-bordered input-success font-mono"
-                    {...register("weight", {
-                      required: {
-                        value: true,
-                        message: "Weight (kg) is required",
-                      },
-                      pattern: {
-                        value: /^-?\d*\.?\d*$/,
-                        message: "Please Weight is need in kg",
-                      },
-                    })}
-                  />
-                  <label className="label my-1 py-0">
-                    {errors.weight?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.weight.message}
-                      </span>
-                    )}
-                    {errors.weight?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.weight.message}
-                      </span>
-                    )}
-                  </label>
-                </div>
-
-                {/* width */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-semibold font-sans text-accent">
-                      Width (inch)
-                    </span>
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="Width (inch)*"
-                    className="input  input-bordered input-success font-mono"
-                    {...register("width")}
-                  />
-                </div>
-
-                {/* origin */}
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-bold">
@@ -290,7 +171,6 @@ const What = () => {
                   </label>
                 </div>
 
-                {/* destination */}
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-bold">
@@ -327,27 +207,28 @@ const What = () => {
                   </label>
                 </div>
               </div>
-              <input
-                className="btn btn-accent text-white mt-4 px-12 py-4"
-                type="submit"
-                value="SUBMIT"
-              ></input>
-            </form>
-          </div>
 
-          <div>
-            <figure>
-              <img
-                className="w-96 mx-auto"
-                src={PackageImage}
-                alt="package_image"
-              />
-            </figure>
+              <div className="form-control">
+                <input
+                  type="submit"
+                  className="btn btn-accent w-full mt-4"
+                  value="SUBMIT"
+                />
+              </div>
+            </form>
+
+            {distance && (
+              <div className="bg-orange-500 p-6 rounded shadow-2xl">
+                <h3 className="text-2xl font-semibold">
+                  {origin} to {destination} are {distance} km
+                </h3>
+              </div>
+            )}
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
 
-export default What;
+export default DestinationMap;
