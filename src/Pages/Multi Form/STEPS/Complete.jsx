@@ -1,27 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { StepperContexts } from "../contexts/StepperContexts";
-
 const Final = () => {
-  const { userData, setUserData } = useContext(StepperContexts);
-
-  // send data to server
-  useEffect(() => {
-    const url = `http://localhost:5000/shipping`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
-      .then((res) => res.json([userData]))
-      .then((data) => {
-        console.log("use create shipping hook posted data", data);
-      });
-  }, [userData]);
-
-  console.log("final user data", userData);
-
   return (
     <div className="container md:mt-10">
       <div className="flex flex-col items-center">

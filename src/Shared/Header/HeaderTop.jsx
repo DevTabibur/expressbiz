@@ -18,7 +18,7 @@ const HeaderTop = () => {
   const [activeUser, activeUserData] = useActiveUser();
   const [loading, setLoading] = useState(false);
 
-  console.log("activeUser", activeUser);
+  // console.log("activeUser", activeUser);
 
   const [admin] = useAdmin(activeUserData);
   const navigate = useNavigate();
@@ -47,6 +47,7 @@ const HeaderTop = () => {
             icon: "success",
           });
           navigate("/");
+          window.location.reload();
         });
     }
   };
@@ -57,11 +58,11 @@ const HeaderTop = () => {
   return (
     <>
       <div
-        // style={
-        //   pathname.includes("/login")
-        //     ? { display: "none" }
-        //     : { display: "flex" }
-        // }
+        style={
+          pathname.includes("/login")
+            ? { display: "none" }
+            : { display: "flex" }
+        }
         className="headerTop"
       >
         <div className="container mx-auto px-4">

@@ -1,40 +1,51 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useActiveUser from "../../../Hooks/useActiveUser";
 import useCreateShipping from "../../../Hooks/useShipping";
 import ShowShipmentHistory from "./ShowShipmentHistory";
 
 const ShipmentHistory = () => {
   const navigate = useNavigate();
   const [orders] = useCreateShipping();
+  const [activeUser, activeUserData] = useActiveUser();
+
+  const ExistsEmail = orders.find((order) => console.log(order));
+
+  // console.log("ExistsEmail", ExistsEmail);
+
   const handlePayment = (id) => {
     alert(id);
   };
   const id = 12121212;
 
   const deleteShipmentHistory = (id) => {
-    const url = `http://localhost:5000/shipping/${id}`;
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("data delete", data);
-        if (data.code === 401 || data.code === 403) {
-          localStorage.removeItem("user_id");
-          navigate("/login");
-        }
-        if (data.acknowledged) {
-          Swal.fire({
-            title: "Shipment Deleted",
-            icon: "success",
-          });
-        }
-      });
+    const confirmation = window.confirm("Are you want to Delete?");
+    if (confirmation) {
+      const url = `http://localhost:5000/shipping/${id}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("data delete", data);
+          if (data.code === 401 || data.code === 403) {
+            localStorage.removeItem("user_id");
+            navigate("/login");
+            window.location.reload();
+          }
+          if (data.acknowledged) {
+            Swal.fire({
+              title: "Shipment Deleted",
+              icon: "success",
+            });
+          }
+        });
+    }
   };
   return (
     <>
@@ -74,9 +85,11 @@ const ShipmentHistory = () => {
                       <td className="text-green-500 font-semibold">PAID</td>
                     )}
 
-                    {
-                      (order.price && order.paid) ? <td>transactionId : {order.transactionId}</td> : <td>Processing</td>
-                    }
+                    {order.price && order.paid ? (
+                      <td>transactionId : {order.transactionId}</td>
+                    ) : (
+                      <td>Processing</td>
+                    )}
 
                     <td>
                       <button

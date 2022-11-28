@@ -5,7 +5,7 @@ import NotFound from "../Pages/NotFound/NotFound";
 import Register from "../Pages/Register/Register";
 import Services from "../Pages/Services/Services";
 import Shipping from "../Pages/Shipping/Shipping";
-import SingleService from '../Pages/Services/SingleService'
+import SingleService from "../Pages/Services/SingleService";
 
 export const publicRoutes = [
   { path: "/", name: Home, Component: Home },

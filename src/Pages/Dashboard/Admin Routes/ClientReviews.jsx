@@ -21,6 +21,7 @@ const ClientReviews = () => {
         // console.log("review deleted", data);
         if (data.code === 401 || data.code === 403) {
           localStorage.removeItem("user_id");
+          window.location.reload();
           navigate("/login");
         }
         if (data.deletedCount) {

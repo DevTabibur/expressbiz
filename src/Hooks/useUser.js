@@ -26,6 +26,7 @@ const useUser = () => {
         if (data.code === 401 || data.code === 403) {
           localStorage.removeItem("user_id");
           navigate("/login");
+          window.location.reload();
         }
         setUsers(data);
       });

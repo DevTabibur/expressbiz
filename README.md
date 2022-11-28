@@ -27,6 +27,7 @@
 5. contact page is done with EmailJS
 6. jwt authenticated all services routes
 7. jwt authenticated all review routes
+8. npm install tw-elements
 
 ### special works
 
@@ -44,13 +45,14 @@
 3. user k remove dile swal fire hoi na, and automatic logout hoi jasse, tai jakei remove kori na keno?
 4. useToken automatic get hosse, and undefined value thakleu automatic peye jasse... jar jonne auto redirect and accessToken set kora jasse na.. (solved different way..) (solved)
 
+5. logout korar pore Dashboard link vanish holeu, keu jdi url e dashboard likhe, taile tw sha automatic redirect korbe, but oikhane loader dekhasse....oikhane loader na dekhiye, user jdi inactive thake, taile automatic redirect kora uchit
 
-6. logout korar pore Dashboard link vanish holeu, keu jdi url e dashboard likhe, taile tw sha automatic redirect korbe, but oikhane loader dekhasse....oikhane loader na dekhiye, user jdi inactive thake, taile automatic redirect kora uchit
+6. overflow y hosse...page venge jai...footer er jonne problem hosse maybe..footer ta app.js e last deyar jonne hote pare
 
-7. overflow y hosse...page venge jai...footer er jonne problem hosse maybe..footer ta app.js e last deyar jonne hote pare
+7. register compo te loader set (solved)
 
-8. register compo te loader set (solved)
+8. shipment history route e loader dekhate hbe
 
-9. shipment history route e loader dekhate hbe
+9. keu url e /dashboard likhle , loader ta automatic choltei thake (solved)
 
-10. keu url e /dashboard likhle , loader ta automatic choltei thake  (solved)
+10. require user, user jdi na thake taile login e niye jabe, and login korar pore automatic agar route e niye ashbe, but seta hosse na. requireUser e problem maybe

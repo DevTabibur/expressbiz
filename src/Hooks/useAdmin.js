@@ -6,7 +6,6 @@ const useAdmin = (user) => {
   const [adminLoading, setAdminLoading] = useState(true);
   const navigate = useNavigate();
 
-  console.log('useAdmin', user)
   useEffect(() => {
     const email = user?.email;
     if (email) {

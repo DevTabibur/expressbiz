@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { StepperContexts } from "../contexts/StepperContexts";
 import PackageImage from "../../../Assets/images/package.jpg";
 import geoDistance from "geo-distance-helper";
-const What = () => {
-  const [origin, setOrigin] = useState("");
-  const [destination, setDestination] = useState("");
+const What = ({ handleClick, currentStep, steps }) => {
+  // const [origin, setOrigin] = useState("");
+  // const [destination, setDestination] = useState("");
   const [distance, setDistance] = useState("");
 
   const { userData, setUserData } = useContext(StepperContexts);
@@ -17,45 +17,61 @@ const What = () => {
     formState: { errors },
   } = useForm();
 
-  const handleDestination = async (destination, origin) => {
-    const url = `https://api.opencagedata.com/geocode/v1/json?q=${destination}&key=20ad92a2fbcb467db15d68eaf89472ad&language=en&pretty=1`;
-    const response = await fetch(url);
-    const getResponse = await response.json();
-    // console.log('getResponse destination', getResponse)
+  const origin = userData?.shippingFrom?.originAddress;
+  const destination = userData?.shippingGoing?.destinationAddress;
 
-    const originLat = await origin.results[0].geometry.lat;
-    const originLng = await origin.results[0].geometry.lng;
-    const destinationLat = await getResponse.results[0].geometry.lat;
-    const destinationLng = await getResponse.results[0].geometry.lng;
+  // const origin = "Dhaka";
+  // const destination = "Khulna Zero Point";
 
+  let originResponse;
+  let destinationResponse;
+
+  const fetchData = async () => {
+    if (origin) {
+      const originUrl = `https://api.opencagedata.com/geocode/v1/json?q=${origin}&key=20ad92a2fbcb467db15d68eaf89472ad&language=en&pretty=1`;
+      const response = await fetch(originUrl);
+      const getResponseOrigin = await response.json();
+      // console.log("getResponse origin", getResponseOrigin);
+      originResponse = getResponseOrigin;
+    }
+
+    if (destination) {
+      const destinationUrl = `https://api.opencagedata.com/geocode/v1/json?q=${destination}&key=20ad92a2fbcb467db15d68eaf89472ad&language=en&pretty=1`;
+      const response = await fetch(destinationUrl);
+      const getResponseDestination = await response.json();
+      // console.log("getResponse destination", getResponseDestination);
+      destinationResponse = getResponseDestination;
+    }
+
+    // origin lat and lng
+    const originLat = await originResponse.results[0].geometry.lat;
+    const originLng = await originResponse.results[0].geometry.lng;
+
+    // destination lat and lng
+    const destinationLat = await destinationResponse.results[0].geometry.lat;
+    const destinationLng = await destinationResponse.results[0].geometry.lng;
+
+    // calculate the origin and destination lat nd lng
     const origin1 = { lat: originLat, lng: originLng };
-
     const destination2 = { lat: destinationLat, lng: destinationLng };
 
     const distance = geoDistance(origin1, destination2, "K");
     await setDistance(Math.round(distance));
   };
 
+  fetchData();
+
   const onSubmit = async (data, e) => {
-    const what = data;
+    const what = {
+      productName: data?.productName,
+      shipmentType: data?.shipmentType,
+      weight: data?.weight,
+      width: data?.width,
+      distance: distance,
+    };
     setUserData({ ...userData, what });
-    reset();
-
-    //
-    await setOrigin(data.origin);
-    await setDestination(data.destination);
-    const origin = await data.origin;
-    const url = `https://api.opencagedata.com/geocode/v1/json?q=${origin}&key=20ad92a2fbcb467db15d68eaf89472ad&language=en&pretty=1`;
-
-    const response = await fetch(url);
-    const getResponse = await response.json();
-    // console.log("getResponse origin", getResponse);
-
-    handleDestination(data.destination, getResponse);
+    handleClick("next");
   };
-
-  console.log("What data", userData);
-  console.log("Distance", distance);
 
   return (
     <>
@@ -187,7 +203,7 @@ const What = () => {
                 </div>
 
                 {/* origin */}
-                <div className="form-control">
+                <div className="form-control  cursor-not-allowed">
                   <label className="label">
                     <span className="label-text font-bold">
                       Pick your Origin (From:)
@@ -195,18 +211,9 @@ const What = () => {
                   </label>
                   <select
                     type="text"
-                    className="select select-bordered font-mono"
-                    {...register("origin", {
-                      required: {
-                        value: true,
-                        message: "Origin Address Required",
-                      },
-                      pattern: {
-                        value: /^[a-zA-Z0-9 ]*$/,
-                        message:
-                          "Origin Address must needed without comma, colon, hiphen",
-                      },
-                    })}
+                    className="select select-bordered font-mono cursor-not-allowed"
+                    defaultValue={origin}
+                    {...register("origin")}
                   >
                     <option disabled defaultValue>
                       Pick your Origin (From:)
@@ -276,18 +283,6 @@ const What = () => {
                     <option value="Narail">Narail</option>
                     <option value="Satkhira">Satkhira</option>
                   </select>
-                  <label className="label my-1 py-0">
-                    {errors.origin?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.origin.message}
-                      </span>
-                    )}
-                    {errors.origin?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.origin.message}
-                      </span>
-                    )}
-                  </label>
                 </div>
 
                 {/* destination */}
@@ -301,38 +296,39 @@ const What = () => {
                     type="text"
                     placeholder="Destination Address"
                     className="input input-bordered font-mono"
-                    {...register("destination", {
-                      required: {
-                        value: true,
-                        message: "Destination Address is Required",
-                      },
-                      pattern: {
-                        value: /^[a-zA-Z0-9 ]*$/,
-                        message:
-                          "Destination Address must needed without comma, colon, hiphen",
-                      },
-                    })}
+                    defaultValue={destination}
+                    {...register("destination")}
                   />
-                  <label className="label my-1 py-0">
-                    {errors.destination?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.destination.message}
-                      </span>
-                    )}
-                    {errors.destination?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
-                        {errors.destination.message}
-                      </span>
-                    )}
-                  </label>
                 </div>
+
+                {/* distance */}
+                {/* <div className="form-control">
+                  <label className="label">
+                    <span className="label-text font-bold">Distance</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Destination Address"
+                    className="input input-bordered font-mono"
+                    defaultValue={distance}
+                    {...register("distance")}
+                  />
+                </div> */}
               </div>
               <input
                 className="btn btn-accent text-white mt-4 px-12 py-4"
                 type="submit"
-                value="SUBMIT"
+                value={currentStep === steps.length - 1 ? "Confirm" : "Next"}
               ></input>
             </form>
+            <button
+              onClick={() => handleClick()}
+              className={`bg-white text-slate-400 uppercase py-2 px-8 rounded mr-6 font-semibold cursor-pointer border-2 border-slate-300 hover:bg-slate-700 hover:text-white transition duration-200 ease-in-out ${
+                currentStep === 1 ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              Back
+            </button>
           </div>
 
           <div>

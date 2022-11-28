@@ -195,6 +195,14 @@ const Login = () => {
                 value="LOGIN"
               ></input>
             </form>
+            <div className=" py-4">
+              <button
+                className="btn btn-sm btn-warning"
+                onClick={() => navigate(-1)}
+              >
+                Go Back
+              </button>
+            </div>
           </div>
         </div>
       </div>

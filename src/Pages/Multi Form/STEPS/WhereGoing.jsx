@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { StepperContexts } from "../contexts/StepperContexts";
-const WhereGoing = () => {
+const WhereGoing = ({ handleClick, currentStep, steps }) => {
   const { userData, setUserData } = useContext(StepperContexts);
   const {
     register,
@@ -12,12 +12,19 @@ const WhereGoing = () => {
   } = useForm();
 
   const onSubmit = async (data, e) => {
-    const shippingGoing = data;
-    setUserData({ ...userData, shippingGoing });
-    reset();
+    const shippingGoing = {
+      email: data?.email,
+      companyName: data?.companyName,
+      number: data?.number,
+      country: data?.country,
+      destinationAddress: data?.destinationAddress,
+      postalCode: data?.postalCode,
+    };
+     setUserData({ ...userData, shippingGoing });
+    handleClick("next");
   };
 
-  console.log("Where going data", userData);
+  // console.log("Where going data", userData);
   return (
     <>
       <div className="container mx-auto px-4 py-6">
@@ -160,14 +167,14 @@ const WhereGoing = () => {
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-semibold font-sans text-accent">
-                  Office Address*
+                  Destination Address ( to: )*
                 </span>
               </label>
               <input
                 type="text"
                 placeholder="Office Address*"
                 className="input  input-bordered input-success font-mono"
-                {...register("address", {
+                {...register("destinationAddress", {
                   required: {
                     value: true,
                     message: "Address is Required",
@@ -179,14 +186,14 @@ const WhereGoing = () => {
                 })}
               />
               <label className="label my-1 py-0">
-                {errors.address?.type === "required" && (
+                {errors.destinationAddress?.type === "required" && (
                   <span className="label-text-alt text-red-500 font-mono">
-                    {errors.address.message}
+                    {errors.destinationAddress.message}
                   </span>
                 )}
-                {errors.address?.type === "pattern" && (
+                {errors.destinationAddress?.type === "pattern" && (
                   <span className="label-text-alt text-red-500 font-mono">
-                    {errors.address.message}
+                    {errors.destinationAddress.message}
                   </span>
                 )}
               </label>
@@ -207,12 +214,21 @@ const WhereGoing = () => {
               />
             </div>
           </div>
+
           <input
             className="btn btn-accent text-white mt-4 px-12 py-4"
             type="submit"
-            value="SUBMIT"
+            value={currentStep === steps.length - 1 ? "Confirm" : "Next"}
           ></input>
         </form>
+        <button
+          onClick={() => handleClick()}
+          className={`bg-white text-slate-400 uppercase py-2 px-8 rounded mr-6 font-semibold cursor-pointer border-2 border-slate-300 hover:bg-slate-700 hover:text-white transition duration-200 ease-in-out ${
+            currentStep === 1 ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          Back
+        </button>
       </div>
     </>
   );

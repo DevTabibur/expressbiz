@@ -9,13 +9,18 @@ const DashboardSidebar = ({ children }) => {
 
   const [admin, adminLoading] = useAdmin(activeUserData);
 
-  console.log("dashboard side bar admin", admin);
+  // console.log("dashboard side bar admin", admin);
 
   const menu = (
     <>
       {/* user route */}
       {!admin && (
         <>
+          <li className="text-white my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/profile">
+              Profile
+            </NavLink>
+          </li>
           <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/quotation-history">
               Quotation history

@@ -3,8 +3,10 @@ import GiveReview from "../Pages/Dashboard/User Routes/GiveReview";
 import Payment from "../Pages/Dashboard/User Routes/Payment";
 import QuotationList from "../Pages/Dashboard/User Routes/QuotationList";
 import ShipmentHistory from "../Pages/Dashboard/User Routes/ShipmentHistory";
+import Profile from "../Pages/Profile/Profile";
 
 export const privateRoutes = [
+  { path: "/dashboard/profile", name: Profile, Component: Profile },
   { path: "/dashboard/review", name: GiveReview, Component: GiveReview },
   {
     path: "/dashboard/shipment-history",

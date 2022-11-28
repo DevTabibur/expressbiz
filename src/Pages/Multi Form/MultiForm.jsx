@@ -36,29 +36,51 @@ const MultiForm = () => {
   const displayStep = (step) => {
     switch (step) {
       case 1:
-        return <WhereFrom />;
+        return (
+          <WhereFrom
+            handleClick={handleClick}
+            currentStep={currentStep}
+            steps={steps}
+          />
+        );
       case 2:
-        return <WhereGoing />;
+        return (
+          <WhereGoing
+            handleClick={handleClick}
+            currentStep={currentStep}
+            steps={steps}
+          />
+        );
       case 3:
-        return <What />;
+        return (
+          <What
+            handleClick={handleClick}
+            currentStep={currentStep}
+            steps={steps}
+          />
+        );
       case 4:
-        return <Review />;
+        return (
+          <Review
+            handleClick={handleClick}
+            currentStep={currentStep}
+            steps={steps}
+          />
+        );
       case 5:
-        return <Final />;
+        return (
+          <Final
+            handleClick={handleClick}
+            currentStep={currentStep}
+            steps={steps}
+          />
+        );
       default:
     }
   };
 
   const handleClick = (direction) => {
-    if (admin === "true" || admin === true) {
-      return Swal.fire({
-        title: "You are an Admin",
-        text: `Admin can't make shipment`,
-        icon: "error",
-      });
-    }
-
-    // e.preventDefault()
+    // checking condition if the form value is filled or not
     let newStep = currentStep;
     direction === "next" ? newStep++ : newStep--;
 
@@ -82,7 +104,7 @@ const MultiForm = () => {
               </StepperContexts.Provider>
               {/* Navigation Controls */}
 
-              <div className="mt-6 mb-4">
+              {/* <div className="mt-6 mb-4">
                 {current !== steps.length && (
                   <StepperControls
                     handleClick={handleClick}
@@ -90,7 +112,7 @@ const MultiForm = () => {
                     steps={steps}
                   />
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
