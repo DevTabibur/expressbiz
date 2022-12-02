@@ -16,14 +16,17 @@ const CheckoutForm = ({ singleOrder }) => {
   const [transactionID, setTransactionID] = useState("");
   const [clientSecret, setClientSecret] = useState("");
 
-  const price = 200;
-  const { _id } = singleOrder;
+  const { _id, email, productName, } = singleOrder;
+  const price = Math.round(singleOrder?.price);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
       body: JSON.stringify({ price }),
     })
       .then((res) => res.json())
@@ -77,8 +80,8 @@ const CheckoutForm = ({ singleOrder }) => {
         payment_method: {
           card: card,
           billing_details: {
-            name: "abc",
-            email: "test@123.gmail.com",
+            name: productName,
+            email: email,
           },
         },
       });
@@ -94,6 +97,7 @@ const CheckoutForm = ({ singleOrder }) => {
       //store payment on database
 
       const payment = {
+        price: price,
         shippingOrder: _id,
         transactionId: paymentIntent.id,
       };
@@ -114,9 +118,9 @@ const CheckoutForm = ({ singleOrder }) => {
     }
   };
 
-  if (processing) {
-    <Loader />;
-  }
+  // if (!processing) {
+  //   return <Loader />;
+  // }
 
   return (
     <>

@@ -37,6 +37,7 @@
 4. User can't provide quotation before login / register
 5. An Admin can't make shipment
 6. Destination routing with google maps api for shipment
+7. Edit profile with multer
 
 ### PROBLEMS
 
@@ -56,3 +57,7 @@
 9. keu url e /dashboard likhle , loader ta automatic choltei thake (solved)
 
 10. require user, user jdi na thake taile login e niye jabe, and login korar pore automatic agar route e niye ashbe, but seta hosse na. requireUser e problem maybe
+
+11. payment korte giye problem hosse, server error disse..
+
+12. EditProfile.jsx ee localhost er link ta pore replace kora lagbe..

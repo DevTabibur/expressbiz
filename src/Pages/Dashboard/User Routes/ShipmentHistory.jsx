@@ -10,14 +10,11 @@ const ShipmentHistory = () => {
   const [orders] = useCreateShipping();
   const [activeUser, activeUserData] = useActiveUser();
 
-  const ExistsEmail = orders.find((order) => console.log(order));
+  const ExistsEmail = orders.filter(
+    (order) => order.senderEmail === activeUserData?.email
+  );
 
   // console.log("ExistsEmail", ExistsEmail);
-
-  const handlePayment = (id) => {
-    alert(id);
-  };
-  const id = 12121212;
 
   const deleteShipmentHistory = (id) => {
     const confirmation = window.confirm("Are you want to Delete?");
@@ -50,7 +47,7 @@ const ShipmentHistory = () => {
   return (
     <>
       <h1 className="text-accent text-5xl font-bold font-serif">
-        Your Shipment History
+        Your Shipment History {ExistsEmail.length}
       </h1>
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-1 gap-4">
@@ -59,26 +56,30 @@ const ShipmentHistory = () => {
               <thead>
                 <tr>
                   <th className="bg-accent text-white">SL</th>
-                  <th className="bg-accent text-white">#SKU</th>
-                  <th className="bg-accent text-white">PRODUCT NAME</th>
-                  <th className="bg-accent text-white">TYPE</th>
-                  <th className="bg-accent text-white">ACTION</th>
+                  <th className="bg-accent text-white">EMAIL</th>
+                  <th className="bg-accent text-white">PRODUCT</th>
+                  <th className="bg-accent text-white">PRICE</th>
 
+                  <th className="bg-accent text-white">TYPE</th>
                   <th className="bg-accent text-white">STATUS</th>
                   <th className="bg-accent text-white">ACTION</th>
                 </tr>
               </thead>
-
-              {orders.map((order, idx) => (
-                <tbody key={idx}>
-                  <tr>
+              <tbody>
+                {ExistsEmail.map((order, idx) => (
+                  <tr key={idx}>
                     <td>{idx + 1}</td>
-                    <td>SKU</td>
-                    <td>Name</td>
-                    <td>Air</td>
+                    <td>{order.senderEmail}</td>
+                    <td>{order.productName}</td>
+                    <td>$ {Math.round(order.price)}</td>
+
                     {order.price && !order.paid && (
                       <td>
-                        <Link to={`/dashboard/payment/${order._id}`}>Pay </Link>{" "}
+                        <button className="btn btn-warning btn-sm">
+                          <Link to={`/dashboard/payment/${order._id}`}>
+                            Pay{" "}
+                          </Link>{" "}
+                        </button>
                       </td>
                     )}
                     {order.price && order.paid && (
@@ -88,29 +89,28 @@ const ShipmentHistory = () => {
                     {order.price && order.paid ? (
                       <td>transactionId : {order.transactionId}</td>
                     ) : (
-                      <td>Processing</td>
+                      <td>Please pay for Processing</td>
                     )}
 
                     <td>
                       <button
-                        className="btn btn-primary"
+                        className="btn btn-primary btn-sm"
                         onClick={() => deleteShipmentHistory(order._id)}
                       >
                         DELETE
                       </button>
                     </td>
                   </tr>
-                </tbody>
-              ))}
-
+                ))}
+              </tbody>
               <tfoot>
                 <tr>
                   <th className="bg-accent text-white">SL</th>
-                  <th className="bg-accent text-white">#SKU</th>
-                  <th className="bg-accent text-white">PRODUCT NAME</th>
-                  <th className="bg-accent text-white">TYPE</th>
-                  <th className="bg-accent text-white">ACTION</th>
+                  <th className="bg-accent text-white">EMAIL</th>
+                  <th className="bg-accent text-white">PRODUCT</th>
+                  <th className="bg-accent text-white">PRICE</th>
 
+                  <th className="bg-accent text-white">TYPE</th>
                   <th className="bg-accent text-white">STATUS</th>
                   <th className="bg-accent text-white">ACTION</th>
                 </tr>
