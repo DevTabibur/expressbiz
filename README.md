@@ -61,18 +61,24 @@
 11. payment korte giye problem hosse, server error disse..
 
 12. EditProfile.jsx ee localhost er link ta pore replace kora lagbe..
-
+13. profile.jsx ee responsive problem...mobile korle, nicher div dekhai jai na..
 
 // Forgot Password Process
+
 1. user clicks on forgot password
 2. create a reset token (string) and save in our db
 3. send reset token to user email in the form of a link
 4. when user clicks the link, compare the reset token in the link with that saved in db
 5. if they match, change reset the user's password
 
-
 // forgot password steps
+
 1. create forgot password route
 2. create token model
 3. create email sender
 4. create controller function
+
+// change password steps
+
+1. user clicks on change password
+2. Form has to be 3 inputs tag. a) Old Password b) New Password c) Confirm Password

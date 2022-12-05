@@ -14,10 +14,10 @@ const WhyChooseUs = () => {
       <div className="container mx-auto lg:px-40 py-12">
         <div className="grid md:grid-cols-3 gap-6">
           {/* first col */}
-          <div className="first-col relative w-full p-4">
+          <div className="first-col relative ">
             <div className="w-full">
               <img
-                className="w-full"
+                className="w-full rounded shadow-2xl"
                 src={WhyChooseUsPic}
                 alt="why_choose_pic"
               />
@@ -30,16 +30,20 @@ const WhyChooseUs = () => {
               WHY CHOOSE US
             </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit
-              amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem
-              ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet,
-              consectetur Lorem ipsum dolor sit amet, consectetur Lorem ipsum
-              dolor sit amet, consectetur
+              We are providing the best quality and standard services of freight
+              shipping and courier. We took care our clients and customers as a
+              part of our company.
+            </p>
+            <br></br>
+            <p>
+              The best product courier services ever in Bangladesh. 100%
+              guarantee with best client satisfactions. Customer also can see
+              their product live location.
             </p>
           </div>
 
           {/* third col */}
-          <div className="third-col p-4 relative">
+          <div className="third-col p-4 relative md:mt-8">
             <ol className="relative border-l border-gray-200 dark:border-gray-700">
               <li className="mb-10 ml-6">
                 <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
@@ -57,7 +61,7 @@ const WhyChooseUs = () => {
                     ></path>
                   </svg>
                 </span>
-                <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="flex items-center mb-1 text-lg font-semibold text-accent ">
                   WE ARE TRUSTED
                 </h3>
               </li>
@@ -77,7 +81,7 @@ const WhyChooseUs = () => {
                     ></path>
                   </svg>
                 </span>
-                <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="flex items-center mb-1 text-lg font-semibold  text-accent">
                   THE BEST SECURITY
                 </h3>
               </li>
@@ -97,7 +101,7 @@ const WhyChooseUs = () => {
                     ></path>
                   </svg>
                 </span>
-                <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="flex items-center mb-1 text-lg font-semibold  text-accent">
                   100% GUARANTEE
                 </h3>
               </li>
@@ -117,58 +121,11 @@ const WhyChooseUs = () => {
                     ></path>
                   </svg>
                 </span>
-                <h3 className="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="flex items-center mb-1 text-lg font-semibold text-accent">
                   QUICK LOCATION
                 </h3>
               </li>
             </ol>
-
-            {/* <div className="vertical-outer relative">
-              <div className="vertical-inner"></div>
-            </div>
-
-            <ul className="ml-6 absolute top-0">
-              <li className="flex justify-center items-center my-4">
-                <div className="rounded-icon">
-                  <FontAwesomeIcon className="icon" icon={faHandshake} />
-                </div>
-                <div className="ml-4">
-                  <h1 className="text-xl text-accent font-medium font-sans">
-                    WE ARE TRUSTED
-                  </h1>
-                </div>
-              </li>
-              <li className="flex justify-center items-center my-4">
-                <div className="rounded-icon">
-                  <FontAwesomeIcon className="icon" icon={faLockOpen} />
-                </div>
-                <div className="ml-4">
-                  <h1 className="text-xl text-accent font-medium font-sans">
-                    BEST SECURITY
-                  </h1>
-                </div>
-              </li>
-              <li className="flex justify-center items-center my-4">
-                <div className="rounded-icon">
-                  <FontAwesomeIcon className="icon" icon={faThumbsUp} />
-                </div>
-                <div className="ml-4">
-                  <h1 className="text-xl text-accent font-medium font-sans">
-                    100% GUARANTEE
-                  </h1>
-                </div>
-              </li>
-              <li className="flex justify-center items-center my-4">
-                <div className="rounded-icon">
-                  <FontAwesomeIcon className="icon" icon={faLocation} />
-                </div>
-                <div className="ml-4">
-                  <h1 className="text-xl text-accent font-medium font-sans">
-                    QUICK LOCATION
-                  </h1>
-                </div>
-              </li>
-            </ul> */}
           </div>
         </div>
       </div>

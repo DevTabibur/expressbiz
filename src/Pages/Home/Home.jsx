@@ -23,11 +23,11 @@ const Home = () => {
       <BookShipping />
       <WhyChooseUs />
       <Process />
-       <GetQuote />
-      <Testimonials />
+      <GetQuote />
+      {/* <Testimonials /> */}
       <Gallery />
       <Contact />
-      <Footer/>
+      <Footer />
     </>
   );
 };

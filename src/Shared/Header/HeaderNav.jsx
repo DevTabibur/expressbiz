@@ -1,3 +1,4 @@
+import { withTheme } from "@emotion/react";
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../../Assets/Logos/EXPRESS.webp";
@@ -6,49 +7,57 @@ import useActiveUser from "../../Hooks/useActiveUser";
 const HeaderNav = ({ children }) => {
   const { pathname } = useLocation();
   const [activeUser, activeUserData] = useActiveUser();
+
+  let activeStyle = {
+    textDecoration: "underline",
+    color: "#1c166473",
+    transition: ".4s",
+  };
+
   const menu = (
     <>
       <NavLink
-        className="m-2  btn btn-accent text-white  rounded-md"
+        className="m-4  text-accent font-semibold"
         to="/home"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
       >
-        HOME
+        Home
       </NavLink>
       <NavLink
-        className="m-2  btn btn-accent text-white  rounded-md"
+        className="m-4   text-accent font-semibold  "
         to="/services"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
       >
-        SERVICES
+        Services
       </NavLink>
       <NavLink
-        className="m-2  btn btn-accent text-white  rounded-md"
+        className="m-4   text-accent font-semibold  "
         to="/tracking"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
       >
-        TRACKING
+        Tracking
       </NavLink>
       <NavLink
-        className="m-2  btn btn-accent text-white  rounded-md"
+        className="m-4   text-accent font-semibold  "
         to="/shipping"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
       >
-        SHIPPING
+        Shipping
       </NavLink>
-      {/* <NavLink
-        className="m-2  btn btn-accent text-white  rounded-md"
-        to="/about-us"
-      >
-        ABOUT US
-      </NavLink> */}
+
       <NavLink
-        className="m-2  btn btn-accent text-white  rounded-md"
+        className="m-4   text-accent font-semibold  "
         to="/contact-us"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
       >
-        CONTACT US
+        Contact us
       </NavLink>
 
       {activeUser && (
         <NavLink
-          className="m-2  btn btn-accent text-white  rounded-md"
+          className="m-4   text-accent font-semibold  "
           to="/dashboard"
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           Dashboard
         </NavLink>

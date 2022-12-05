@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./BookShipping.css";
 
 const BookShipping = () => {
@@ -8,15 +9,15 @@ const BookShipping = () => {
           <h1 className=" text-white  font-bold md:text-2xl pb-2">
             WE PROVIDE
           </h1>
-          <h2 className="text-white  font-bold md:text-4xl pb-4">
-            THE BEST SEA AND AIR FREIGHT SERVICES
+          <h2 className="text-white  font-bold md:text-4xl pb-12">
+            THE BEST FREIGHT and COURIER SERVICES
           </h2>
-          <h5 className="text-primary  font-bold text-xl pb-6">
-            For Book Your Shipping From Any Country{" "}
-          </h5>
-          <button className="btn btn-accent text-white ">
+          <Link
+            className="border-2 border-green-600 rounded-lg px-3 py-2 text-green-400 cursor-pointer hover:bg-green-600 hover:text-green-200"
+            to="/contact-us"
+          >
             Contact With Us
-          </button>
+          </Link>
         </div>
       </div>
     </>

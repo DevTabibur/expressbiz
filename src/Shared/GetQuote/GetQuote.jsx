@@ -13,36 +13,36 @@ const GetQuote = () => {
   const isActive = localStorage.getItem("user_id");
   const onSubmit = async (data, e) => {
     console.log(data);
-    if (!isActive) {
-      // if user is not login / register.. they can't provide quotation
-      Swal.fire({
-        title: "Login / Registration first",
-        text: "You have to create a account before quotation",
-        icon: "error",
-      });
-    } else {
-      const url = `http://localhost:5000/quote`;
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("quotation data send and get", data);
-          if (data.acknowledged) {
-            // for successfully provide quotation
-            Swal.fire({
-              title: "Quotation sent",
-              icon: "success",
-            });
-            // for resetting form data
-            reset()
-          }
-        });
-    }
+    // if (!isActive) {
+    //   // if user is not login / register.. they can't provide quotation
+    //   Swal.fire({
+    //     title: "Login / Registration first",
+    //     text: "You have to create a account before quotation",
+    //     icon: "error",
+    //   });
+    // } else {
+    //   const url = `http://localhost:5000/quote`;
+    //   fetch(url, {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log("quotation data send and get", data);
+    //       if (data.acknowledged) {
+    //         // for successfully provide quotation
+    //         Swal.fire({
+    //           title: "Quotation sent",
+    //           icon: "success",
+    //         });
+    //         // for resetting form data
+    //         reset();
+    //       }
+    //     });
+    // }
   };
   return (
     <>
@@ -81,7 +81,7 @@ const GetQuote = () => {
                   </label>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-2">
                   {/* email */}
                   <div className="form-control">
                     <input
@@ -257,7 +257,7 @@ const GetQuote = () => {
                 </div>
 
                 <input
-                  className="btn btn-accent  font-bold text-white"
+                  className="border-2 rounded-lg px-3 py-2 text-accent cursor-pointer hover:bg-warning hover:text-accent font-semibold"
                   value="GET A FREE QUOTE"
                   type="submit"
                 />

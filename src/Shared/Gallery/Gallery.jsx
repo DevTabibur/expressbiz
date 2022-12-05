@@ -9,7 +9,7 @@ const Gallery = () => {
   return (
     <>
       {/* client */}
-      <section className="bg-success overflow-hidden">
+      <section className="bg-success my-0">
         <div className="container my-12 px-5 mx-auto lg:pt-4 lg:px-32">
           <h1 className="text-accent font-bold text-3xl">
             OUR VALUABLE CLIENT

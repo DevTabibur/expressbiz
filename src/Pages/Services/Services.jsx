@@ -20,7 +20,7 @@ const Services = () => {
         </div>
       </div> */}
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-20 my-4">
         <h1 className="text-4xl  font-bold text-center">
           OUR SERVICES
         </h1>
