@@ -18,16 +18,16 @@ import Gallery from "../../Shared/Gallery/Gallery";
 const Home = () => {
   return (
     <>
-      {/* <HeroCarousel /> */}
-      {/* <Services />
+      <HeroCarousel />
+      <Services />
       <BookShipping />
       <WhyChooseUs />
       <Process />
-      <GetQuote /> */}
-      {/* <Testimonials />
-      <Gallery /> */}
-      {/* <Contact />
-      <Footer/> */}
+       <GetQuote />
+      <Testimonials />
+      <Gallery />
+      <Contact />
+      <Footer/>
     </>
   );
 };

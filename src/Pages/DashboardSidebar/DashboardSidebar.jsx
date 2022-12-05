@@ -17,9 +17,7 @@ const DashboardSidebar = ({ children }) => {
       {!admin && (
         <>
           <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/profile">
-              Profile
-            </NavLink>
+            <NavLink to="/dashboard/profile">Profile</NavLink>
           </li>
           <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/quotation-history">
@@ -39,6 +37,9 @@ const DashboardSidebar = ({ children }) => {
       {/* admin route */}
       {admin && (
         <>
+          <li className="text-white my-1 font-semibold font-sans">
+            <NavLink to="/dashboard/profile">Profile</NavLink>
+          </li>
           <li className="text-white my-1 font-semibold font-sans">
             <NavLink to="/dashboard/users">Users</NavLink>
           </li>

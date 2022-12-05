@@ -102,10 +102,10 @@ const Register = () => {
             <div className="login-info p-12 text-center">
               <FontAwesomeIcon className="icon" icon={faLockOpen} />
 
-              <h2 className="text-white font-serif font-bold text-xl my-6">
+              <h2 className="text-white  font-bold text-xl my-6">
                 WELCOME TO YOUR ACCOUNT
               </h2>
-              <p className="text-neutral font-mono mb-4">
+              <p className="text-neutral  mb-4">
                 abc abc abc abc abc abc abc abca abc abc abc abc
               </p>
               <Link
@@ -131,7 +131,7 @@ const Register = () => {
                   <input
                     type="text"
                     placeholder="Enter Name"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered "
                     {...register("name", {
                       required: {
                         value: true,
@@ -145,12 +145,12 @@ const Register = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.name?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.name.message}
                       </span>
                     )}
                     {errors.name?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.name.message}
                       </span>
                     )}
@@ -161,7 +161,7 @@ const Register = () => {
                   <input
                     type="text"
                     placeholder="Email"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered "
                     {...register("email", {
                       required: {
                         value: true,
@@ -175,12 +175,12 @@ const Register = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.email?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.email.message}
                       </span>
                     )}
                     {errors.email?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.email.message}
                       </span>
                     )}
@@ -192,7 +192,7 @@ const Register = () => {
                   <input
                     type="password"
                     placeholder="Password"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered "
                     {...register("password", {
                       required: {
                         value: true,
@@ -206,12 +206,12 @@ const Register = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.password?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.password.message}
                       </span>
                     )}
                     {errors.password?.type === "minLength" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.password.message}
                       </span>
                     )}
@@ -223,7 +223,7 @@ const Register = () => {
                   <input
                     type="password"
                     placeholder="Confirm Password"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered "
                     {...register("confirmPassword", {
                       required: {
                         value: true,
@@ -237,12 +237,12 @@ const Register = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.confirmPassword?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.confirmPassword.message}
                       </span>
                     )}
                     {errors.confirmPassword?.type === "minLength" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.confirmPassword.message}
                       </span>
                     )}

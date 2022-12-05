@@ -25,7 +25,7 @@ const How = () => {
         <h1 className="text-accent font-semibold text-2xl font-sans text-left">
           How would you like to Ship?
         </h1>
-        <p className="text-neutral-focus font-mono mb-8">
+        <p className="text-neutral-focus  mb-8">
           *indicates require file
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +40,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="Email"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("email", {
                   required: {
                     value: true,
@@ -54,12 +54,12 @@ const How = () => {
               />
               <label className="label my-1 py-0">
                 {errors.email?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.email.message}
                   </span>
                 )}
                 {errors.email?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.email.message}
                   </span>
                 )}
@@ -76,7 +76,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="Company or Name*"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("companyName", {
                   required: {
                     value: true,
@@ -90,12 +90,12 @@ const How = () => {
               />
               <label className="label my-1 py-0">
                 {errors.companyName?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.companyName.message}
                   </span>
                 )}
                 {errors.companyName?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.companyName.message}
                   </span>
                 )}
@@ -112,7 +112,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="Contact number"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("number", {
                   required: {
                     value: true,
@@ -127,12 +127,12 @@ const How = () => {
               />
               <label className="label my-1 py-0">
                 {errors.number?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.number.message}
                   </span>
                 )}
                 {errors.number?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.number.message}
                   </span>
                 )}
@@ -150,7 +150,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="Country*"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("country", {
                   required: {
                     value: true,
@@ -164,12 +164,12 @@ const How = () => {
               />
               <label className="label my-1 py-0">
                 {errors.country?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.country.message}
                   </span>
                 )}
                 {errors.country?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.country.message}
                   </span>
                 )}
@@ -187,7 +187,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="Address*"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("address", {
                   required: {
                     value: true,
@@ -201,12 +201,12 @@ const How = () => {
               />
               <label className="label my-1 py-0">
                 {errors.address?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.address.message}
                   </span>
                 )}
                 {errors.address?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.address.message}
                   </span>
                 )}
@@ -223,7 +223,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="Postal Code / Zip Code"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("postalCode")}
               />
             </div>
@@ -238,7 +238,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="City*"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("city", {
                   required: {
                     value: true,
@@ -252,12 +252,12 @@ const How = () => {
               />
               <label className="label my-1 py-0">
                 {errors.city?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.city.message}
                   </span>
                 )}
                 {errors.city?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.city.message}
                   </span>
                 )}
@@ -274,7 +274,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="Telephone"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("telephoneNumber")}
               />
             </div>
@@ -289,7 +289,7 @@ const How = () => {
               <input
                 type="text"
                 placeholder="Ext"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("ext")}
               />
             </div>

@@ -8,7 +8,7 @@ const Process = () => {
     <div className="bg-success">
       {/* <!-- component --> */}
       <div className="container py-12 mx-auto px-4">
-        <h1 className="text-4xl font-serif font-bold text-center text-accent">
+        <h1 className="text-4xl  font-bold text-center text-accent">
           OUR SERVICE PROCESS
         </h1>
         <p className="text-center pt-2 pb-6 font-sans">

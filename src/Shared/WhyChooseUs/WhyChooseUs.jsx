@@ -26,7 +26,7 @@ const WhyChooseUs = () => {
 
           {/* second col */}
           <div className="second-col p-4">
-            <h1 className="text-accent text-xl font-serif font-bold mb-4 border-b-4">
+            <h1 className="text-accent text-xl  font-bold mb-4 border-b-4">
               WHY CHOOSE US
             </h1>
             <p>

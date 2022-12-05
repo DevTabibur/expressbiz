@@ -9,37 +9,37 @@ const HeaderNav = ({ children }) => {
   const menu = (
     <>
       <NavLink
-        className="m-2  btn btn-accent text-white font-serif rounded-md"
+        className="m-2  btn btn-accent text-white  rounded-md"
         to="/home"
       >
         HOME
       </NavLink>
       <NavLink
-        className="m-2  btn btn-accent text-white font-serif rounded-md"
+        className="m-2  btn btn-accent text-white  rounded-md"
         to="/services"
       >
         SERVICES
       </NavLink>
       <NavLink
-        className="m-2  btn btn-accent text-white font-serif rounded-md"
+        className="m-2  btn btn-accent text-white  rounded-md"
         to="/tracking"
       >
         TRACKING
       </NavLink>
       <NavLink
-        className="m-2  btn btn-accent text-white font-serif rounded-md"
+        className="m-2  btn btn-accent text-white  rounded-md"
         to="/shipping"
       >
         SHIPPING
       </NavLink>
       {/* <NavLink
-        className="m-2  btn btn-accent text-white font-serif rounded-md"
+        className="m-2  btn btn-accent text-white  rounded-md"
         to="/about-us"
       >
         ABOUT US
       </NavLink> */}
       <NavLink
-        className="m-2  btn btn-accent text-white font-serif rounded-md"
+        className="m-2  btn btn-accent text-white  rounded-md"
         to="/contact-us"
       >
         CONTACT US
@@ -47,7 +47,7 @@ const HeaderNav = ({ children }) => {
 
       {activeUser && (
         <NavLink
-          className="m-2  btn btn-accent text-white font-serif rounded-md"
+          className="m-2  btn btn-accent text-white  rounded-md"
           to="/dashboard"
         >
           Dashboard

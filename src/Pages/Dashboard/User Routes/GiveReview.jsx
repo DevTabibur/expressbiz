@@ -44,7 +44,7 @@ const GiveReview = () => {
   };
   return (
     <>
-      <h1 className="text-accent text-5xl font-bold font-serif">
+      <h1 className="text-accent text-5xl font-bold ">
         Give Us Your Review
       </h1>
       <div className="container mx-auto px-4 py-12">
@@ -55,7 +55,7 @@ const GiveReview = () => {
               <input
                 type="text"
                 placeholder="Email"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 defaultValue={activeUserData?.email}
                 readOnly
                 {...register("email")}
@@ -67,7 +67,7 @@ const GiveReview = () => {
               <input
                 type="text"
                 placeholder="your Name"
-                className="input input-bordered font-mono"
+                className="input input-bordered "
                 {...register("reviewer", {
                   required: {
                     value: true,
@@ -81,12 +81,12 @@ const GiveReview = () => {
               />
               <label className="label my-1 py-0">
                 {errors.reviewer?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.reviewer.message}
                   </span>
                 )}
                 {errors.reviewer?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.reviewer.message}
                   </span>
                 )}
@@ -99,7 +99,7 @@ const GiveReview = () => {
             <textarea
               type="text"
               placeholder="Write Review"
-              className="textarea textarea-bordered font-mono"
+              className="textarea textarea-bordered "
               {...register("review", {
                 required: {
                   value: true,
@@ -109,7 +109,7 @@ const GiveReview = () => {
             />
             <label className="label my-1 py-0">
               {errors.review?.type === "required" && (
-                <span className="label-text-alt text-red-500 font-mono">
+                <span className="label-text-alt text-red-500 ">
                   {errors.review.message}
                 </span>
               )}

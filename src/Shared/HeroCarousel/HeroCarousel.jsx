@@ -6,7 +6,7 @@ import "tw-elements";
 
 const HeroCarousel = () => {
   return (
-    <>
+    <div className="mt-0">
       <div
         id="carouselDarkVariant"
         className="carousel slide carousel-fade carousel-dark relative custom-css shadow-2xl"
@@ -17,7 +17,7 @@ const HeroCarousel = () => {
           <button
             data-bs-target="#carouselDarkVariant"
             data-bs-slide-to="0"
-            classname="active"
+            className="active"
             aria-current="true"
             aria-label="Slide 1"
           ></button>
@@ -34,36 +34,40 @@ const HeroCarousel = () => {
         </div>
 
         {/* <!-- Inner --> */}
-        <div className="carousel-inner relative w-full  overflow-hidden custom-css-inner">
+        <div className="carousel-inner w-full  overflow-hidden custom-css-inner relative">
           {/* <!-- Single item --> */}
           <div className="carousel-item active relative float-left w-full">
-            <img src={carousel3} className="block w-full" alt="Motorbike Smoke" />
-            <div className="custom-css-inner-info m-auto text-white">
-              <h5 className="text-5xl font-bold">First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
+            <img
+              src={carousel3}
+              className="block w-full "
+              alt="Motorbike Smoke"
+            />
+            <div className="custom-css-inner-info m-auto text-primary">
+              <p className="uppercase mb-4 font-semibold text-2xl">
+                We Are Proud
               </p>
+              <h5 className="text-5xl font-bold">TO BE ALWAYS ON DEMAND</h5>
             </div>
           </div>
 
           {/* <!-- Single item --> */}
           <div className="carousel-item relative float-left w-full">
-            <img src={carousel2} className="block w-full" alt="Mountaintop" />
-            <div className="custom-css-inner-info m-auto text-white">
-              <h5 className="text-5xl font-bold">Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
+            <img src={carousel2} className="block w-full " alt="Mountaintop" />
+            <div className="custom-css-inner-info m-auto text-primary">
+              <p className="uppercase mb-4 font-semibold text-2xl">
+                We Are Proud
               </p>
+              <h5 className="text-5xl font-bold">TO BE ALWAYS ON DEMAND</h5>
             </div>
           </div>
           {/* <!-- Single item --> */}
           <div className="carousel-item relative float-left w-full">
-            <img src={carousel1} className="block w-full" alt="Mountaintop" />
-            <div className="custom-css-inner-info m-auto text-white">
-              <h5 className="text-5xl font-bold">Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
+            <img src={carousel1} className="block w-full " alt="Mountaintop" />
+            <div className="custom-css-inner-info m-auto  text-primary">
+              <p className="uppercase mb-4 font-semibold text-2xl">
+                We Are Proud
               </p>
+              <h5 className="text-5xl font-bold">TO BE ALWAYS ON DEMAND</h5>
             </div>
           </div>
         </div>
@@ -95,7 +99,7 @@ const HeroCarousel = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

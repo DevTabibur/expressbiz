@@ -79,7 +79,7 @@ const What = ({ handleClick, currentStep, steps }) => {
         <h1 className="text-accent font-semibold text-2xl font-sans text-left">
           what kind of packaging are you using?
         </h1>
-        <p className="text-neutral-focus font-mono mb-8">
+        <p className="text-neutral-focus  mb-8">
           *indicates require file
         </p>
         <div className="grid md:grid-cols-2 gap-6">
@@ -97,7 +97,7 @@ const What = ({ handleClick, currentStep, steps }) => {
                   <input
                     type="text"
                     placeholder="Product Name*"
-                    className="input  input-bordered input-success font-mono"
+                    className="input  input-bordered input-success "
                     {...register("productName", {
                       required: {
                         value: true,
@@ -107,7 +107,7 @@ const What = ({ handleClick, currentStep, steps }) => {
                   />
                   <label className="label my-1 py-0">
                     {errors.productName?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.productName.message}
                       </span>
                     )}
@@ -144,7 +144,7 @@ const What = ({ handleClick, currentStep, steps }) => {
                   </select>
                   <label className="label my-1 py-0">
                     {errors.shipmentType?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.shipmentType.message}
                       </span>
                     )}
@@ -161,7 +161,7 @@ const What = ({ handleClick, currentStep, steps }) => {
                   <input
                     type="number"
                     placeholder="Weight (kg)*"
-                    className="input  input-bordered input-success font-mono"
+                    className="input  input-bordered input-success "
                     {...register("weight", {
                       required: {
                         value: true,
@@ -175,12 +175,12 @@ const What = ({ handleClick, currentStep, steps }) => {
                   />
                   <label className="label my-1 py-0">
                     {errors.weight?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.weight.message}
                       </span>
                     )}
                     {errors.weight?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.weight.message}
                       </span>
                     )}
@@ -197,7 +197,7 @@ const What = ({ handleClick, currentStep, steps }) => {
                   <input
                     type="number"
                     placeholder="Width (inch)*"
-                    className="input  input-bordered input-success font-mono"
+                    className="input  input-bordered input-success "
                     {...register("width")}
                   />
                 </div>
@@ -211,7 +211,7 @@ const What = ({ handleClick, currentStep, steps }) => {
                   </label>
                   <select
                     type="text"
-                    className="select select-bordered font-mono cursor-not-allowed"
+                    className="select select-bordered  cursor-not-allowed"
                     defaultValue={origin}
                     {...register("origin")}
                   >
@@ -295,7 +295,7 @@ const What = ({ handleClick, currentStep, steps }) => {
                   <input
                     type="text"
                     placeholder="Destination Address"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered "
                     defaultValue={destination}
                     {...register("destination")}
                   />
@@ -309,7 +309,7 @@ const What = ({ handleClick, currentStep, steps }) => {
                   <input
                     type="text"
                     placeholder="Destination Address"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered "
                     defaultValue={distance}
                     {...register("distance")}
                   />

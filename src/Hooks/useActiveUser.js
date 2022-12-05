@@ -34,7 +34,7 @@ const useActiveUser = () => {
     } else {
       setActiveUser(false);
     }
-  }, [id,]);
+  }, [id, activeUser]);
 
   return [activeUser, activeUserData, isLoading];
 };

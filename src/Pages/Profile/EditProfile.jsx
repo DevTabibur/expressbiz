@@ -26,22 +26,60 @@ const EditProfile = () => {
     formData.append("number", data.number);
     formData.append("bio", data.bio);
 
-    const url = `http://localhost:5000/register/${id}`;
-    fetch(url, {
-      method: "PUT",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("data posted", data);
-        if (data.modifiedCount) {
+    const img = data.profileImage[0];
+    const validExt = ["png", "jpg", "jpeg", "PNG", "JPG", "JPEG"];
+
+    if (img !== "") {
+      // checking image extension
+      // imageName.jpeg
+      const pos_of_dot = img.name.lastIndexOf(".") + 1;
+      const img_ext = img.name.substring(pos_of_dot);
+      const result = validExt.includes(img_ext);
+
+      if (result === false) {
+        Swal.fire({
+          title: "Only jpg, png and jpeg files are allowed",
+          icon: "warning",
+        });
+        return false;
+      }
+      // checking image size
+      else {
+        if (parseFloat(img.size / (1024 * 1024)) >= 5) {
+          // perform operation
           Swal.fire({
-            title: "Profile Updated",
-            icon: "success",
+            title: "File Size must be smaller than 5MB",
+            icon: "warning",
           });
-          reset();
+          return false;
+        } else {
+          console.log("everything is perfect");
+
+          // everything is perfect
+
+          const url = `http://localhost:5000/register/${id}`;
+          fetch(url, {
+            method: "PUT",
+            body: formData,
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              // console.log("data posted", data);
+              if (data.modifiedCount) {
+                Swal.fire({
+                  title: "Profile Updated",
+                  icon: "success",
+                });
+                reset();
+                window.location.reload();
+              }
+            });
         }
-      });
+      }
+    } else {
+      alert("No Image is selected");
+      return false;
+    }
   };
 
   return (
@@ -107,12 +145,7 @@ const EditProfile = () => {
           <h1 className="text-accent font-semibold text-3xl mb-6">
             Edit your Profile
           </h1>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            action="http://localhost:5000/"
-            method="post"
-            encType="multipart/form-data"
-          >
+          <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
             <div className="grid md:grid-cols-2 gap-4">
               {/* email */}
               <div className="form-group">
@@ -146,12 +179,12 @@ const EditProfile = () => {
                 />
                 <label className="label my-1 py-0">
                   {errors.name?.type === "required" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.name.message}
                     </span>
                   )}
                   {errors.name?.type === "pattern" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.name.message}
                     </span>
                   )}
@@ -178,12 +211,12 @@ const EditProfile = () => {
                 />
                 <label className="label my-1 py-0">
                   {errors.number?.type === "required" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.number.message}
                     </span>
                   )}
                   {errors.number?.type === "pattern" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.number.message}
                     </span>
                   )}
@@ -206,10 +239,13 @@ const EditProfile = () => {
                 />
                 <label className="label my-1 py-0">
                   {errors.profileImage?.type === "required" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.profileImage.message}
                     </span>
                   )}
+                </label>
+                <label className="label my-1 py-0 text-warning">
+                  Only JPG, PNG and JPEG with max 2MB files are validate
                 </label>
               </div>
             </div>
@@ -229,7 +265,7 @@ const EditProfile = () => {
               />
               <label className="label my-1 py-0">
                 {errors.bio?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.bio.message}
                   </span>
                 )}

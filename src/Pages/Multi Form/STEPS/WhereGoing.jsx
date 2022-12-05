@@ -31,7 +31,7 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
         <h1 className="text-accent font-semibold text-2xl font-sans text-left">
           Hello. Where is your Shipping going?
         </h1>
-        <p className="text-neutral-focus font-mono mb-8">
+        <p className="text-neutral-focus  mb-8">
           *indicates require file
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -46,7 +46,7 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               <input
                 type="text"
                 placeholder="Email"
-                className="input  input-bordered input-success font-mono"
+                className="input  input-bordered input-success "
                 {...register("email", {
                   required: {
                     value: true,
@@ -60,12 +60,12 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               />
               <label className="label my-1 py-0">
                 {errors.email?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.email.message}
                   </span>
                 )}
                 {errors.email?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.email.message}
                   </span>
                 )}
@@ -82,7 +82,7 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               <input
                 type="text"
                 placeholder="Company or Name*"
-                className="input  input-bordered input-success font-mono"
+                className="input  input-bordered input-success "
                 {...register("companyName", {
                   required: {
                     value: true,
@@ -96,12 +96,12 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               />
               <label className="label my-1 py-0">
                 {errors.companyName?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.companyName.message}
                   </span>
                 )}
                 {errors.companyName?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.companyName.message}
                   </span>
                 )}
@@ -118,7 +118,7 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               <input
                 type="text"
                 placeholder="Contact number"
-                className="input  input-bordered input-success font-mono"
+                className="input  input-bordered input-success "
                 {...register("number", {
                   required: {
                     value: true,
@@ -133,12 +133,12 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               />
               <label className="label my-1 py-0">
                 {errors.number?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.number.message}
                   </span>
                 )}
                 {errors.number?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.number.message}
                   </span>
                 )}
@@ -157,7 +157,7 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
                 type="text"
                 placeholder="Country*"
                 defaultValue="Bangladesh"
-                className="input  input-bordered input-success font-mono"
+                className="input  input-bordered input-success "
                 {...register("country")}
               />
             </div>
@@ -173,7 +173,7 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               <input
                 type="text"
                 placeholder="Office Address*"
-                className="input  input-bordered input-success font-mono"
+                className="input  input-bordered input-success "
                 {...register("destinationAddress", {
                   required: {
                     value: true,
@@ -187,12 +187,12 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               />
               <label className="label my-1 py-0">
                 {errors.destinationAddress?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.destinationAddress.message}
                   </span>
                 )}
                 {errors.destinationAddress?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
+                  <span className="label-text-alt text-red-500 ">
                     {errors.destinationAddress.message}
                   </span>
                 )}
@@ -209,7 +209,7 @@ const WhereGoing = ({ handleClick, currentStep, steps }) => {
               <input
                 type="text"
                 placeholder="Postal Code / Zip Code"
-                className="input  input-bordered input-success font-mono"
+                className="input  input-bordered input-success "
                 {...register("postalCode")}
               />
             </div>

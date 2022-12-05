@@ -55,7 +55,7 @@ const Contact = () => {
   // if (signInError || googleError || resetError) {
   //   showError = (
   //     <small>
-  //       <p className="text-red-500  font-mono">
+  //       <p className="text-red-500  ">
   //         {signInError?.message || googleError?.message || resetError?.message}
   //       </p>
   //     </small>
@@ -67,10 +67,10 @@ const Contact = () => {
       <div className="page-title shadow">
         <div className="container mx-auto px-4">
           <div className=" text-center my-12">
-            <h2 className="text-4xl font-bold text-white font-serif">
+            <h2 className="text-4xl font-bold text-white ">
               Contact With Us
             </h2>
-            <p className="mb-4 text-center text-sm font-mono text-white">
+            <p className="mb-4 text-center text-sm  text-white">
               You can contact with us via this
             </p>
           </div>
@@ -81,7 +81,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-4">
           {/* first col */}
           <div className="">
-            <h1 className="text-accent text-3xl font-bold font-serif">
+            <h1 className="text-accent text-3xl font-bold ">
               WE ARE ALWAYS WITH YOU
             </h1>
             <div className="contact-image my-6">
@@ -92,7 +92,7 @@ const Contact = () => {
               />
             </div>
             <div className="border-b-2 mb-6">
-              <h2 className="text-accent text-2xl font-bold font-serif">
+              <h2 className="text-accent text-2xl font-bold ">
                 QUICK FEEDBACK FORM
               </h2>
             </div>
@@ -109,7 +109,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Enter your full name"
-                    className="input input-bordered input-success font-mono"
+                    className="input input-bordered input-success "
                     {...register("name", {
                       required: {
                         value: true,
@@ -119,7 +119,7 @@ const Contact = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.name?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.name.message}
                       </span>
                     )}
@@ -131,7 +131,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Email"
-                    className="input input-bordered input-success font-mono"
+                    className="input input-bordered input-success "
                     {...register("email", {
                       required: {
                         value: true,
@@ -145,12 +145,12 @@ const Contact = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.email?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.email.message}
                       </span>
                     )}
                     {errors.email?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.email.message}
                       </span>
                     )}
@@ -162,7 +162,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Company Name / Shop Name"
-                    className="input input-bordered input-success font-mono"
+                    className="input input-bordered input-success "
                     {...register("company")}
                   />
                 </div>
@@ -172,7 +172,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Mobile Number"
-                    className="input input-bordered input-success font-mono"
+                    className="input input-bordered input-success "
                     {...register("number")}
                   />
                 </div>
@@ -183,7 +183,7 @@ const Contact = () => {
                 <textarea
                   type="text"
                   placeholder="Write Here"
-                  className="textarea textarea-bordered  input-success font-mono"
+                  className="textarea textarea-bordered  input-success "
                   {...register("message", {
                     required: {
                       value: true,
@@ -193,7 +193,7 @@ const Contact = () => {
                 />
                 <label className="label my-1 py-0">
                   {errors.message?.type === "required" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.message.message}
                     </span>
                   )}
@@ -223,7 +223,7 @@ const Contact = () => {
                       className="text-accent text-2xl"
                       icon={faLocation}
                     />
-                    <p className="ml-4 font-semibold text-sm font-serif">
+                    <p className="ml-4 font-semibold text-sm ">
                       Brisbane , Melbourne
                     </p>
                   </li>
@@ -232,7 +232,7 @@ const Contact = () => {
                       className="text-accent text-2xl"
                       icon={faEnvelope}
                     />
-                    <p className="ml-4 font-semibold text-sm font-serif">
+                    <p className="ml-4 font-semibold text-sm ">
                       abc@gmail.com
                     </p>
                   </li>
@@ -241,7 +241,7 @@ const Contact = () => {
                       className="text-accent text-2xl"
                       icon={faFax}
                     />
-                    <p className="ml-4 font-semibold text-sm font-serif">
+                    <p className="ml-4 font-semibold text-sm ">
                       +8801307588223
                     </p>
                   </li>
@@ -250,7 +250,7 @@ const Contact = () => {
                       className="text-accent text-2xl"
                       icon={faPhone}
                     />
-                    <p className="ml-4 font-semibold text-sm font-serif">
+                    <p className="ml-4 font-semibold text-sm ">
                       +8801307588223
                     </p>
                   </li>
@@ -268,7 +268,7 @@ const Contact = () => {
                       className="text-accent text-2xl"
                       icon={faLocation}
                     />
-                    <p className="ml-4 font-semibold text-sm font-serif">
+                    <p className="ml-4 font-semibold text-sm ">
                       Brisbane , Melbourne
                     </p>
                   </li>
@@ -277,7 +277,7 @@ const Contact = () => {
                       className="text-accent text-2xl"
                       icon={faEnvelope}
                     />
-                    <p className="ml-4 font-semibold text-sm font-serif">
+                    <p className="ml-4 font-semibold text-sm ">
                       abc@gmail.com
                     </p>
                   </li>
@@ -286,7 +286,7 @@ const Contact = () => {
                       className="text-accent text-2xl"
                       icon={faFax}
                     />
-                    <p className="ml-4 font-semibold text-sm font-serif">
+                    <p className="ml-4 font-semibold text-sm ">
                       +8801307588223
                     </p>
                   </li>
@@ -295,7 +295,7 @@ const Contact = () => {
                       className="text-accent text-2xl"
                       icon={faPhone}
                     />
-                    <p className="ml-4 font-semibold text-sm font-serif">
+                    <p className="ml-4 font-semibold text-sm ">
                       +8801307588223
                     </p>
                   </li>

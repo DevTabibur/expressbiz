@@ -14,10 +14,10 @@ const NotFound = () => {
               src={NotFoundPic}
               alt="Not_Found_Pic"
             />
-            <p className="text-accent font-serif text-sm font-medium">Handling 404 page not found in React Router</p>
+            <p className="text-accent  text-sm font-medium">Handling 404 page not found in React Router</p>
             <button
               onClick={() => navigate(-1)}
-              className="btn btn-primary text-white font-serif font-medium mt-12"
+              className="btn btn-primary text-white  font-medium mt-12"
             >
               Go Back
             </button>

@@ -11,11 +11,13 @@ const SingleService = () => {
     <div className="bg-accent">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-1">
-          <h1 className="text-3xl font-bold font-serif text-primary my-4">{title}</h1>
+          <h1 className="text-3xl font-bold  text-primary my-4">
+            {title}
+          </h1>
           <figure>
-            <img src={image} alt="service_image"/>
+            <img src={`http://localhost:5000/${image}`} alt="service_image" />
           </figure>
-          <p className="mt-8 font-mono text-neutral-focus">{description}</p>
+          <p className="mt-8  text-neutral-focus">{description}</p>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const navigate = useNavigate();
   const [userData, userActiveData, isLoading] = useActiveUser();
-  const { name, email, profileImage, bio, number } = userActiveData;
+  const { name, email, profileImage, path, bio, number } = userActiveData;
 
   // if (isLoading) {
   //   return <Loader />;
@@ -15,13 +15,32 @@ const Profile = () => {
         <div className="basis-3/3">
           <div className="flex justify-center">
             <div className="rounded-lg shadow-lg bg-white max-w-md">
-              <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-                <img
-                  className="rounded-t-lg"
-                  src="https://mdbootstrap.com/img/new/standard/nature/182.jpg"
-                  alt=""
-                />
-              </a>
+              {path ? (
+                <a
+                  href="#!"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                >
+                  <img
+                    className="rounded-t-lg"
+                    src={`http://localhost:5000/${path}`}
+                    alt=""
+                  />
+                </a>
+              ) : (
+                <a
+                  href="#!"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                >
+                  <img
+                    className="rounded-t-lg"
+                    src="https://mdbootstrap.com/img/new/standard/nature/182.jpg"
+                    alt=""
+                  />
+                </a>
+              )}
+
               <div className="p-6">
                 <h5 className="text-gray-900 text-xl font-medium mb-2 uppercase">
                   Name : {name}

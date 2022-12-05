@@ -64,7 +64,7 @@ const GetQuote = () => {
                   <input
                     type="text"
                     placeholder="Enter your full name"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered "
                     {...register("name", {
                       required: {
                         value: true,
@@ -74,7 +74,7 @@ const GetQuote = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.name?.type === "required" && (
-                      <span className="label-text-alt text-white font-mono">
+                      <span className="label-text-alt text-white ">
                         {errors.name.message}
                       </span>
                     )}
@@ -87,7 +87,7 @@ const GetQuote = () => {
                     <input
                       type="text"
                       placeholder="Email"
-                      className="input input-bordered font-mono"
+                      className="input input-bordered "
                       {...register("email", {
                         required: {
                           value: true,
@@ -101,12 +101,12 @@ const GetQuote = () => {
                     />
                     <label className="label my-1 py-0">
                       {errors.email?.type === "required" && (
-                        <span className="label-text-alt text-white font-mono">
+                        <span className="label-text-alt text-white ">
                           {errors.email.message}
                         </span>
                       )}
                       {errors.email?.type === "pattern" && (
-                        <span className="label-text-alt text-white font-mono">
+                        <span className="label-text-alt text-white ">
                           {errors.email.message}
                         </span>
                       )}
@@ -118,7 +118,7 @@ const GetQuote = () => {
                     <input
                       type="text"
                       placeholder="Mobile"
-                      className="input input-bordered font-mono"
+                      className="input input-bordered "
                       {...register("number", {
                         required: {
                           value: true,
@@ -133,12 +133,12 @@ const GetQuote = () => {
                     />
                     <label className="label my-1 py-0">
                       {errors.number?.type === "required" && (
-                        <span className="label-text-alt text-white font-mono">
+                        <span className="label-text-alt text-white ">
                           {errors.number.message}
                         </span>
                       )}
                       {errors.number?.type === "pattern" && (
-                        <span className="label-text-alt text-white font-mono">
+                        <span className="label-text-alt text-white ">
                           {errors.number.message}
                         </span>
                       )}
@@ -150,7 +150,7 @@ const GetQuote = () => {
                     <input
                       type="text"
                       placeholder="Destination From"
-                      className="input input-bordered font-mono"
+                      className="input input-bordered "
                       {...register("destinationFrom", {
                         required: {
                           value: true,
@@ -160,7 +160,7 @@ const GetQuote = () => {
                     />
                     <label className="label my-1 py-0">
                       {errors.destinationFrom?.type === "required" && (
-                        <span className="label-text-alt text-white font-mono">
+                        <span className="label-text-alt text-white ">
                           {errors.destinationFrom.message}
                         </span>
                       )}
@@ -172,7 +172,7 @@ const GetQuote = () => {
                     <input
                       type="text"
                       placeholder="Destination To"
-                      className="input input-bordered font-mono"
+                      className="input input-bordered "
                       {...register("destinationTo", {
                         required: {
                           value: true,
@@ -182,7 +182,7 @@ const GetQuote = () => {
                     />
                     <label className="label my-1 py-0">
                       {errors.destinationTo?.type === "required" && (
-                        <span className="label-text-alt text-white font-mono">
+                        <span className="label-text-alt text-white ">
                           {errors.destinationTo.message}
                         </span>
                       )}
@@ -194,7 +194,7 @@ const GetQuote = () => {
                     <input
                       type="text"
                       placeholder="Shipping Type"
-                      className="input input-bordered font-mono"
+                      className="input input-bordered "
                       {...register("shippingType", {
                         required: {
                           value: true,
@@ -204,7 +204,7 @@ const GetQuote = () => {
                     />
                     <label className="label my-1 py-0">
                       {errors.shippingType?.type === "required" && (
-                        <span className="label-text-alt text-white font-mono">
+                        <span className="label-text-alt text-white ">
                           {errors.shippingType.message}
                         </span>
                       )}
@@ -216,7 +216,7 @@ const GetQuote = () => {
                     <input
                       type="datetime-local"
                       placeholder="Date & Time"
-                      className="input input-bordered font-mono"
+                      className="input input-bordered "
                       {...register("dateTime", {
                         required: {
                           value: true,
@@ -226,7 +226,7 @@ const GetQuote = () => {
                     />
                     <label className="label my-1 py-0">
                       {errors.dateTime?.type === "required" && (
-                        <span className="label-text-alt text-white font-mono">
+                        <span className="label-text-alt text-white ">
                           {errors.dateTime.message}
                         </span>
                       )}
@@ -239,7 +239,7 @@ const GetQuote = () => {
                   <textarea
                     type="text"
                     placeholder="Write Here"
-                    className="textarea textarea-bordered font-mono"
+                    className="textarea textarea-bordered "
                     {...register("message", {
                       required: {
                         value: true,
@@ -249,7 +249,7 @@ const GetQuote = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.message?.type === "required" && (
-                      <span className="label-text-alt text-white font-mono">
+                      <span className="label-text-alt text-white ">
                         {errors.message.message}
                       </span>
                     )}
@@ -257,7 +257,7 @@ const GetQuote = () => {
                 </div>
 
                 <input
-                  className="btn btn-accent font-serif font-bold text-white"
+                  className="btn btn-accent  font-bold text-white"
                   value="GET A FREE QUOTE"
                   type="submit"
                 />

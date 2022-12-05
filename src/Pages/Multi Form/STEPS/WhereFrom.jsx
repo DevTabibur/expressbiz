@@ -54,7 +54,7 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
       <h1 className="text-accent font-semibold text-2xl font-sans text-left">
         Hello. Where are you Shipping From?
       </h1>
-      <p className="text-neutral-focus font-mono mb-8">
+      <p className="text-neutral-focus  mb-8">
         *indicates require file
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -67,7 +67,7 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
               </span>
             </label>
             <input
-              className="input input-bordered font-mono cursor-not-allowed"
+              className="input input-bordered  cursor-not-allowed"
               defaultValue={email}
               readOnly
               {...register("email")}
@@ -84,7 +84,7 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
             <input
               type="text"
               placeholder="Company or Name*"
-              className="input input-bordered input-success font-mono"
+              className="input input-bordered input-success "
               {...register("companyName", {
                 required: {
                   value: true,
@@ -98,12 +98,12 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
             />
             <label className="label my-1 py-0">
               {errors.companyName?.type === "required" && (
-                <span className="label-text-alt text-red-500 font-mono">
+                <span className="label-text-alt text-red-500 ">
                   {errors.companyName.message}
                 </span>
               )}
               {errors.companyName?.type === "pattern" && (
-                <span className="label-text-alt text-red-500 font-mono">
+                <span className="label-text-alt text-red-500 ">
                   {errors.companyName.message}
                 </span>
               )}
@@ -120,7 +120,7 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
             <input
               type="text"
               placeholder="Contact number"
-              className="input input-bordered input-success font-mono"
+              className="input input-bordered input-success "
               {...register("number", {
                 required: {
                   value: true,
@@ -135,12 +135,12 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
             />
             <label className="label my-1 py-0">
               {errors.number?.type === "required" && (
-                <span className="label-text-alt text-red-500 font-mono">
+                <span className="label-text-alt text-red-500 ">
                   {errors.number.message}
                 </span>
               )}
               {errors.number?.type === "pattern" && (
-                <span className="label-text-alt text-red-500 font-mono">
+                <span className="label-text-alt text-red-500 ">
                   {errors.number.message}
                 </span>
               )}
@@ -159,7 +159,7 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
               type="text"
               placeholder="Country"
               defaultValue="Bangladesh"
-              className="input input-bordered input-success font-mono"
+              className="input input-bordered input-success "
               {...register("country")}
             />
           </div>
@@ -174,7 +174,7 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
             </label>
             <select
               type="text"
-              className="select select-bordered font-mono"
+              className="select select-bordered "
               {...register("originAddress", {
                 required: {
                   value: true,
@@ -257,12 +257,12 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
             </select>
             <label className="label my-1 py-0">
               {errors.originAddress?.type === "required" && (
-                <span className="label-text-alt text-red-500 font-mono">
+                <span className="label-text-alt text-red-500 ">
                   {errors.originAddress.message}
                 </span>
               )}
               {errors.originAddress?.type === "pattern" && (
-                <span className="label-text-alt text-red-500 font-mono">
+                <span className="label-text-alt text-red-500 ">
                   {errors.originAddress.message}
                 </span>
               )}
@@ -279,7 +279,7 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
             <input
               type="text"
               placeholder="Postal Code / Zip Code"
-              className="input input-bordered input-success font-mono"
+              className="input input-bordered input-success "
               {...register("postalCode")}
             />
           </div>

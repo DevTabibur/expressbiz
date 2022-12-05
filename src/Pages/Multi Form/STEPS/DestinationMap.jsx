@@ -76,7 +76,7 @@ const DestinationMap = () => {
                   </label>
                   <select
                     type="text"
-                    className="select select-bordered font-mono"
+                    className="select select-bordered "
                     {...register("origin", {
                       required: {
                         value: true,
@@ -159,12 +159,12 @@ const DestinationMap = () => {
                   </select>
                   <label className="label my-1 py-0">
                     {errors.origin?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.origin.message}
                       </span>
                     )}
                     {errors.origin?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.origin.message}
                       </span>
                     )}
@@ -180,7 +180,7 @@ const DestinationMap = () => {
                   <input
                     type="text"
                     placeholder="Destination Address"
-                    className="input input-bordered font-mono"
+                    className="input input-bordered "
                     {...register("destination", {
                       required: {
                         value: true,
@@ -195,12 +195,12 @@ const DestinationMap = () => {
                   />
                   <label className="label my-1 py-0">
                     {errors.destination?.type === "required" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.destination.message}
                       </span>
                     )}
                     {errors.destination?.type === "pattern" && (
-                      <span className="label-text-alt text-red-500 font-mono">
+                      <span className="label-text-alt text-red-500 ">
                         {errors.destination.message}
                       </span>
                     )}

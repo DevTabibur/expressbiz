@@ -96,10 +96,10 @@ const Login = () => {
             <div className="login-info p-12 text-center">
               <FontAwesomeIcon className="icon" icon={faLockOpen} />
 
-              <h2 className="text-white font-serif font-bold text-xl my-6">
+              <h2 className="text-white  font-bold text-xl my-6">
                 WELCOME TO YOUR ACCOUNT
               </h2>
-              <p className="text-neutral font-mono mb-4">
+              <p className="text-neutral  mb-4">
                 abc abc abc abc abc abc abc abca abc abc abc abc
               </p>
               <Link
@@ -123,7 +123,7 @@ const Login = () => {
                 <input
                   type="text"
                   placeholder="Email"
-                  className="input input-bordered font-mono"
+                  className="input input-bordered "
                   {...register("email", {
                     required: {
                       value: true,
@@ -137,12 +137,12 @@ const Login = () => {
                 />
                 <label className="label my-1 py-0">
                   {errors.email?.type === "required" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.email.message}
                     </span>
                   )}
                   {errors.email?.type === "pattern" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.email.message}
                     </span>
                   )}
@@ -152,7 +152,7 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="Password"
-                  className="input input-bordered font-mono"
+                  className="input input-bordered "
                   {...register("password", {
                     required: {
                       value: true,
@@ -166,12 +166,12 @@ const Login = () => {
                 />
                 <label className="label my-1 py-0">
                   {errors.password?.type === "required" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.password.message}
                     </span>
                   )}
                   {errors.password?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500 font-mono">
+                    <span className="label-text-alt text-red-500 ">
                       {errors.password.message}
                     </span>
                   )}
@@ -182,7 +182,7 @@ const Login = () => {
                     // await sendPasswordResetEmail(email);
                   }}
                 >
-                  <p className="label-text-alt link link-hover font-semibold font-serif text-primary hover:text-accent">
+                  <p className="label-text-alt link link-hover font-semibold  text-primary hover:text-accent">
                     Forgot password?
                   </p>
                 </label>

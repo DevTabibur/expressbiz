@@ -28,7 +28,7 @@ const QuotationList = () => {
   };
   return (
     <>
-      <h1 className="text-accent text-5xl font-bold font-serif">
+      <h1 className="text-accent text-5xl font-bold ">
         Your Quotation History {quotations.length}
       </h1>
       <div className="container mx-auto px-4 py-12">

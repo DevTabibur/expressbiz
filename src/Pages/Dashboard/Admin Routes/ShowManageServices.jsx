@@ -16,7 +16,7 @@ const ShowManageServices = ({ service, deleteService }) => {
           <div className="card-actions justify-end">
             <button
               onClick={() => deleteService(_id)}
-              className="btn btn-accent text-white font-serif"
+              className="btn btn-accent text-white "
             >
               Delete
             </button>

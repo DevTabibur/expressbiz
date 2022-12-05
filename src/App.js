@@ -14,8 +14,6 @@ import RequireAdmin from "./Authentication/RequireAdmin";
 import adminRoutes from "./Routes/adminRoutes";
 import Shipping from "./Pages/Shipping/Shipping";
 
-export const BlogContext = createContext();
-
 function App() {
   return (
     <>
@@ -49,11 +47,9 @@ function App() {
           {/* extra routes */}
           <Route element={<RequireUser></RequireUser>}>
             <Route path="/tracking" element={<Tracking />} />
-            {/* <Route path="/shipping" element={<Shipping />} /> */}
           </Route>
         </Routes>
       </HeaderNav>
-      {/* <Footer /> */}
     </>
   );
 }

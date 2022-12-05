@@ -96,7 +96,7 @@ const Review = ({ handleClick, currentStep, steps }) => {
         <h1 className="text-accent font-semibold text-2xl font-sans text-left">
           Let's make sure everything is in order
         </h1>
-        <p className="text-neutral-focus font-mono mb-8">
+        <p className="text-neutral-focus  mb-8">
           <strong>N.B Go to dashboard for payment</strong>
         </p>
 
@@ -111,28 +111,28 @@ const Review = ({ handleClick, currentStep, steps }) => {
               <h2 className="text-accent font-semibold mb-2">Ship From</h2>
               <hr></hr>
               {userData?.shippingFrom?.address && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   {userData?.shippingFrom?.address},
                   {userData?.shippingFrom?.country}
                 </p>
               )}
               {userData?.shippingFrom?.email && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Email : {userData?.shippingFrom?.email}
                 </p>
               )}
               {userData?.shippingFrom?.companyName && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Company / Name : {userData?.shippingFrom?.companyName}
                 </p>
               )}
               {userData?.shippingFrom?.postalCode && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Postal Code : {userData?.shippingFrom?.postalCode}
                 </p>
               )}
               {userData?.shippingFrom?.number && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Number : {userData?.shippingFrom?.number}
                 </p>
               )}
@@ -150,26 +150,26 @@ const Review = ({ handleClick, currentStep, steps }) => {
               <hr></hr>
 
               {userData?.shippingGoing?.address && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   {userData?.shippingGoing?.address},
                   {userData?.shippingGoing?.country}
                 </p>
               )}
 
               {userData?.shippingGoing?.email && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Email : {userData?.shippingGoing?.email}
                 </p>
               )}
 
               {userData?.shippingGoing?.companyName && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Company / Name : {userData?.shippingGoing?.companyName}
                 </p>
               )}
 
               {userData?.shippingGoing?.number && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Number : {userData?.shippingGoing?.number}
                 </p>
               )}
@@ -186,28 +186,28 @@ const Review = ({ handleClick, currentStep, steps }) => {
               <h2 className="text-accent font-semibold mb-2">Return To</h2>
               <hr></hr>
               {userData?.shippingFrom?.address && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   {userData?.shippingFrom?.address},
                   {userData?.shippingFrom?.country}
                 </p>
               )}
               {userData?.shippingFrom?.email && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Email : {userData?.shippingFrom?.email}
                 </p>
               )}
               {userData?.shippingFrom?.companyName && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Company / Name : {userData?.shippingFrom?.companyName}
                 </p>
               )}
               {userData?.shippingFrom?.postalCode && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Postal Code : {userData?.shippingFrom?.postalCode}
                 </p>
               )}
               {userData?.shippingFrom?.number && (
-                <p className="text-accent font-serif mt-2">
+                <p className="text-accent  mt-2">
                   Number : {userData?.shippingFrom?.number}
                 </p>
               )}
@@ -229,21 +229,21 @@ const Review = ({ handleClick, currentStep, steps }) => {
             </h2>
             <hr></hr>
 
-            <p className="text-accent font-serif mt-2">
+            <p className="text-accent  mt-2">
               Product Name : {userData?.what?.productName}
             </p>
-            <p className="text-accent font-serif mt-2">
+            <p className="text-accent  mt-2">
               Shipping Type : {userData?.what?.shipmentType} Freight
             </p>
-            <p className="text-accent font-serif mt-2">
+            <p className="text-accent  mt-2">
               Weight : {userData?.what?.weight} kg
             </p>
-            <p className="text-accent font-serif mt-2">
+            <p className="text-accent  mt-2">
               Distance : {userData?.what?.distance} km
             </p>
 
             {userData?.what?.width && (
-              <p className="text-accent font-serif mt-2">
+              <p className="text-accent  mt-2">
                 Width : {userData?.what?.width} inch
               </p>
             )}
@@ -252,7 +252,7 @@ const Review = ({ handleClick, currentStep, steps }) => {
           <h1 className="font-bold text-accent text-xl font-sans mb-2">
             Payment
           </h1>
-          <p className="text-neutral-focus font-mono mb-8">
+          <p className="text-neutral-focus  mb-8">
             <strong>
               Confirm Your order. We'll send you how much you have to pay for
               this shipment?
@@ -266,13 +266,13 @@ const Review = ({ handleClick, currentStep, steps }) => {
             </h2>
             <hr></hr>
 
-            <p className="text-accent font-serif mt-2">
+            <p className="text-accent  mt-2">
               Bill Shipping Charge To : Card
             </p>
-            <p className="text-accent font-serif mt-2">
+            <p className="text-accent  mt-2">
               Bill Duties and Taxes To : Receive company
             </p>
-            <p className="text-accent font-serif mt-2">
+            <p className="text-accent  mt-2">
               Charge (Taxes) : tk {Math.round(price)}
             </p>
           </div>

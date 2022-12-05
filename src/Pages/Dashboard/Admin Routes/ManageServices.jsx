@@ -34,7 +34,7 @@ const ManageServices = () => {
   };
   return (
     <>
-      <h1 className="text-accent text-5xl font-bold font-serif">
+      <h1 className="text-accent text-5xl font-bold ">
         Manage Services
       </h1>
       <div className="container mx-auto px-4 py-12">

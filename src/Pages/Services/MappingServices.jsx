@@ -4,11 +4,16 @@ const MappingServices = ({ service }) => {
   // console.log('service', service)
   const navigate = useNavigate();
   const { _id, title, description, image } = service;
+  // console.log("image", image);
   return (
     <>
       <div className="card w-full bg-base-100 shadow-xl">
-        <figure>
-          <img src={image} alt="shipping_images" />
+        <figure className="relative">
+          <img
+            className="relative w-96 h-96"
+            src={`http://localhost:5000/${image}`}
+            alt="shipping_images"
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
@@ -16,7 +21,7 @@ const MappingServices = ({ service }) => {
           <div className="card-actions justify-end">
             <button
               onClick={() => navigate(`/service/${_id}`)}
-              className="btn btn-accent text-white font-serif"
+              className="btn btn-accent text-white "
             >
               Read More
             </button>
