@@ -183,7 +183,7 @@ const Login = () => {
                   }}
                 >
                   <p className="label-text-alt link link-hover font-semibold  text-primary hover:text-accent">
-                    Forgot password?
+                    <Link to="/forgot-password">Forgot password?</Link>
                   </p>
                 </label>
               </div>

@@ -38,6 +38,7 @@
 5. An Admin can't make shipment
 6. Destination routing with google maps api for shipment
 7. Edit profile with multer
+8. anyone can change their old password from dashboard/edit-profile
 
 ### PROBLEMS
 

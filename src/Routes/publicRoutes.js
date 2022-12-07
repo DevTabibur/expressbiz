@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import Services from "../Pages/Services/Services";
 import Shipping from "../Pages/Shipping/Shipping";
 import SingleService from "../Pages/Services/SingleService";
+import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 
 export const publicRoutes = [
   { path: "/", name: Home, Component: Home },
@@ -16,6 +17,7 @@ export const publicRoutes = [
   { path: "/contact-us", name: Contact, Component: Contact },
   { path: "/login", name: Login, Component: Login },
   { path: "/register", name: Register, Component: Register },
+  { path: "/forgot-password", name: ForgotPassword, Component: ForgotPassword },
   { path: "*", name: NotFound, Component: NotFound },
 ];
 

@@ -75,7 +75,8 @@ const HeaderNav = ({ children }) => {
           <div
             className="w-full navbar bg-white shadow-lg"
             style={
-              pathname.includes(`/login`)
+              pathname.includes(`/login`) ||
+              pathname.includes(`/forgot-password`)
                 ? { display: "none" }
                 : { display: "flex" }
             }
