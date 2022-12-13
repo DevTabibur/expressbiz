@@ -12,22 +12,19 @@ import MappingServices from "../Services/MappingServices";
 import { useState } from "react";
 import Gallery from "../../Shared/Gallery/Gallery";
 
-// home slider review testimonial
-// https://www.hyperui.dev/components/marketing/testimonials
-
 const Home = () => {
   return (
     <>
-      {/* <HeroCarousel />
+      <HeroCarousel />
       <Services />
       <BookShipping />
       <WhyChooseUs />
       <Process />
-      <GetQuote /> */}
+      <GetQuote />
       <Testimonials />
-      {/* <Gallery />
+      <Gallery />
       <Contact />
-      <Footer /> */}
+      <Footer />
     </>
   );
 };

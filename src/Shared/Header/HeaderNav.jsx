@@ -1,18 +1,57 @@
 import { withTheme } from "@emotion/react";
-import React from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Logo from "../../Assets/Logos/EXPRESS.webp";
 import useActiveUser from "../../Hooks/useActiveUser";
+import useAdmin from "../../Hooks/useAdmin";
+import Loader from "../Loader/Loader";
 
 const HeaderNav = ({ children }) => {
   const { pathname } = useLocation();
   const [activeUser, activeUserData] = useActiveUser();
+  const [loading, setLoading] = useState(false);
+  const [admin] = useAdmin(activeUserData);
+  const navigate = useNavigate();
 
   let activeStyle = {
     textDecoration: "underline",
     color: "#1c166473",
     transition: ".4s",
   };
+
+  const logOut = () => {
+    const getIdLocally = localStorage.getItem("user_id");
+    const id = JSON.parse(getIdLocally);
+    if (id) {
+      const url = `http://localhost:5000/register/${id}`;
+      setLoading(true);
+      fetch(url, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ user: false }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("data log out", data);
+          setLoading(false);
+          localStorage.removeItem("user_id");
+          localStorage.removeItem("accessToken");
+          Swal.fire({
+            title: "Logout Successfully",
+            icon: "success",
+          });
+          navigate("/");
+          window.location.reload();
+        });
+    }
+  };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   const menu = (
     <>
@@ -62,6 +101,32 @@ const HeaderNav = ({ children }) => {
           Dashboard
         </NavLink>
       )}
+
+      {activeUser ? (
+        <button
+          className="m-4   text-accent font-semibold  "
+          // style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          onClick={logOut}
+        >
+          Logout
+        </button>
+      ) : (
+        <NavLink
+          to="/login"
+          className="m-4   text-accent font-semibold  "
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        >
+          Login
+        </NavLink>
+      )}
+{/* 
+      <NavLink
+        to="/register"
+        className="m-4   text-accent font-semibold  "
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
+        Registration
+      </NavLink> */}
     </>
   );
 
