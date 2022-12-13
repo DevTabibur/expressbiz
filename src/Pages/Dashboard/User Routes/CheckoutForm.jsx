@@ -5,6 +5,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import useActiveUser from "../../../Hooks/useActiveUser";
 import Loader from "../../../Shared/Loader/Loader";
 
 const CheckoutForm = ({ singleOrder }) => {
@@ -15,26 +16,27 @@ const CheckoutForm = ({ singleOrder }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionID, setTransactionID] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [activeUser, activeUserData] = useActiveUser();
 
-  const { _id, email, productName, } = singleOrder;
-  const price = Math.round(singleOrder?.price);
-
+  const { _id, email, productName, price } = singleOrder;
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ price }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.clientSecret) {
-          setClientSecret(data.clientSecret);
-        }
-      });
+    if (price !== undefined) {
+      // Create PaymentIntent as soon as the page loads
+      fetch("http://localhost:5000/create-payment-intent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ price }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.clientSecret) {
+            setClientSecret(data.clientSecret);
+          }
+        });
+    }
   }, [price]);
 
   const appearance = {
@@ -97,6 +99,7 @@ const CheckoutForm = ({ singleOrder }) => {
       //store payment on database
 
       const payment = {
+        email: activeUserData?.email,
         price: price,
         shippingOrder: _id,
         transactionId: paymentIntent.id,
@@ -118,7 +121,7 @@ const CheckoutForm = ({ singleOrder }) => {
     }
   };
 
-  // if (!processing) {
+  // if (processing) {
   //   return <Loader />;
   // }
 

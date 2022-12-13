@@ -52,8 +52,6 @@ const AddServices = () => {
           });
           return false;
         } else {
-          console.log("everything is perfect");
-
           // everything is perfect
           const url = `http://localhost:5000/services`;
           await fetch(url, {
@@ -86,9 +84,7 @@ const AddServices = () => {
   return (
     <>
       {" "}
-      <h1 className="text-accent text-5xl font-bold ">
-        Add Services
-      </h1>
+      <h1 className="text-accent text-5xl font-bold ">Add Services</h1>
       <div className="container mx-auto px-4 py-12">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -140,7 +136,7 @@ const AddServices = () => {
               </label>
             </div>
           </div>
-
+          
           {/* serviceImage */}
           <div className="form-group">
             <input

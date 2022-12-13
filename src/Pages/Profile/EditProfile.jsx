@@ -245,7 +245,7 @@ const EditProfile = () => {
                   )}
                 </label>
                 <label className="label my-1 py-0 text-warning">
-                  Only JPG, PNG and JPEG with max 2MB files are validate
+                  Only JPG, PNG and JPEG with max 5MB files are validate
                 </label>
               </div>
             </div>

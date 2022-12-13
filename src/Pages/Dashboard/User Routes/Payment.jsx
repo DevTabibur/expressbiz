@@ -10,17 +10,25 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const { id } = useParams();
-  const [singleOrder, setSingleOrder] = useState([]);
+  const [singleOrder, setSingleOrder] = useState({});
 
   useEffect(() => {
     const url = `http://localhost:5000/shipping/${id}`;
-    fetch(url)
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         // console.log("single id data", data);
         setSingleOrder(data);
       });
   }, [singleOrder, id]);
+
+ 
   return (
     <>
       <h1 className="text-accent text-3xl font-sans font-bold">ID is: {id}</h1>

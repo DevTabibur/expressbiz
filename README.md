@@ -42,27 +42,18 @@
 
 ### PROBLEMS
 
-1. headerTop e page refresh dile user er name dekhasse na (solved)
-2. registration is completely done (solved)
 3. user k remove dile swal fire hoi na, and automatic logout hoi jasse, tai jakei remove kori na keno?
-4. useToken automatic get hosse, and undefined value thakleu automatic peye jasse... jar jonne auto redirect and accessToken set kora jasse na.. (solved different way..) (solved)
 
-5. logout korar pore Dashboard link vanish holeu, keu jdi url e dashboard likhe, taile tw sha automatic redirect korbe, but oikhane loader dekhasse....oikhane loader na dekhiye, user jdi inactive thake, taile automatic redirect kora uchit
+4. shipment history route e loader dekhate hbe
 
-6. overflow y hosse...page venge jai...footer er jonne problem hosse maybe..footer ta app.js e last deyar jonne hote pare
+5. require user, user jdi na thake taile login e niye jabe, and login korar pore automatic agar route e niye ashbe, but seta hosse na. requireUser e problem maybe
 
-7. register compo te loader set (solved)
+6. payment korte giye problem hosse, server error disse..
 
-8. shipment history route e loader dekhate hbe
-
-9. keu url e /dashboard likhle , loader ta automatic choltei thake (solved)
-
-10. require user, user jdi na thake taile login e niye jabe, and login korar pore automatic agar route e niye ashbe, but seta hosse na. requireUser e problem maybe
-
-11. payment korte giye problem hosse, server error disse..
-
-12. EditProfile.jsx ee localhost er link ta pore replace kora lagbe..
-13. profile.jsx ee responsive problem...mobile korle, nicher div dekhai jai na..
+7. EditProfile.jsx ee localhost er link ta pore replace kora lagbe..
+8. profile.jsx ee responsive problem...mobile korle, nicher div dekhai jai na..
+9. payment price not sent to backend...
+10. payment complete hoile tader email e janai dite hbe koto dollar katsi, and date, time and product etc er jonne
 
 // Forgot Password Process
 

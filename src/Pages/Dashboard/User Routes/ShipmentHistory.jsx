@@ -7,14 +7,13 @@ import ShowShipmentHistory from "./ShowShipmentHistory";
 
 const ShipmentHistory = () => {
   const navigate = useNavigate();
-  const [orders] = useCreateShipping();
-  const [activeUser, activeUserData] = useActiveUser();
 
-  const ExistsEmail = orders.filter(
+  const [activeUser, activeUserData] = useActiveUser();
+  const [orders] = useCreateShipping();
+
+  const filteredWithMail = orders.filter(
     (order) => order.senderEmail === activeUserData?.email
   );
-
-  // console.log("ExistsEmail", ExistsEmail);
 
   const deleteShipmentHistory = (id) => {
     const confirmation = window.confirm("Are you want to Delete?");
@@ -44,81 +43,82 @@ const ShipmentHistory = () => {
         });
     }
   };
+
   return (
     <>
       <h1 className="text-accent text-5xl font-bold ">
-        Your Shipment History {ExistsEmail.length}
+        Your Shipment History {filteredWithMail.length}
       </h1>
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-1 gap-4">
-          <div className="overflow-x-auto">
-            <table className="table table-compact w-full">
-              <thead>
-                <tr>
-                  <th className="bg-accent text-white">SL</th>
-                  <th className="bg-accent text-white">EMAIL</th>
-                  <th className="bg-accent text-white">PRODUCT</th>
-                  <th className="bg-accent text-white">PRICE</th>
+      {filteredWithMail.length > 0 && (
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid md:grid-cols-1 gap-4">
+            <div className="overflow-x-auto">
+              <table className="table table-compact w-full">
+                <thead>
+                  <tr>
+                    <th className="bg-accent text-white">SL</th>
+                    <th className="bg-accent text-white">EMAIL</th>
+                    <th className="bg-accent text-white">PRODUCT</th>
+                    <th className="bg-accent text-white">PRICE</th>
 
-                  <th className="bg-accent text-white">TYPE</th>
-                  <th className="bg-accent text-white">STATUS</th>
-                  <th className="bg-accent text-white">ACTION</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ExistsEmail.map((order, idx) => (
-                  <tr key={idx}>
-                    <td>{idx + 1}</td>
-                    <td>{order.senderEmail}</td>
-                    <td>{order.productName}</td>
-                    <td>$ {Math.round(order.price)}</td>
+                    <th className="bg-accent text-white">TYPE</th>
+                    <th className="bg-accent text-white">STATUS</th>
+                    <th className="bg-accent text-white">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredWithMail.map((order, idx) => (
+                    <tr key={idx}>
+                      <td>{idx + 1}</td>
+                      <td>{order.senderEmail}</td>
+                      <td>{order.productName}</td>
+                      <td>$ {order.price}</td>
 
-                    {order.price && !order.paid && (
+                      {order.price && !order.paid && (
+                        <td>
+                            <Link  className="btn btn-warning btn-sm" to={`/dashboard/payment/${order._id}`}>
+                              Pay{" "}
+                            </Link>{" "}
+                        </td>
+                      )}
+                      {order.price && order.paid && (
+                        <td className="text-green-500 font-semibold">PAID</td>
+                      )}
+
+                      {order.price && order.paid ? (
+                        <td>transactionId : {order.transactionId}</td>
+                      ) : (
+                        <td>Please pay for Processing</td>
+                      )}
+
                       <td>
-                        <button className="btn btn-warning btn-sm">
-                          <Link to={`/dashboard/payment/${order._id}`}>
-                            Pay{" "}
-                          </Link>{" "}
+                        <button
+                          className="btn btn-primary btn-sm"
+                          onClick={() => deleteShipmentHistory(order._id)}
+                        >
+                          DELETE
                         </button>
                       </td>
-                    )}
-                    {order.price && order.paid && (
-                      <td className="text-green-500 font-semibold">PAID</td>
-                    )}
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th className="bg-accent text-white">SL</th>
+                    <th className="bg-accent text-white">EMAIL</th>
+                    <th className="bg-accent text-white">PRODUCT</th>
+                    <th className="bg-accent text-white">PRICE</th>
 
-                    {order.price && order.paid ? (
-                      <td>transactionId : {order.transactionId}</td>
-                    ) : (
-                      <td>Please pay for Processing</td>
-                    )}
-
-                    <td>
-                      <button
-                        className="btn btn-primary btn-sm"
-                        onClick={() => deleteShipmentHistory(order._id)}
-                      >
-                        DELETE
-                      </button>
-                    </td>
+                    <th className="bg-accent text-white">TYPE</th>
+                    <th className="bg-accent text-white">STATUS</th>
+                    <th className="bg-accent text-white">ACTION</th>
                   </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th className="bg-accent text-white">SL</th>
-                  <th className="bg-accent text-white">EMAIL</th>
-                  <th className="bg-accent text-white">PRODUCT</th>
-                  <th className="bg-accent text-white">PRICE</th>
-
-                  <th className="bg-accent text-white">TYPE</th>
-                  <th className="bg-accent text-white">STATUS</th>
-                  <th className="bg-accent text-white">ACTION</th>
-                </tr>
-              </tfoot>
-            </table>
+                </tfoot>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

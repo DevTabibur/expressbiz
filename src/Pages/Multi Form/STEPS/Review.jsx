@@ -12,57 +12,34 @@ const Review = ({ handleClick, currentStep, steps }) => {
 
   if (weight && getDistance) {
     // 1kg = 5tk
-
-    price = weight * 5;
     // 1 km => 2.40 tk
-
-    price = getDistance * 2.4;
+    price = Math.round(weight * 5 + getDistance * 2.4);
   }
 
-  const senderEmail = userData.shippingFrom?.email;
-  const senderCompanyName = userData.shippingFrom?.companyName;
-  const senderContact = userData.shippingFrom?.number;
-  const senderCountry = userData.shippingFrom?.country;
-  const senderOriginAddress = userData.shippingFrom?.originAddress;
-  const senderPostalCode = userData.shippingFrom?.postalCode;
-
-  const receiverEmail = userData.shippingGoing?.email;
-  const receiverCompanyName = userData.shippingGoing?.companyName;
-  const receiverContact = userData.shippingGoing?.number;
-  const receiverCountry = userData.shippingGoing?.country;
-  const receiverDestinationAddress = userData.shippingGoing?.destinationAddress;
-  const receiverPostalCode = userData.shippingGoing?.postalCode;
-
-  const productName = userData.what?.productName;
-  const shipmentType = userData.what?.shipmentType;
-  const weight2 = userData.what?.weight;
-  const width = userData.what?.width;
-  const distance = getDistance;
-
   const shipmentInfo = {
-    senderEmail: senderEmail,
-    senderCompanyName: senderCompanyName,
-    senderContact: senderContact,
-    senderCountry: senderCountry,
-    senderOriginAddress: senderOriginAddress,
-    senderPostalCode: senderPostalCode,
+    senderEmail: userData.shippingFrom?.email,
+    senderCompanyName: userData.shippingFrom?.companyName,
+    senderContact: userData.shippingFrom?.number,
+    senderCountry: userData.shippingFrom?.country,
+    senderOriginAddress: userData.shippingFrom?.originAddress,
+    senderPostalCode: userData.shippingFrom?.postalCode,
 
-    receiverEmail: receiverEmail,
-    receiverCompanyName: receiverCompanyName,
-    receiverContact: receiverContact,
-    receiverCountry: receiverCountry,
-    receiverDestinationAddress: receiverDestinationAddress,
-    receiverPostalCode: receiverPostalCode,
+    receiverEmail: userData.shippingGoing?.email,
+    receiverCompanyName: userData.shippingGoing?.companyName,
+    receiverContact: userData.shippingGoing?.number,
+    receiverCountry: userData.shippingGoing?.country,
+    receiverDestinationAddress: userData.shippingGoing?.destinationAddress,
+    receiverPostalCode: userData.shippingGoing?.postalCode,
 
-    productName: productName,
-    shipmentType: shipmentType,
-    weight: weight2,
-    width: width,
-    distance: distance,
+    productName: userData.what?.productName,
+    shipmentType: userData.what?.shipmentType,
+    weight: userData.what?.weight,
+    width: userData.what?.width,
+    distance: getDistance,
 
     billMethod: "card",
     billDutiesTaxes: "Company",
-    currency: "tk",
+    currency: "dollar",
     price: price,
   };
 
@@ -72,6 +49,7 @@ const Review = ({ handleClick, currentStep, steps }) => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(shipmentInfo),
     })
@@ -266,14 +244,12 @@ const Review = ({ handleClick, currentStep, steps }) => {
             </h2>
             <hr></hr>
 
-            <p className="text-accent  mt-2">
-              Bill Shipping Charge To : Card
-            </p>
+            <p className="text-accent  mt-2">Bill Shipping Charge To : Card</p>
             <p className="text-accent  mt-2">
               Bill Duties and Taxes To : Receive company
             </p>
             <p className="text-accent  mt-2">
-              Charge (Taxes) : tk {Math.round(price)}
+              Charge (Taxes) : $ {Math.round(price)}
             </p>
           </div>
         </div>
