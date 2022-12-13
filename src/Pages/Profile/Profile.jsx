@@ -67,8 +67,8 @@ const Profile = () => {
   };
 
   return (
-    <>
-      <div className="md:grid md:grid-cols-2 gap-4 pb-6">
+    <div className="">
+      <div className="grid md:grid-cols-2 gap-6 ">
         <div>
           <div className="flex justify-center">
             <div className="rounded-lg shadow-lg bg-white max-w-md">
@@ -233,7 +233,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

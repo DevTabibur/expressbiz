@@ -3,8 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html, p, a
-body {
+html,
+p,
+a body {
   font-family: "Poppins", sans-serif;
   overflow: hidden;
 }

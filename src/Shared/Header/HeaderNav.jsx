@@ -84,7 +84,7 @@ const HeaderNav = ({ children }) => {
             <div className="container mx-auto px-4">
               <label
                 htmlFor="my-drawer-2"
-                className="btn btn-primary drawer-button lg:hidden"
+                className="mr-4 drawer-button lg:hidden"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

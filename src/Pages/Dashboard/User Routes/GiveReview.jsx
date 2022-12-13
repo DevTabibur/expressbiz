@@ -8,7 +8,6 @@ const GiveReview = () => {
   const [activeUse, activeUserData] = useActiveUser();
   const navigate = useNavigate();
 
-  // console.log("activeUserData", activeUserData);
   const {
     register,
     handleSubmit,
@@ -17,6 +16,12 @@ const GiveReview = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data, e) => {
+    const feedback = {
+      email: activeUserData?.email,
+      reviewer: data.reviewer,
+      review: data.review,
+    };
+
     const url = `http://localhost:5000/review`;
     fetch(url, {
       method: "POST",
@@ -24,7 +29,7 @@ const GiveReview = () => {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(feedback),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -44,9 +49,7 @@ const GiveReview = () => {
   };
   return (
     <>
-      <h1 className="text-accent text-5xl font-bold ">
-        Give Us Your Review
-      </h1>
+      <h1 className="text-accent text-5xl font-bold ">Give Us Your Review</h1>
       <div className="container mx-auto px-4 py-12">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid md:grid-cols-2 gap-4">

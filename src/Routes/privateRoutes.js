@@ -20,11 +20,7 @@ export const privateRoutes = [
     Component: ShipmentHistory,
   },
   { path: "/dashboard/payment/:id", name: Payment, Component: Payment },
-  {
-    path: "/dashboard//quotation-history",
-    name: QuotationList,
-    Component: QuotationList,
-  },
+  
 ];
 
 export default privateRoutes;

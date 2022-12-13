@@ -16,21 +16,9 @@
 10. npm install --save @stripe/react-stripe-js @stripe/stripe-js
 11. npm install geo-distance-helper
 12. npm install @mui/material @emotion/react @emotion/styled
-13.
-
-### Done page
-
-1. contact
-2. services
-3. not found page
-4. book shipping component
-5. contact page is done with EmailJS
-6. jwt authenticated all services routes
-7. jwt authenticated all review routes
-8. npm install tw-elements
+13. npm install tw-elements
 
 ### special works
-
 1. Multi step form with react hook form, and React Context
 2. authentication using node, express and mongodb
 3. password Bcrypt is done with Bcrypt.js
@@ -41,19 +29,13 @@
 8. anyone can change their old password from dashboard/edit-profile
 
 ### PROBLEMS
+** localhost er link gulo pore replace korte hobe
 
-3. user k remove dile swal fire hoi na, and automatic logout hoi jasse, tai jakei remove kori na keno?
-
-4. shipment history route e loader dekhate hbe
-
-5. require user, user jdi na thake taile login e niye jabe, and login korar pore automatic agar route e niye ashbe, but seta hosse na. requireUser e problem maybe
-
-6. payment korte giye problem hosse, server error disse..
 
 7. EditProfile.jsx ee localhost er link ta pore replace kora lagbe..
-8. profile.jsx ee responsive problem...mobile korle, nicher div dekhai jai na..
-9. payment price not sent to backend...
+8. profile.jsx and editProfile.jsx ee responsive problem...mobile korle, nicher div dekhai jai na..
 10. payment complete hoile tader email e janai dite hbe koto dollar katsi, and date, time and product etc er jonne
+11. mobile res e footer er copyright area dekhai nai... like editprofile.jsx er moto
 
 // Forgot Password Process
 

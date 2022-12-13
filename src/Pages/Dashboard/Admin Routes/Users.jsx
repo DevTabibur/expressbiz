@@ -11,7 +11,6 @@ const Users = () => {
   // console.log("getID", getID);
 
   const removeUser = (id) => {
-    console.log("first", id !== getID);
     const url = `http://localhost:5000/register/${id}`;
     fetch(url, {
       method: "DELETE",
@@ -30,8 +29,6 @@ const Users = () => {
           });
         }
         // user automatically logout
-
-        localStorage.removeItem("user_id");
       });
   };
 

@@ -16,19 +16,14 @@ const DashboardSidebar = ({ children }) => {
       {/* user route */}
       {!admin && (
         <>
-          <li className="text-white my-1 font-semibold font-sans">
+          <li className="text-white my-1">
             <NavLink to="/dashboard/profile">Profile</NavLink>
           </li>
-          <li className="text-white my-1 font-semibold font-sans">
-            <NavLink to="/dashboard/quotation-history">
-              Quotation history
-            </NavLink>
-          </li>
-          <li className="text-white my-1 font-semibold font-sans">
+          <li className="text-white my-1">
             <NavLink to="/dashboard/review">Give Your Feedback</NavLink>
           </li>
 
-          <li className="text-white my-1 font-semibold font-sans">
+          <li className="text-white my-1">
             <NavLink to="/dashboard/shipment-history">Shipment History</NavLink>
           </li>
         </>
@@ -37,19 +32,19 @@ const DashboardSidebar = ({ children }) => {
       {/* admin route */}
       {admin && (
         <>
-          <li className="text-white my-1 font-semibold font-sans">
+          <li className="text-white my-1">
             <NavLink to="/dashboard/profile">Profile</NavLink>
           </li>
-          <li className="text-white my-1 font-semibold font-sans">
+          <li className="text-white my-1">
             <NavLink to="/dashboard/users">Users</NavLink>
           </li>
-          <li className="text-white my-1 font-semibold font-sans">
+          <li className="text-white my-1">
             <NavLink to="/dashboard/add-services">Add Services</NavLink>
           </li>
-          <li className="text-white my-1 font-semibold font-sans">
+          <li className="text-white my-1">
             <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
           </li>
-          <li className="text-white my-1 font-semibold font-sans">
+          <li className="text-white my-1">
             <NavLink to="/dashboard/client-review">Client Review</NavLink>
           </li>
         </>
@@ -66,7 +61,7 @@ const DashboardSidebar = ({ children }) => {
       <>
         <div className="drawer drawer-mobile">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content  p-12 bg-success">
+          <div className="drawer-content p-6  bg-success">
             {/* <!-- Page content here --> */}
             {children}
           </div>
