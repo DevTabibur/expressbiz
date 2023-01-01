@@ -9,11 +9,11 @@ import { StepperContexts } from "../contexts/StepperContexts";
 const WhereFrom = ({ handleClick, currentStep, steps }) => {
   // const [userData, setUserData] = useState("");
   const { userData, setUserData } = useContext(StepperContexts);
-  const [activeUser, activeUserData, isLoading] = useActiveUser();
+  const [activeUser, isLoading] = useActiveUser();
 
-  const email = activeUserData?.email;
+  const email = activeUser?.email;
 
-  const [admin] = useAdmin(activeUserData);
+  const [admin] = useAdmin(activeUser);
 
   const {
     register,

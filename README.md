@@ -19,6 +19,7 @@
 13. npm install tw-elements
 
 ### special works
+
 1. Multi step form with react hook form, and React Context
 2. authentication using node, express and mongodb
 3. password Bcrypt is done with Bcrypt.js
@@ -29,11 +30,5 @@
 8. anyone can change their old password from dashboard/edit-profile
 
 ### PROBLEMS
-** localhost er link gulo pore replace korte hobe
 
-
-7. EditProfile.jsx ee localhost er link ta pore replace kora lagbe..
-8. profile.jsx and editProfile.jsx ee responsive problem...mobile korle, nicher div dekhai jai na..
-10. payment complete hoile tader email e janai dite hbe koto dollar katsi, and date, time and product etc er jonne
-11. mobile res e footer er copyright area dekhai nai... like editprofile.jsx er moto
-
+\*\* localhost er link gulo pore replace korte hobe 7. EditProfile.jsx ee localhost er link ta pore replace kora lagbe.. 8. profile.jsx and editProfile.jsx ee responsive problem...mobile korle, nicher div dekhai jai na.. 10. payment complete hoile tader email e janai dite hbe koto dollar katsi, and date, time and product etc er jonne 11. mobile res e footer er copyright area dekhai nai... like editprofile.jsx er moto 12. addService.jsx e new products add hoi na. duplicate key error boltese

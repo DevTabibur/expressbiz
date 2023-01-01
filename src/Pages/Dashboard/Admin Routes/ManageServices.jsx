@@ -9,34 +9,34 @@ const ManageServices = () => {
   const [services] = useService();
   // console.log("service", services);
   const deleteService = (id) => {
-    const url = `http://localhost:5000/services/${id}`;
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("data deleted", data);
-        if (data.code === 401 || data.code === 403) {
-          localStorage.removeItem("user_id");
-          navigate("/login");
-        }
-        if (data.deletedCount) {
-          Swal.fire({
-            title: "Service Deleted",
-            icon: "success",
-          });
-        }
-      });
+    const confirmation = window.confirm("Are you want to delete?");
+    if (confirmation) {
+      const url = `http://localhost:5000/api/v1/products/${id}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("data deleted", data);
+
+          if (data.code === 200) {
+            Swal.fire({
+              title: data?.status,
+              text: data?.message,
+              icon: "success",
+            });
+          }
+        });
+    }
   };
+
   return (
     <>
-      <h1 className="text-accent text-5xl font-bold ">
-        Manage Services
-      </h1>
+      <h1 className="text-accent text-5xl font-bold ">Manage Services {services.length}</h1>
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-4">
           {services.map((service, idx) => (

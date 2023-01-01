@@ -1,6 +1,12 @@
 import { withTheme } from "@emotion/react";
-import React, { useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  json,
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Swal from "sweetalert2";
 import Logo from "../../Assets/Logos/EXPRESS.webp";
 import useActiveUser from "../../Hooks/useActiveUser";
@@ -9,10 +15,11 @@ import Loader from "../Loader/Loader";
 
 const HeaderNav = ({ children }) => {
   const { pathname } = useLocation();
-  const [activeUser, activeUserData] = useActiveUser();
   const [loading, setLoading] = useState(false);
-  const [admin] = useAdmin(activeUserData);
+  // const [admin] = useAdmin(activeUserData);
   const navigate = useNavigate();
+  const [activeUser, isLoading] = useActiveUser();
+  // console.log('header activeUser', activeUser)
 
   let activeStyle = {
     textDecoration: "underline",
@@ -21,38 +28,18 @@ const HeaderNav = ({ children }) => {
   };
 
   const logOut = () => {
-    const getIdLocally = localStorage.getItem("user_id");
-    const id = JSON.parse(getIdLocally);
-    if (id) {
-      const url = `http://localhost:5000/register/${id}`;
-      setLoading(true);
-      fetch(url, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ user: false }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log("data log out", data);
-          setLoading(false);
-          localStorage.removeItem("user_id");
-          localStorage.removeItem("accessToken");
-          Swal.fire({
-            title: "Logout Successfully",
-            icon: "success",
-          });
-          navigate("/");
-          window.location.reload();
-        });
-    }
+    localStorage.removeItem("accessToken");
+    Swal.fire({
+      title: "Logout Successfully",
+      icon: "success",
+    });
+    navigate("/");
+    window.location.reload();
   };
 
-  if (loading) {
+  if (loading || isLoading) {
     return <Loader />;
   }
-
   const menu = (
     <>
       <NavLink
@@ -92,7 +79,7 @@ const HeaderNav = ({ children }) => {
         Contact us
       </NavLink>
 
-      {activeUser && (
+      {activeUser?.email && (
         <NavLink
           className="m-4   text-accent font-semibold  "
           to="/dashboard"
@@ -102,9 +89,9 @@ const HeaderNav = ({ children }) => {
         </NavLink>
       )}
 
-      {activeUser ? (
+      {activeUser?.email ? (
         <button
-          className="m-4   text-accent font-semibold  "
+          className="m-4 text-left   text-accent font-semibold  "
           // style={({ isActive }) => (isActive ? activeStyle : undefined)}
           onClick={logOut}
         >
@@ -119,7 +106,10 @@ const HeaderNav = ({ children }) => {
           Login
         </NavLink>
       )}
-{/* 
+      {activeUser?.email && (
+        <p className="m-4   text-accent font-semibold  ">{activeUser?.email}</p>
+      )}
+      {/* 
       <NavLink
         to="/register"
         className="m-4   text-accent font-semibold  "

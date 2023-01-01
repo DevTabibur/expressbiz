@@ -4,9 +4,9 @@ import Swal from "sweetalert2";
 import useActiveUser from "../../Hooks/useActiveUser";
 
 const EditProfile = () => {
-  const [userData, userActiveData, isLoading] = useActiveUser();
-  const { name, email, bio, number, profileImage, path } = userActiveData;
-  // console.log("userActiveData", userActiveData);
+  const [activeUser, isLoading] = useActiveUser();
+  const { name, email, bio, contactNumber, imageURL, _id } = activeUser;
+  // console.log("userActive", activeUser);
   const navigate = useNavigate();
   const {
     register,
@@ -14,19 +14,19 @@ const EditProfile = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const getIdLocally = localStorage.getItem("user_id");
-  const id = JSON.parse(getIdLocally);
+
   // console.log("id", id);
 
   const onSubmit = async (data, e) => {
+    // console.log("data", data);
     const formData = new FormData();
     formData.append("email", email);
-    formData.append("profileImage", data.profileImage[0]);
+    formData.append("imageURL", data.imageURL[0]);
     formData.append("name", data.name);
-    formData.append("number", data.number);
+    formData.append("contactNumber", data.contactNumber);
     formData.append("bio", data.bio);
 
-    const img = data.profileImage[0];
+    const img = data.imageURL[0];
     const validExt = ["png", "jpg", "jpeg", "PNG", "JPG", "JPEG"];
 
     if (img !== "") {
@@ -53,11 +53,9 @@ const EditProfile = () => {
           });
           return false;
         } else {
-          console.log("everything is perfect");
-
+          // console.log("everything is perfect");
           // everything is perfect
-
-          const url = `http://localhost:5000/register/${id}`;
+          const url = `http://localhost:5000/api/v1/user/register/${_id}`;
           fetch(url, {
             method: "PUT",
             body: formData,
@@ -65,13 +63,20 @@ const EditProfile = () => {
             .then((res) => res.json())
             .then((data) => {
               // console.log("data posted", data);
-              if (data.modifiedCount) {
+              if (data.code === 400) {
                 Swal.fire({
-                  title: "Profile Updated",
+                  title: data?.message,
+                  text: data?.error,
+                  icon: "error",
+                });
+              } else {
+                Swal.fire({
+                  title: data.status,
+                  text: data?.message,
                   icon: "success",
                 });
                 reset();
-                window.location.reload();
+                // window.location.reload();
               }
             });
         }
@@ -84,19 +89,19 @@ const EditProfile = () => {
 
   return (
     <>
-      <div className="md:flex flex-row gap-4">
+      <div className="md:flex flex-row gap-6">
         <div className="basis-1/3">
           <div className="flex justify-center">
             <div className="rounded-lg shadow-lg bg-white max-wd-sm">
-              {profileImage ? (
+              {imageURL ? (
                 <a
                   href="#!"
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                 >
                   <img
-                    className="rounded-t-lg w-96"
-                    src={`http://localhost:5000/${path}`}
+                    className="rounded-t-lg w-96 h-56"
+                    src={`http://localhost:5000/${imageURL}`}
                     alt="profile_image"
                   />
                 </a>
@@ -119,9 +124,9 @@ const EditProfile = () => {
                   Name : {name}
                 </h5>
                 <p className="text-gray-700 text-base mb-2">Email : {email}</p>
-                {number ? (
+                {contactNumber ? (
                   <p className="text-gray-700 text-base mb-2">
-                    Phone : {number}
+                    Phone : {contactNumber}
                   </p>
                 ) : (
                   <p className="text-gray-700 text-base mb-2">
@@ -154,7 +159,7 @@ const EditProfile = () => {
                   className="cursor-not-allowed form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
                   id="exampleInputEmail2"
                   aria-describedby="emailHelp"
-                  defaultValue={userActiveData?.email}
+                  defaultValue={activeUser?.email}
                   readOnly
                   {...register("email")}
                 />
@@ -197,7 +202,7 @@ const EditProfile = () => {
                   type="text"
                   placeholder="Contact number"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
-                  {...register("number", {
+                  {...register("contactNumber", {
                     required: {
                       value: true,
                       message: "Mobile number is Required",
@@ -210,14 +215,14 @@ const EditProfile = () => {
                   })}
                 />
                 <label className="label my-1 py-0">
-                  {errors.number?.type === "required" && (
+                  {errors.contactNumber?.type === "required" && (
                     <span className="label-text-alt text-red-500 ">
-                      {errors.number.message}
+                      {errors.contactNumber.message}
                     </span>
                   )}
-                  {errors.number?.type === "pattern" && (
+                  {errors.contactNumber?.type === "pattern" && (
                     <span className="label-text-alt text-red-500 ">
-                      {errors.number.message}
+                      {errors.contactNumber.message}
                     </span>
                   )}
                 </label>
@@ -230,7 +235,7 @@ const EditProfile = () => {
                   name="avatar"
                   placeholder="Choose Profile"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
-                  {...register("profileImage", {
+                  {...register("imageURL", {
                     required: {
                       value: true,
                       message: "Profile Image is Required",
@@ -238,9 +243,9 @@ const EditProfile = () => {
                   })}
                 />
                 <label className="label my-1 py-0">
-                  {errors.profileImage?.type === "required" && (
+                  {errors.imageURL?.type === "required" && (
                     <span className="label-text-alt text-red-500 ">
-                      {errors.profileImage.message}
+                      {errors.imageURL.message}
                     </span>
                   )}
                 </label>

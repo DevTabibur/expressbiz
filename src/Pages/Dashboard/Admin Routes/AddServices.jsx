@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useActiveUser from "../../../Hooks/useActiveUser";
 const AddServices = () => {
-  const [activeUser, activeUserData] = useActiveUser();
-  const email = activeUserData?.email;
-  // console.log("email", email);
+  const [activeUser, isLoading] = useActiveUser();
+  const email = activeUser?.email;
   const navigate = useNavigate();
   const {
     register,
@@ -19,13 +18,14 @@ const AddServices = () => {
   } = useForm();
 
   const onSubmit = async (data, e) => {
-    const formData = new FormData();
-    formData.append("email", email);
-    formData.append("title", data.title);
-    formData.append("serviceImage", data.serviceImage[0]);
-    formData.append("description", data.description);
+    const postData = new FormData();
+    postData.append("email", email);
+    postData.append("title", data.title);
+    postData.append("image", data.image[0]);
+    postData.append("price", data.price);
+    postData.append("description", data.description);
 
-    const img = data.serviceImage[0];
+    const img = data.image[0];
     const validExt = ["png", "jpg", "jpeg", "PNG", "JPG", "JPEG"];
 
     if (img !== "") {
@@ -53,21 +53,28 @@ const AddServices = () => {
           return false;
         } else {
           // everything is perfect
-          const url = `http://localhost:5000/services`;
+          // console.log("everything is perfect");
+          const url = `http://localhost:5000/api/v1/products`;
           await fetch(url, {
             method: "POST",
-
-            body: formData,
+            // headers: {
+            //   "Content-Type": "multipart/form-data",
+            // },
+            body: postData,
           })
-            .then((res) => {
-              // console.log("res", res);
-              return res.json();
-            })
+            .then((res) => res.json())
             .then((data) => {
               // console.log("data posted", data);
-              if (data.insertedId) {
+              if (data.code === 400) {
                 Swal.fire({
-                  title: "Service Added",
+                  title: data?.message,
+                  text: data?.error,
+                  icon: "error",
+                });
+              } else {
+                Swal.fire({
+                  title: data?.status,
+                  text: data?.message,
                   icon: "success",
                 });
                 reset();
@@ -86,12 +93,7 @@ const AddServices = () => {
       {" "}
       <h1 className="text-accent text-5xl font-bold ">Add Services</h1>
       <div className="container mx-auto px-4 py-12">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          encType="multipart/form-data"
-          action="http://localhost:5000/"
-          method="post"
-        >
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid md:grid-cols-2 gap-4">
             {/* email */}
             <div className="form-group">
@@ -135,31 +137,53 @@ const AddServices = () => {
                 )}
               </label>
             </div>
-          </div>
-          
-          {/* serviceImage */}
-          <div className="form-group">
-            <input
-              type="file"
-              placeholder=".jpg, .png and .jpeg formats are allowed"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
-              {...register("serviceImage", {
-                required: {
-                  value: true,
-                  message: "Image is Required",
-                },
-              })}
-            />
-            <label className="label my-1 py-0">
-              {errors.serviceImage?.type === "required" && (
-                <span className="label-text-alt text-red-500 ">
-                  {errors.serviceImage.message}
-                </span>
-              )}
-            </label>
-            <label className="label my-1 py-0 text-warning">
-              Only JPG, PNG and JPEG with max 2MB files are validate
-            </label>
+
+            {/* price */}
+            <div className="form-group">
+              <input
+                type="number"
+                placeholder="Price*"
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
+                {...register("price", {
+                  required: {
+                    value: true,
+                    message: "Price is Required",
+                  },
+                })}
+              />
+              <label className="label my-1 py-0">
+                {errors.price?.type === "required" && (
+                  <span className="label-text-alt text-red-500 ">
+                    {errors.price.message}
+                  </span>
+                )}
+              </label>
+            </div>
+
+            {/* serviceImage */}
+            <div className="form-group">
+              <input
+                type="file"
+                placeholder=".jpg, .png and .jpeg formats are allowed"
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
+                {...register("image", {
+                  required: {
+                    value: true,
+                    message: "Image is Required",
+                  },
+                })}
+              />
+              <label className="label my-1 py-0">
+                {errors.image?.type === "required" && (
+                  <span className="label-text-alt text-red-500 ">
+                    {errors.image.message}
+                  </span>
+                )}
+              </label>
+              <label className="label my-1 py-0 text-warning">
+                Only JPG, PNG and JPEG with max 2MB files are validate
+              </label>
+            </div>
           </div>
 
           {/* description */}

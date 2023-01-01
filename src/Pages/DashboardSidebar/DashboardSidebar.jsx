@@ -3,14 +3,16 @@ import { NavLink } from "react-router-dom";
 import useActiveUser from "../../Hooks/useActiveUser";
 import useAdmin from "../../Hooks/useAdmin";
 import Loader from "../../Shared/Loader/Loader";
-import './DashboardSideBar.css'
+import "./DashboardSideBar.css";
 
 const DashboardSidebar = ({ children }) => {
-  const [activeUser, activeUserData, isLoading] = useActiveUser();
+  const [activeUser, isLoading] = useActiveUser();
 
-  const [admin, adminLoading] = useAdmin(activeUserData);
+  // const [admin, adminLoading] = useAdmin(activeUser);
 
   // console.log("dashboard side bar admin", admin);
+  // console.log("dashboard side activeUser", activeUser);
+  const admin = true;
 
   const menu = (
     <>
@@ -54,9 +56,9 @@ const DashboardSidebar = ({ children }) => {
   );
 
   // for loader
-  if (adminLoading) {
-    return <Loader />;
-  }
+  // if (adminLoading || isLoading) {
+  //   return <Loader />;
+  // }
   return (
     <>
       <>

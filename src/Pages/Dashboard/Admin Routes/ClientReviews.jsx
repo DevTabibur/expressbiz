@@ -58,13 +58,13 @@ const ClientReviews = () => {
             </div>
 
             <div className="-mx-3 md:flex items-start">
-              {reviews.map((review, idx) => (
+              {/* {reviews.map((review, idx) => (
                 <ShoClientReviews
                   key={idx}
                   review={review}
                   deleteReview={deleteReview}
                 />
-              ))}
+              ))} */}
             </div>
           </div>
         </div>

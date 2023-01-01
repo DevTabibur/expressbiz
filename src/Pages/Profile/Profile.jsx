@@ -3,20 +3,16 @@ import Loader from "../../Shared/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { act } from "@testing-library/react";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const [userData, userActiveData, isLoading] = useActiveUser();
-  const { name, email, profileImage, path, bio, number } = userActiveData;
-  const getIdLocally = localStorage.getItem("user_id");
-  const id = JSON.parse(getIdLocally);
-  // console.log("id", id);
-  // console.log("userActiveData", userActiveData._id, userActiveData.user);
+  const [activeUser, isLoading] = useActiveUser();
+  const { name, email, imageURL, bio, contactNumber, _id } = activeUser;
 
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
@@ -25,20 +21,18 @@ const Profile = () => {
     const newPassword = data.newPassword;
     const confirmPassword = data.confirmPassword;
 
-    if (id !== userActiveData._id && userActiveData.user !== true) {
-      alert("Please Login first");
-    } else if (newPassword !== confirmPassword) {
+    if (newPassword !== confirmPassword) {
       Swal.fire({
         title: "Password not matched!",
         icon: "warning",
       });
     } else {
-      const url = `http://localhost:5000/change-password/${id}`;
+      const url = `http://localhost:5000/api/v1/user/register/change-password/${_id}`;
       await fetch(url, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify({
           email: email,
@@ -48,16 +42,17 @@ const Profile = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log("password posted", data);
-          if (data.code === 403) {
+          console.log("password posted", data);
+          if (data.code === 403 || data.code === 401 || data.code === 400) {
             Swal.fire({
-              title: `${data.response}`,
+              title: data?.message,
+              text: data?.error,
               icon: "error",
             });
-          }
-          if (data.modifiedCount) {
+          } else if (data.code === 200) {
             Swal.fire({
-              title: "Password changed successfully",
+              title: data?.status,
+              text: data?.message,
               icon: "success",
             });
             reset();
@@ -69,19 +64,18 @@ const Profile = () => {
   return (
     <div className="">
       <div className="grid md:grid-cols-2 gap-6 ">
-
         <div>
           <div className="flex justify-center">
             <div className="rounded-lg shadow-lg bg-white max-w-md">
-              {path ? (
+              {imageURL ? (
                 <a
                   href="#!"
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                 >
                   <img
-                    className="rounded-t-lg w-60 h-60 mx-auto"
-                    src={`http://localhost:5000/${path}`}
+                    className="rounded-t-lg w-full h-60 mx-auto"
+                    src={`http://localhost:5000/${imageURL}`}
                     alt=""
                   />
                 </a>
@@ -101,17 +95,16 @@ const Profile = () => {
 
               <div className="p-6">
                 <h5 className="text-gray-900 text-xl font-medium mb-2 uppercase">
-                  Name : {name}
+                  {name && activeUser?.name}
                 </h5>
                 <p className="text-gray-700 text-base mb-4">
                   Email <strong> : </strong> {email}
                 </p>
                 <p className="text-gray-700 text-base mb-4">
-                  Phone <strong> : </strong> {number}
+                  Contact : {contactNumber && contactNumber}
                 </p>
                 <p className="text-gray-700 text-base mb-4">
-                  {" "}
-                  <strong> " </strong> {bio} <strong> " </strong>
+                  Bio: {bio && bio}
                 </p>
                 <button
                   type="button"
@@ -233,8 +226,6 @@ const Profile = () => {
             </form>
           </div>
         </div>
-
-        
       </div>
     </div>
   );

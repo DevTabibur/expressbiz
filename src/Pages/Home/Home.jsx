@@ -16,14 +16,14 @@ const Home = () => {
   return (
     <>
       <HeroCarousel />
-      <Services />
+      {/* <Services />
       <BookShipping />
       <WhyChooseUs />
       <Process />
       <GetQuote />
       <Testimonials />
       <Gallery />
-      <Contact />
+      <Contact /> */}
       <Footer />
     </>
   );

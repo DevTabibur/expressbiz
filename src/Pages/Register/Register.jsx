@@ -17,6 +17,7 @@ import Loader from "../../Shared/Loader/Loader";
 const Register = () => {
   const [activeUser, activeUserData, isLoading] = useActiveUser();
   const [registerLoading, setRegisterLoading] = useState(false);
+  const isActive = localStorage.getItem("accessToken");
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -28,62 +29,64 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data, e) => {
-    const name = data.name;
-    const email = data.email;
-    const password = data.password;
-    const confirmPassword = data.confirmPassword;
-    const isActive = localStorage.getItem("user_id");
-
-    if (password !== confirmPassword) {
-      return Swal.fire({
-        title: "Password is not matched",
-        icon: "error",
-      });
-    }
     // if user is register once, then he'll not register again before logout.
-    else if (isActive) {
+    if (isActive) {
       Swal.fire({
         title: "Authentication is failed",
         text: "Please logout for again registration",
         icon: "error",
       });
     } else {
-      const url = `http://localhost:5000/register`;
+      const url = `http://localhost:5000/api/v1/user/register`;
       setRegisterLoading(true);
       fetch(url, {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({
-          name,
-          email,
-          confirmPassword,
-        }),
+        body: JSON.stringify(data),
       })
         .then((res) => res.json())
         .then((data) => {
-          setRegisterLoading(false);
-          if (data.code === 300) {
-            // error registration
+          // console.log("data inside register", data);
+          if (data.code === 400) {
             Swal.fire({
-              title: "User already Exists!",
-              text: "Try another email",
+              title: data.status,
+              text: data?.err?.message,
               icon: "error",
             });
-          } else if (data.result.acknowledged) {
-            const id = data.result?.insertedId;
-            const accessToken = data.accessToken;
-            // 1. set Token
-            localStorage.setItem("accessToken", accessToken);
-            // set user _id
-            localStorage.setItem("user_id", JSON.stringify(id));
+          } else if (data.code === 200) {
+            // console.log("everything is perfect", data);
+            const token = data?.data?.token;
+            localStorage.setItem("accessToken", JSON.stringify(token));
             Swal.fire({
-              title: "Registration Success",
+              title: "success",
+              text: data?.message,
               icon: "success",
             });
             navigate("/");
           }
+          setRegisterLoading(false);
+          // if (data.code === 300) {
+          //   // error registration
+          //   Swal.fire({
+          //     title: "User already Exists!",
+          //     text: "Try another email",
+          //     icon: "error",
+          //   });
+          // } else if (data.result.acknowledged) {
+          //   const id = data.result?.insertedId;
+          //   const accessToken = data.accessToken;
+          //   // 1. set Token
+          //   localStorage.setItem("accessToken", accessToken);
+          //   // set user _id
+          //   localStorage.setItem("user_id", JSON.stringify(id));
+          //   Swal.fire({
+          //     title: "Registration Success",
+          //     icon: "success",
+          //   });
+          //   navigate("/");
+          // }
         });
     }
   };
@@ -106,7 +109,7 @@ const Register = () => {
                 WELCOME TO YOUR ACCOUNT
               </h2>
               <p className="text-neutral  mb-4">
-                abc abc abc abc abc abc abc abca abc abc abc abc
+                Please crete your own credentials. Thank
               </p>
               <Link
                 to="/login"
