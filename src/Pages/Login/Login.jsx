@@ -22,92 +22,50 @@ const Login = () => {
   } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
-  const getIdLocally = localStorage.getItem("user_id");
-  const id = JSON.parse(getIdLocally);
+  const getToken = localStorage.getItem("accessToken");
   const url = `http://localhost:5000/api/v1/user/login`;
 
   const onSubmit = async (data, e) => {
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("data", data);
-        if (data.code === 200) {
-          Swal.fire({
-            title: data?.status,
-            text: data?.message,
-            icon: "success",
-          });
-          const token = data?.data?.token;
-          localStorage.setItem("accessToken", JSON.stringify(token));
-          navigate("/");
-        } else if (
-          data.code === 401 ||
-          data.code === 403 ||
-          data.code === 400
-        ) {
-          Swal.fire({
-            title: data?.status,
-            text: data?.error,
-            icon: "error",
-          });
-        }
+    if (getToken) {
+      Swal.fire({
+        title: "Failed",
+        text: "Please Logout for again login",
+        icon: "error",
       });
-
-    // if (id) {
-    //   return Swal.fire({
-    //     title: "Please Logout , before again login",
-    //     icon: "error",
-    //   });
-    // } else {
-    //   setLoginLoading(true);
-    //   fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify({ email, password }),
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       // console.log("login completed data", data);
-
-    //       setLoginLoading(false);
-    //       if (data.code === 401) {
-    //         Swal.fire({
-    //           title: "Authentication Problem",
-    //           text: "Try user email and password correctly",
-    //           icon: "error",
-    //         });
-    //       } else if (data.code === 200) {
-    //         // console.log("data", data);
-    //         const accessToken = data.accessToken;
-    //         // 1. set Token
-    //         localStorage.setItem("accessToken", accessToken);
-    //         const id = data?.id;
-    //         const url = `http://localhost:5000/register/${id}`;
-    //         fetch(url, {
-    //           method: "PATCH",
-    //           headers: {
-    //             "content-type": "application/json",
-    //           },
-    //           body: JSON.stringify({ user: true }),
-    //         })
-    //           .then((res) => res.json())
-    //           .then((data) => {
-    //             // console.log("user is activated", data);
-    //             localStorage.setItem("user_id", JSON.stringify(id));
-    //             navigate("/home");
-    //             window.location.reload();
-    //           });
-    //       }
-    //     });
-    // }
+    } else {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("data", data);
+          if (data.code === 200) {
+            Swal.fire({
+              title: data?.status,
+              text: data?.message,
+              icon: "success",
+            });
+            const token = data?.data?.token;
+            localStorage.setItem("accessToken", JSON.stringify(token));
+            navigate("/");
+            window.location.reload();
+          } else if (
+            data.code === 401 ||
+            data.code === 403 ||
+            data.code === 400
+          ) {
+            Swal.fire({
+              title: data?.status,
+              text: data?.error,
+              icon: "error",
+            });
+          }
+        });
+    }
   };
 
   // for loader

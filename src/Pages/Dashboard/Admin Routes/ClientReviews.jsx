@@ -7,30 +7,37 @@ import ShoClientReviews from "./ShowClientReviews";
 const ClientReviews = () => {
   const navigate = useNavigate();
   const [reviews] = useReview();
+
   const deleteReview = (id) => {
-    const url = `http://localhost:5000/review/${id}`;
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("review deleted", data);
-        if (data.code === 401 || data.code === 403) {
-          localStorage.removeItem("user_id");
-          window.location.reload();
-          navigate("/login");
-        }
-        if (data.deletedCount) {
-          Swal.fire({
-            title: "Review Deleted",
-            icon: "success",
-          });
-        }
-      });
+    const url = `http://localhost:5000/api/v1/reviews/${id}`;
+    const confirmation = window.confirm("Are you want to delete?");
+    if (confirmation) {
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("review deleted", data);
+          if (data.code === 400) {
+            Swal.fire({
+              title: data?.status,
+              text: data?.message,
+              icon: "error",
+            });
+          }
+          else{
+            Swal.fire({
+              title: data?.status,
+              text:data?.message,
+              icon: "success",
+            });
+          }
+        });
+    }
   };
 
   return (
@@ -58,13 +65,13 @@ const ClientReviews = () => {
             </div>
 
             <div className="-mx-3 md:flex items-start">
-              {/* {reviews.map((review, idx) => (
+              {reviews.map((review, idx) => (
                 <ShoClientReviews
                   key={idx}
                   review={review}
                   deleteReview={deleteReview}
                 />
-              ))} */}
+              ))}
             </div>
           </div>
         </div>

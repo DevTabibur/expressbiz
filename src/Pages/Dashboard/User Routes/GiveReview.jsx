@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useActiveUser from "../../../Hooks/useActiveUser";
 
 const GiveReview = () => {
-  const [activeUse, activeUserData] = useActiveUser();
+  const [activeUser, isLoading] = useActiveUser();
   const navigate = useNavigate();
 
   const {
@@ -16,29 +16,29 @@ const GiveReview = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data, e) => {
-    const feedback = {
-      email: activeUserData?.email,
-      reviewer: data.reviewer,
-      review: data.review,
-    };
-
-    const url = `http://localhost:5000/review`;
+    const url = `http://localhost:5000/api/v1/reviews`;
     fetch(url, {
       method: "POST",
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(feedback),
+      body: JSON.stringify({
+        email: activeUser?.email,
+        reviewer: activeUser?.name,
+        review: data.review,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
         // console.log("data posted", data);
-        if (data.code === 401 || data.code === 403) {
-          localStorage.removeItem("user_id");
-          navigate("/login");
-        }
-        if (data.acknowledged) {
+        if (data.code === 400) {
+          Swal.fire({
+            title: data.status,
+            text: data?.message,
+            icon: "error",
+          });
+        } else {
           Swal.fire({
             title: "Review submitted",
             icon: "success",
@@ -58,8 +58,8 @@ const GiveReview = () => {
               <input
                 type="text"
                 placeholder="Email"
-                className="input input-bordered "
-                defaultValue={activeUserData?.email}
+                className="input input-bordered cursor-not-allowed"
+                defaultValue={activeUser?.email}
                 readOnly
                 {...register("email")}
               />
@@ -70,17 +70,10 @@ const GiveReview = () => {
               <input
                 type="text"
                 placeholder="your Name"
-                className="input input-bordered "
-                {...register("reviewer", {
-                  required: {
-                    value: true,
-                    message: "Name is Required",
-                  },
-                  pattern: {
-                    value: /^[a-zA-Z0-9 ]*$/,
-                    message: "Name should be unique",
-                  },
-                })}
+                className="input input-bordered cursor-not-allowed"
+                {...register("reviewer")}
+                defaultValue={activeUser?.name}
+                readOnly
               />
               <label className="label my-1 py-0">
                 {errors.reviewer?.type === "required" && (
