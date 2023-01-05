@@ -21,9 +21,9 @@ const MultiForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState("");
   const [finalData, setFinalData] = useState([]);
-  const [activeUser, activeUserData] = useActiveUser();
+  const [activeUser, isLoading] = useActiveUser();
 
-  const [admin] = useAdmin(activeUserData);
+  const [admin] = useAdmin(activeUser);
 
   const steps = [
     "Where from",

@@ -8,35 +8,38 @@ import ShowShipmentHistory from "./ShowShipmentHistory";
 const ShipmentHistory = () => {
   const navigate = useNavigate();
 
-  const [activeUser, activeUserData] = useActiveUser();
+  const [activeUser, isLoading] = useActiveUser();
   const [orders] = useCreateShipping();
 
   const filteredWithMail = orders.filter(
-    (order) => order.senderEmail === activeUserData?.email
+    (order) => order.senderEmail === activeUser?.email
   );
+  // console.log("filteredWithMail", filteredWithMail);
 
   const deleteShipmentHistory = (id) => {
     const confirmation = window.confirm("Are you want to Delete?");
     if (confirmation) {
-      const url = `http://localhost:5000/shipping/${id}`;
+      const url = `http://localhost:5000/api/v1/shipping/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       })
         .then((res) => res.json())
         .then((data) => {
           // console.log("data delete", data);
-          if (data.code === 401 || data.code === 403) {
-            localStorage.removeItem("user_id");
-            navigate("/login");
-            window.location.reload();
-          }
-          if (data.acknowledged) {
+          if (data.code === 400) {
             Swal.fire({
-              title: "Shipment Deleted",
+              title: data?.status,
+              text: data?.message,
+              icon: "error",
+            });
+          } else {
+            Swal.fire({
+              title: data?.status,
+              text: data?.message,
               icon: "success",
             });
           }
@@ -72,13 +75,16 @@ const ShipmentHistory = () => {
                       <td>{idx + 1}</td>
                       <td>{order.senderEmail}</td>
                       <td>{order.productName}</td>
-                      <td>$ {order.price}</td>
+                      <td>tk. {order.price}</td>
 
                       {order.price && !order.paid && (
                         <td>
-                            <Link  className="btn btn-warning btn-sm" to={`/dashboard/payment/${order._id}`}>
-                              Pay{" "}
-                            </Link>{" "}
+                          <Link
+                            className="btn btn-warning btn-sm"
+                            to={`/dashboard/payment/${order._id}`}
+                          >
+                            Pay{" "}
+                          </Link>{" "}
                         </td>
                       )}
                       {order.price && order.paid && (

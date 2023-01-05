@@ -8,28 +8,26 @@ const useAdmin = (user) => {
 
   useEffect(() => {
     const email = user?.email;
-    // if (email) {
-    //   const url = `http://localhost:5000/admin/${email}`;
-    //   fetch(url, {
-    //     method: "GET",
-    //     headers: {
-    //       "content-type": "application/json",
-    //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    //     },
-    //   })
-    //     .then((res) => {
-    //       if (res.status === 401 || res.status === 403) {
-    //         navigate("/login");
-    //         localStorage.removeItem("accessToken");
-    //       }
-    //       return res.json();
-    //     })
-    //     .then((data) => {
-    //       // console.log("check admin hooks inside", data);
-    //       setAdmin(data.admin);
-    //       setAdminLoading(false);
-    //     });
-    // }
+    if (email) {
+      const url = `http://localhost:5000/api/v1/user/register/admin/${email}`;
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("check admin hooks inside", data.data.role);
+          if (data.data.role === "admin") {
+            setAdmin(true);
+            setAdminLoading(false);
+          } else {
+            setAdmin(false);
+          }
+        });
+    }
   }, [user, navigate]);
   return [admin, adminLoading];
 };

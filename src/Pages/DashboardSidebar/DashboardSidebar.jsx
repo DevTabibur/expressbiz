@@ -8,11 +8,11 @@ import "./DashboardSideBar.css";
 const DashboardSidebar = ({ children }) => {
   const [activeUser, isLoading] = useActiveUser();
 
-  // const [admin, adminLoading] = useAdmin(activeUser);
+  const [admin, adminLoading] = useAdmin(activeUser);
 
   // console.log("dashboard side bar admin", admin);
   // console.log("dashboard side activeUser", activeUser);
-  const admin = true;
+  // const admin = true;
 
   const menu = (
     <>
@@ -40,6 +40,9 @@ const DashboardSidebar = ({ children }) => {
           </li>
           <li className="text-white my-1">
             <NavLink to="/dashboard/users">Users</NavLink>
+          </li>
+          <li className="text-white my-1">
+            <NavLink to="/dashboard/payment-collections">Payment Collection</NavLink>
           </li>
           <li className="text-white my-1">
             <NavLink to="/dashboard/add-services">Add Services</NavLink>

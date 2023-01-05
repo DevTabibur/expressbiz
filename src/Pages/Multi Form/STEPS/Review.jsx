@@ -39,12 +39,12 @@ const Review = ({ handleClick, currentStep, steps }) => {
 
     billMethod: "card",
     billDutiesTaxes: "Company",
-    currency: "dollar",
+    currency: "tk",
     price: price,
   };
 
   const handleData = async (data, e) => {
-    const url = `http://localhost:5000/shipping`;
+    const url = `http://localhost:5000/api/v1/shipping`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -56,10 +56,16 @@ const Review = ({ handleClick, currentStep, steps }) => {
       .then((res) => res.json())
       .then((data) => {
         // console.log("shipment data posted from review", data);
-        if (data) {
+        if (data.code === 400) {
           Swal.fire({
-            title: "Shipment done",
-            text: "Please pay from your dashboard",
+            title: data?.status,
+            text: data?.message,
+            icon: "error",
+          });
+        } else {
+          Swal.fire({
+            title: data?.status,
+            text: data?.message,
             icon: "success",
           });
         }
@@ -249,7 +255,7 @@ const Review = ({ handleClick, currentStep, steps }) => {
               Bill Duties and Taxes To : Receive company
             </p>
             <p className="text-accent  mt-2">
-              Charge (Taxes) : $ {Math.round(price)}
+              Charge (Taxes) : tk. {Math.round(price)}
             </p>
           </div>
         </div>

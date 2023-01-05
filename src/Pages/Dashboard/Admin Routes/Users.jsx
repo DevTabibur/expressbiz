@@ -11,28 +11,32 @@ const Users = () => {
   // console.log("getID", getID);
 
   const removeUser = (id) => {
-    const url = `http://localhost:5000/register/${id}`;
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log("data deleted", data);
-        if (data.deletedCount) {
-          Swal.fire({
-            title: "DELETED",
-            icon: "success",
-          });
-        }
-        // user automatically logout
-      });
+    const confirmation = window.confirm("Are you want to delete?");
+    if (confirmation) {
+      const url = `http://localhost:5000/api/v1/user/register/${id}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log("data deleted", data);
+          if (data.deletedCount) {
+            Swal.fire({
+              title: "DELETED",
+              icon: "success",
+            });
+          }
+          // user automatically logout
+        });
+    }
   };
 
   const makeAdmin = (email) => {
+    console.log("email", email);
     const confirmation = window.confirm("Are you want to make admin?");
     if (confirmation) {
       const url = `http://localhost:5000/user/admin/${email}`;
@@ -63,6 +67,7 @@ const Users = () => {
         });
     }
   };
+
   return (
     <>
       <div className="container mx-auto px-4 ">
@@ -78,6 +83,7 @@ const Users = () => {
                   <th>Email</th>
                   <th>Action</th>
                   <th>Action</th>
+                  <th>Role</th>
                 </tr>
               </thead>
               <tbody>
@@ -111,6 +117,7 @@ const Users = () => {
                         </button>
                       </td>
                     )}
+                    <td>{user.role}</td>
                   </tr>
                 ))}
               </tbody>
@@ -120,6 +127,7 @@ const Users = () => {
                   <th>Email</th>
                   <th>Action</th>
                   <th>Action</th>
+                  <th>Role</th>
                 </tr>
               </tfoot>
             </table>

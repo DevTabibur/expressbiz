@@ -23,7 +23,7 @@ const ForgotPassword = () => {
   const onSubmit = async (data, e) => {
     const email = data.email;
 
-    const url = `http://localhost:5000/forgot-password`;
+    const url = `http://localhost:5000/api/v1/forgot-password`;
     setResetLoading(true);
     fetch(url, {
       method: "POST",

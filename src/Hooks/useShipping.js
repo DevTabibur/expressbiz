@@ -5,7 +5,7 @@ const useCreateShipping = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/shipping`;
+    const url = `http://localhost:5000/api/v1/shipping`;
     fetch(url, {
       method: "GET",
       headers: {
@@ -16,7 +16,7 @@ const useCreateShipping = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log("use create shipping hook posted data", data);
-        setOrders(data);
+        setOrders(data?.data);
       });
   }, [orders]);
   return [orders];

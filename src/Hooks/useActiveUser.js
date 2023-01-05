@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import Loader from "../Shared/Loader/Loader";
@@ -25,7 +25,7 @@ const useActiveUser = () => {
           });
       }
     }
-  }, [getToken, getTokenDecoded, activeUser]);
+  }, []);
 
   if (isLoading) {
     return <Loader />;

@@ -6,13 +6,13 @@ import Loader from "../Shared/Loader/Loader";
 
 const RequireAdmin = () => {
   const location = useLocation();
-  const [activeUser, activeUserData] = useActiveUser();
-  // const [admin, adminLoading] = useAdmin(activeUserData);
+  const [activeUser, isLoading] = useActiveUser();
+  const [admin, adminLoading] = useAdmin(activeUser);
 
-  // if (adminLoading) {
-  //   return <Loader />;
-  // }
-  const admin = true
+  // do not delete adminLoading, then it'll return admin falsy value
+  if (adminLoading) {
+    return <Loader />;
+  }
 
   if (!activeUser || !admin) {
     return <Navigate to="/" replace />;

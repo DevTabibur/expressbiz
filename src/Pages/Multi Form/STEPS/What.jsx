@@ -28,7 +28,7 @@ const What = ({ handleClick, currentStep, steps }) => {
 
   const fetchData = async () => {
     if (origin) {
-      const originUrl = `https://api.opencagedata.com/geocode/v1/json?q=${origin}&key=20ad92a2fbcb467db15d68eaf89472ad&language=en&pretty=1`;
+      const originUrl = `https://api.opencagedata.com/geocode/v1/json?q=${origin}&key=2d273276e2dc4ed9889aa028ffd03671`;
       const response = await fetch(originUrl);
       const getResponseOrigin = await response.json();
       // console.log("getResponse origin", getResponseOrigin);
@@ -36,7 +36,7 @@ const What = ({ handleClick, currentStep, steps }) => {
     }
 
     if (destination) {
-      const destinationUrl = `https://api.opencagedata.com/geocode/v1/json?q=${destination}&key=20ad92a2fbcb467db15d68eaf89472ad&language=en&pretty=1`;
+      const destinationUrl = `https://api.opencagedata.com/geocode/v1/json?q=${destination}&key=2d273276e2dc4ed9889aa028ffd03671`;
       const response = await fetch(destinationUrl);
       const getResponseDestination = await response.json();
       // console.log("getResponse destination", getResponseDestination);
@@ -79,9 +79,7 @@ const What = ({ handleClick, currentStep, steps }) => {
         <h1 className="text-accent font-semibold text-2xl font-sans text-left">
           what kind of packaging are you using?
         </h1>
-        <p className="text-neutral-focus  mb-8">
-          *indicates require file
-        </p>
+        <p className="text-neutral-focus  mb-8">*indicates require file</p>
         <div className="grid md:grid-cols-2 gap-6">
           {/* form div */}
           <div>

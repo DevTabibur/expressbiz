@@ -7,8 +7,10 @@ const Services = () => {
   // console.log('services', services)
   return (
     <>
-      <div className="container mx-auto px-4 py-20 my-4">
-        <h1 className="text-4xl  font-bold text-center">OUR SERVICES</h1>
+      <div className="container mx-auto px-4 py-16 my-4">
+        <h1 className="text-4xl  font-bold text-center">
+          OUR SERVICES {services.length}
+        </h1>
         <p className="text-center pt-2 pb-6 font-sans">
           Here you can find our best services, that we are providing with our
           best

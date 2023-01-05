@@ -5,6 +5,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import useActiveUser from "../../../Hooks/useActiveUser";
 import Loader from "../../../Shared/Loader/Loader";
 
@@ -16,13 +17,13 @@ const CheckoutForm = ({ singleOrder }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionID, setTransactionID] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  const [activeUser, activeUserData] = useActiveUser();
+  const [activeUser, isLoading] = useActiveUser();
 
   const { _id, email, productName, price } = singleOrder;
   useEffect(() => {
     if (price !== undefined) {
       // Create PaymentIntent as soon as the page loads
-      fetch("http://localhost:5000/create-payment-intent", {
+      fetch("http://localhost:5000/api/v1/payment/create-payment-intent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,6 +33,7 @@ const CheckoutForm = ({ singleOrder }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          // console.log('data', data?.clientSecret)
           if (data?.clientSecret) {
             setClientSecret(data.clientSecret);
           }
@@ -97,15 +99,14 @@ const CheckoutForm = ({ singleOrder }) => {
       setSuccess("Congrats!. Your payment is completed");
 
       //store payment on database
-
       const payment = {
-        email: activeUserData?.email,
+        email: activeUser?.email,
         price: price,
         shippingOrder: _id,
         transactionId: paymentIntent.id,
       };
 
-      const url = `http://localhost:5000/shipping/${_id}`;
+      const url = `http://localhost:5000/api/v1/shipping/${_id}`;
       fetch(url, {
         method: "PATCH",
         headers: {
@@ -117,6 +118,19 @@ const CheckoutForm = ({ singleOrder }) => {
         .then((data) => {
           setProcessing(false);
           // console.log("data updated patch", data);
+          if (data.code === 400) {
+            Swal.fire({
+              title: data?.status,
+              text: data?.message,
+              icon: "error",
+            });
+          } else {
+            Swal.fire({
+              title: data?.status,
+              text: data?.message,
+              icon: "success",
+            });
+          }
         });
     }
   };

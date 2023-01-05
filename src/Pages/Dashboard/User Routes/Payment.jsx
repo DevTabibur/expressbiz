@@ -13,7 +13,7 @@ const Payment = () => {
   const [singleOrder, setSingleOrder] = useState({});
 
   useEffect(() => {
-    const url = `http://localhost:5000/shipping/${id}`;
+    const url = `http://localhost:5000/api/v1/shipping/${id}`;
     fetch(url, {
       method: "GET",
       headers: {
@@ -23,8 +23,8 @@ const Payment = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log("single id data", data);
-        setSingleOrder(data);
+        // console.log("single id data", data.data);
+        setSingleOrder(data?.data);
       });
   }, [singleOrder, id]);
 
