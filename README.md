@@ -7,8 +7,6 @@
 ## NOTE: 
 I'm using render for server deploy. It's free service is too slow. that's why sometimes users can get bad user experience. Thank You
 
-This site is responsive,for design I'm used here tailwind and daisyui.
-
 ## User Facilities
 1. user can create account
 2. they can make shipment
@@ -34,12 +32,6 @@ This site is responsive,for design I'm used here tailwind and daisyui.
 ## users and admin combined opportunities
 
 An Admin, and user can reset their password, through get reset link in their email.
-
-
-
-
-
-
 
 ## special works
 
