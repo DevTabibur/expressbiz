@@ -32,7 +32,7 @@ const Profile = () => {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
-          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify({
           email: email,
@@ -62,7 +62,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="">
+    <div className="mb-40">
       <div className="grid md:grid-cols-2 gap-6 ">
         <div>
           <div className="flex justify-center">
@@ -118,112 +118,116 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className=" bg-white shadow-lg rounded p-2">
-          <h1 className="text-3xl text-accent font-semibold">
-            Change Password
-          </h1>
+        <div>
+          <div className="flex justify-center">
+            <div className="rounded-lg shadow-lg bg-white max-w-md p-4">
+              <h1 className="text-3xl text-accent font-semibold">
+                Change Password
+              </h1>
 
-          <div className="grid md:grid-cols-1 p-6 gap-2">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {/*old password */}
-              <div className="form-group mb-6">
-                <input
-                  type="password"
-                  placeholder="Old Password"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
-                  {...register("oldPassword", {
-                    required: {
-                      value: true,
-                      message: "Old Password is Required",
-                    },
-                    minLength: {
-                      value: 6,
-                      message: "Must be 6 characters or longer",
-                    },
-                  })}
-                />
-                <label className="label my-1 py-0">
-                  {errors.oldPassword?.type === "required" && (
-                    <span className="label-text-alt text-red-500 ">
-                      {errors.oldPassword.message}
-                    </span>
-                  )}
-                  {errors.oldPassword?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500 ">
-                      {errors.oldPassword.message}
-                    </span>
-                  )}
-                </label>
+              <div className="grid md:grid-cols-1 p-6 gap-2">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  {/*old password */}
+                  <div className="form-group mb-6">
+                    <input
+                      type="password"
+                      placeholder="Old Password"
+                      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
+                      {...register("oldPassword", {
+                        required: {
+                          value: true,
+                          message: "Old Password is Required",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Must be 6 characters or longer",
+                        },
+                      })}
+                    />
+                    <label className="label my-1 py-0">
+                      {errors.oldPassword?.type === "required" && (
+                        <span className="label-text-alt text-red-500 ">
+                          {errors.oldPassword.message}
+                        </span>
+                      )}
+                      {errors.oldPassword?.type === "minLength" && (
+                        <span className="label-text-alt text-red-500 ">
+                          {errors.oldPassword.message}
+                        </span>
+                      )}
+                    </label>
+                  </div>
+
+                  {/*new password */}
+                  <div className="form-group mb-6">
+                    <input
+                      type="password"
+                      placeholder="New Password"
+                      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
+                      {...register("newPassword", {
+                        required: {
+                          value: true,
+                          message: "New Password is Required",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Must be 6 characters or longer",
+                        },
+                      })}
+                    />
+                    <label className="label my-1 py-0">
+                      {errors.newPassword?.type === "required" && (
+                        <span className="label-text-alt text-red-500 ">
+                          {errors.newPassword.message}
+                        </span>
+                      )}
+                      {errors.newPassword?.type === "minLength" && (
+                        <span className="label-text-alt text-red-500 ">
+                          {errors.newPassword.message}
+                        </span>
+                      )}
+                    </label>
+                  </div>
+
+                  {/*confirm password */}
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      placeholder="Confirm Password"
+                      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
+                      {...register("confirmPassword", {
+                        required: {
+                          value: true,
+                          message: "Confirm Password is Required",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Must be 6 characters or longer",
+                        },
+                      })}
+                    />
+                    <label className="label my-1 py-0">
+                      {errors.confirmPassword?.type === "required" && (
+                        <span className="label-text-alt text-red-500 ">
+                          {errors.confirmPassword.message}
+                        </span>
+                      )}
+                      {errors.confirmPassword?.type === "minLength" && (
+                        <span className="label-text-alt text-red-500 ">
+                          {errors.confirmPassword.message}
+                        </span>
+                      )}
+                    </label>
+                  </div>
+
+                  <input
+                    className=" mt-6 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                    type="submit"
+                    value="Change Password"
+                  />
+                </form>
               </div>
-
-              {/*new password */}
-              <div className="form-group mb-6">
-                <input
-                  type="password"
-                  placeholder="New Password"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
-                  {...register("newPassword", {
-                    required: {
-                      value: true,
-                      message: "New Password is Required",
-                    },
-                    minLength: {
-                      value: 6,
-                      message: "Must be 6 characters or longer",
-                    },
-                  })}
-                />
-                <label className="label my-1 py-0">
-                  {errors.newPassword?.type === "required" && (
-                    <span className="label-text-alt text-red-500 ">
-                      {errors.newPassword.message}
-                    </span>
-                  )}
-                  {errors.newPassword?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500 ">
-                      {errors.newPassword.message}
-                    </span>
-                  )}
-                </label>
-              </div>
-
-              {/*confirm password */}
-              <div className="form-group">
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:accent focus:outline-none"
-                  {...register("confirmPassword", {
-                    required: {
-                      value: true,
-                      message: "Confirm Password is Required",
-                    },
-                    minLength: {
-                      value: 6,
-                      message: "Must be 6 characters or longer",
-                    },
-                  })}
-                />
-                <label className="label my-1 py-0">
-                  {errors.confirmPassword?.type === "required" && (
-                    <span className="label-text-alt text-red-500 ">
-                      {errors.confirmPassword.message}
-                    </span>
-                  )}
-                  {errors.confirmPassword?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500 ">
-                      {errors.confirmPassword.message}
-                    </span>
-                  )}
-                </label>
-              </div>
-
-              <input
-                className=" mt-6 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                type="submit"
-                value="Change Password"
-              />
-            </form>
+            </div>
           </div>
         </div>
       </div>

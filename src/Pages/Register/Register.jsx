@@ -65,28 +65,9 @@ const Register = () => {
               icon: "success",
             });
             navigate("/");
+            window.location.reload();
           }
           setRegisterLoading(false);
-          // if (data.code === 300) {
-          //   // error registration
-          //   Swal.fire({
-          //     title: "User already Exists!",
-          //     text: "Try another email",
-          //     icon: "error",
-          //   });
-          // } else if (data.result.acknowledged) {
-          //   const id = data.result?.insertedId;
-          //   const accessToken = data.accessToken;
-          //   // 1. set Token
-          //   localStorage.setItem("accessToken", accessToken);
-          //   // set user _id
-          //   localStorage.setItem("user_id", JSON.stringify(id));
-          //   Swal.fire({
-          //     title: "Registration Success",
-          //     icon: "success",
-          //   });
-          //   navigate("/");
-          // }
         });
     }
   };

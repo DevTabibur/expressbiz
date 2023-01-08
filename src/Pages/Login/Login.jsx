@@ -11,7 +11,6 @@ import useActiveUser from "../../Hooks/useActiveUser";
 import Loader from "../../Shared/Loader/Loader";
 
 const Login = () => {
-  const [activeUser, activeUserData] = useActiveUser(false);
   const [loginLoading, setLoginLoading] = useState(false);
 
   const {

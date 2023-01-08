@@ -11,6 +11,7 @@ import {
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
+import Footer from "../../Shared/Footer/Footer";
 
 const Contact = () => {
   const {
@@ -50,17 +51,7 @@ const Contact = () => {
       );
   };
 
-  // for error showing message
-  // let showError;
-  // if (signInError || googleError || resetError) {
-  //   showError = (
-  //     <small>
-  //       <p className="text-red-500  ">
-  //         {signInError?.message || googleError?.message || resetError?.message}
-  //       </p>
-  //     </small>
-  //   );
-  // }
+
 
   return (
     <>
@@ -318,6 +309,7 @@ const Contact = () => {
           ></iframe>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

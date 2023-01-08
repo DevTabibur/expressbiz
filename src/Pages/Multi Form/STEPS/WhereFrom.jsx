@@ -293,7 +293,7 @@ const WhereFrom = ({ handleClick, currentStep, steps }) => {
       </form>
       <button
         onClick={() => handleClick()}
-        className={`bg-white text-slate-400 uppercase py-2 px-8 rounded mr-6 font-semibold cursor-pointer border-2 border-slate-300 hover:bg-slate-700 hover:text-white transition duration-200 ease-in-out ${
+        className={`bg-white mt-4 text-slate-400 uppercase py-2 px-8 rounded mr-6 font-semibold cursor-pointer border-2 border-slate-300 hover:bg-slate-700 hover:text-white transition duration-200 ease-in-out ${
           currentStep === 1 ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >

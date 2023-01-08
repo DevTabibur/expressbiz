@@ -57,15 +57,15 @@ const AddServices = () => {
           const url = `http://localhost:5000/api/v1/products`;
           await fetch(url, {
             method: "POST",
-            // headers: {
-            //   "Content-Type": "multipart/form-data",
-            // },
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
             body: postData,
           })
             .then((res) => res.json())
             .then((data) => {
               // console.log("data posted", data);
-              if (data.code === 400) {
+              if (data.code === 400 || data.code === 401 || data.code === 403) {
                 Swal.fire({
                   title: data?.message,
                   text: data?.error,
@@ -117,10 +117,6 @@ const AddServices = () => {
                   required: {
                     value: true,
                     message: "Service Title is Required",
-                  },
-                  pattern: {
-                    value: /^[a-zA-Z0-9 ]*$/,
-                    message: "Service Title should be unique",
                   },
                 })}
               />

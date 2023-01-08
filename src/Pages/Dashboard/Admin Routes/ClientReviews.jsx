@@ -21,18 +21,17 @@ const ClientReviews = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log("review deleted", data);
+          console.log("review deleted", data);
           if (data.code === 400) {
             Swal.fire({
               title: data?.status,
               text: data?.message,
               icon: "error",
             });
-          }
-          else{
+          } else {
             Swal.fire({
               title: data?.status,
-              text:data?.message,
+              text: data?.message,
               icon: "success",
             });
           }
@@ -41,7 +40,7 @@ const ClientReviews = () => {
   };
 
   return (
-    <>
+    <div className="mb-40">
       {/* <!-- component --> */}
 
       <div className="min-w-screen   flex items-center justify-center">
@@ -53,7 +52,8 @@ const ClientReviews = () => {
                 are saying. {reviews.length}
               </h1>
               <h3 className="text-xl mb-5 font-light">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Here is the testimonials sections. Admin can see our valuable
+                clients feedback. Thank You
               </h3>
               <div className="text-center mb-10">
                 <span className="inline-block w-1 h-1 rounded-full bg-info ml-1"></span>
@@ -76,7 +76,7 @@ const ClientReviews = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

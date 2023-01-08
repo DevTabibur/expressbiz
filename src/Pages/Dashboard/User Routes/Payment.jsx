@@ -34,9 +34,9 @@ const Payment = () => {
       <h1 className="text-accent text-3xl font-sans font-bold">ID is: {id}</h1>
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-1 gap-4">
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 shadow-xl p-4">
             <h1 className="text-accent text-2xl font-bold">
-              Please Pay for: {id}
+              Please Pay for: {singleOrder?.productName}
             </h1>
             <div className="card-body">
               <Elements stripe={stripePromise}>

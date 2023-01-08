@@ -4,11 +4,6 @@ import useUser from "../../../Hooks/useUser";
 
 const Users = () => {
   const [users] = useUser();
-  const localID = localStorage.getItem("user_id");
-  const getID = JSON.parse(localID);
-
-  // console.log("localID", localID);
-  // console.log("getID", getID);
 
   const removeUser = (id) => {
     const confirmation = window.confirm("Are you want to delete?");
@@ -36,10 +31,9 @@ const Users = () => {
   };
 
   const makeAdmin = (email) => {
-    console.log("email", email);
     const confirmation = window.confirm("Are you want to make admin?");
     if (confirmation) {
-      const url = `http://localhost:5000/user/admin/${email}`;
+      const url = `http://localhost:5000/api/v1/user/register/admin/${email}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -47,17 +41,9 @@ const Users = () => {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       })
-        .then((res) => {
-          if (res.status === 403) {
-            Swal.fire({
-              title: "Failed to make admin",
-              icon: "error",
-            });
-          }
-          return res.json();
-        })
+        .then((res) => res.json())
         .then((data) => {
-          // console.log("data posted admin", data);
+          console.log("data posted admin", data);
           if (data.modifiedCount > 0) {
             Swal.fire({
               title: "Made an Admin",

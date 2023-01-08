@@ -58,6 +58,9 @@ const EditProfile = () => {
           const url = `http://localhost:5000/api/v1/user/register/${_id}`;
           fetch(url, {
             method: "PUT",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
             body: formData,
           })
             .then((res) => res.json())

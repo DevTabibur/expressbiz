@@ -11,9 +11,9 @@ const Review = ({ handleClick, currentStep, steps }) => {
   const getDistance = userData?.what?.distance;
 
   if (weight && getDistance) {
-    // 1kg = 5tk
-    // 1 km => 2.40 tk
-    price = Math.round(weight * 5 + getDistance * 2.4);
+    // 1kg = 1tk
+    // 1 km => 1.40 tk
+    price = Math.round(weight * 1 + getDistance * 1.4);
   }
 
   const shipmentInfo = {
@@ -259,17 +259,10 @@ const Review = ({ handleClick, currentStep, steps }) => {
             </p>
           </div>
         </div>
-
-        {/* <button
-          className="btn btn-accent my-4 text-white shadow-lg"
-          onClick={postShipment}
-        >
-          Confirm
-        </button> */}
         <button
           onClick={() => handleData()}
           type="submit"
-          className="text-white bg-green-500 uppercase py-2 px-8 rounded font-semibold cursor-pointer hover:bg-slate-700 hover:text-white transition duration-200 ease-in-out"
+          className="text-white mt-6 bg-green-500 uppercase py-2 px-8 rounded font-semibold cursor-pointer hover:bg-slate-700 hover:text-white transition duration-200 ease-in-out"
         >
           {currentStep === steps.length - 1 ? "Confirm" : "Next"}
         </button>

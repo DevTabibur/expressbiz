@@ -1,13 +1,16 @@
+import { useLocation } from "react-router-dom";
 import useService from "../../Hooks/useService";
+import Footer from "../../Shared/Footer/Footer";
 import MappingServices from "./MappingServices";
 import "./Services.css";
 
 const Services = () => {
   const [services] = useService();
+  
   // console.log('services', services)
   return (
     <>
-      <div className="container mx-auto px-4 py-16 my-4">
+      <div className="container mx-auto px-4 py-16  my-4">
         <h1 className="text-4xl  font-bold text-center">
           OUR SERVICES {services.length}
         </h1>
@@ -21,6 +24,7 @@ const Services = () => {
           ))}
         </div>
       </div>
+     
     </>
   );
 };

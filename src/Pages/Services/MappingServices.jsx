@@ -1,10 +1,8 @@
 import "./MappingServices.css";
 import { useNavigate } from "react-router-dom";
 const MappingServices = ({ service }) => {
-  // console.log('service', service)
   const navigate = useNavigate();
   const { _id, title, description, image } = service;
-  // console.log("image", image);
   return (
     <>
       <div className="card w-full bg-base-100 shadow-xl">
@@ -28,6 +26,7 @@ const MappingServices = ({ service }) => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

@@ -37,9 +37,9 @@ const HeaderNav = ({ children }) => {
     window.location.reload();
   };
 
-  if (loading || isLoading) {
-    return <Loader />;
-  }
+  // if (loading || isLoading) {
+  //   return <Loader />;
+  // }
   const menu = (
     <>
       <NavLink
@@ -92,7 +92,6 @@ const HeaderNav = ({ children }) => {
       {activeUser?.email ? (
         <button
           className="m-4 text-left   text-accent font-semibold  "
-          // style={({ isActive }) => (isActive ? activeStyle : undefined)}
           onClick={logOut}
         >
           Logout
@@ -106,17 +105,6 @@ const HeaderNav = ({ children }) => {
           Login
         </NavLink>
       )}
-      {activeUser?.email && (
-        <p className="m-4   text-accent font-semibold  ">{activeUser?.email}</p>
-      )}
-      {/* 
-      <NavLink
-        to="/register"
-        className="m-4   text-accent font-semibold  "
-        style={({ isActive }) => (isActive ? activeStyle : undefined)}
-      >
-        Registration
-      </NavLink> */}
     </>
   );
 

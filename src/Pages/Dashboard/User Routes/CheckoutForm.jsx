@@ -111,6 +111,7 @@ const CheckoutForm = ({ singleOrder }) => {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(payment),
       })
@@ -118,7 +119,7 @@ const CheckoutForm = ({ singleOrder }) => {
         .then((data) => {
           setProcessing(false);
           // console.log("data updated patch", data);
-          if (data.code === 400) {
+          if (data.code === 400 || data.code === 401 || data.code === 403) {
             Swal.fire({
               title: data?.status,
               text: data?.message,

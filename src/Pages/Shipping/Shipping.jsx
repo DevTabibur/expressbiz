@@ -1,5 +1,6 @@
 import useActiveUser from "../../Hooks/useActiveUser";
 import useAdmin from "../../Hooks/useAdmin";
+import Footer from "../../Shared/Footer/Footer";
 import MultiForm from "../Multi Form/MultiForm";
 import "./Shipping.css";
 
@@ -22,6 +23,7 @@ const Shipping = () => {
       <div className="shipping">
         <MultiForm />
       </div>
+      <Footer/>
     </>
   );
 };

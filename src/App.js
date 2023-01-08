@@ -12,6 +12,7 @@ import privateRoutes from "./Routes/privateRoutes";
 import RequireAdmin from "./Authentication/RequireAdmin";
 import adminRoutes from "./Routes/adminRoutes";
 import Shipping from "./Pages/Shipping/Shipping";
+import Profile from "./Pages/Profile/Profile";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           {/* user route */}
           <Route element={<RequireUser></RequireUser>}>
             <Route path="/dashboard" element={<Dashboard />}>
+              <Route index element={<Profile />} />
               {privateRoutes.map(({ path, name, Component }, idx) => (
                 <Route key={idx} path={path} element={<Component />} />
               ))}
@@ -35,6 +37,7 @@ function App() {
           {/* Admin Route */}
           <Route element={<RequireAdmin />}>
             <Route path="/dashboard" element={<Dashboard />}>
+              <Route index element={<Profile />} />
               {/* nested route */}
               {adminRoutes.map(({ path, name, Component }, idx) => (
                 <Route key={idx} path={path} element={<Component />} />
@@ -48,7 +51,6 @@ function App() {
           </Route>
         </Routes>
       </HeaderNav>
-      
     </>
   );
 }

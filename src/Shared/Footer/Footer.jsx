@@ -9,12 +9,15 @@ import {
   faLocationArrow,
   faArrowAltCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const { pathname } = useLocation();
   return (
     <>
-      <div id="footer" className=" bg-secondary pt-24 pb-12">
+      <div
+      //  style={ pathname.includes("home") ? { display: "none" } : { display: "flex" }}
+         id="footer" className=" bg-secondary pt-24 pb-12">
         <div className="inner-footer">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-4">

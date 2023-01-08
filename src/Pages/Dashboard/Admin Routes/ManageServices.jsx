@@ -23,10 +23,16 @@ const ManageServices = () => {
         .then((data) => {
           // console.log("data deleted", data);
 
-          if (data.code === 200) {
+          if (data.code === 400) {
             Swal.fire({
               title: data?.status,
-              text: data?.message,
+              text: data?.error,
+              icon: "error",
+            });
+          } else {
+            Swal.fire({
+              title: data?.status,
+              text: data?.error,
               icon: "success",
             });
           }
@@ -36,7 +42,9 @@ const ManageServices = () => {
 
   return (
     <>
-      <h1 className="text-accent text-5xl font-bold ">Manage Services {services.length}</h1>
+      <h1 className="text-accent text-5xl font-bold ">
+        Manage Services {services.length}
+      </h1>
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-4">
           {services.map((service, idx) => (
