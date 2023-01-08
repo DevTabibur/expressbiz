@@ -22,7 +22,7 @@ const GetQuote = () => {
     //     icon: "error",
     //   });
     // } else {
-    //   const url = `http://localhost:5000/quote`;
+    //   const url = `https://expressbiz-server-re-deploy.onrender.com/quote`;
     //   fetch(url, {
     //     method: "POST",
     //     headers: {

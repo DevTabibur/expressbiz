@@ -14,7 +14,7 @@ const SingleService = () => {
         <div className="grid md:grid-cols-1 text-center">
           <h1 className="text-3xl font-bold  text-accent mb-4">Welcome to {singleService?.title}</h1>
           <figure>
-            <img className="w-full h-96 rounded shadow-2xl " src={`http://localhost:5000/${singleService?.image}`} alt="service_image" />
+            <img className="w-full h-96 rounded shadow-2xl " src={`https://expressbiz-server-re-deploy.onrender.com/${singleService?.image}`} alt="service_image" />
           </figure>
           <p className="mt-8  text-info">{singleService?.description}</p>
         </div>

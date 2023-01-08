@@ -10,7 +10,7 @@ const ShowManageServices = ({ service, deleteService }) => {
         <figure className="w-full">
           <img
             className="relative w-full h-56"
-            src={`http://localhost:5000/${image}`}
+            src={`https://expressbiz-server-re-deploy.onrender.com/${image}`}
             alt="shipping_images"
           />
         </figure>

@@ -19,7 +19,7 @@ const ShipmentHistory = () => {
   const deleteShipmentHistory = (id) => {
     const confirmation = window.confirm("Are you want to Delete?");
     if (confirmation) {
-      const url = `http://localhost:5000/api/v1/shipping/${id}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/shipping/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

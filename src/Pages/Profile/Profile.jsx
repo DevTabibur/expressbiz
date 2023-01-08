@@ -27,7 +27,7 @@ const Profile = () => {
         icon: "warning",
       });
     } else {
-      const url = `http://localhost:5000/api/v1/user/register/change-password/${_id}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register/change-password/${_id}`;
       await fetch(url, {
         method: "PATCH",
         headers: {
@@ -75,7 +75,7 @@ const Profile = () => {
                 >
                   <img
                     className="rounded-t-lg w-full h-60 mx-auto"
-                    src={`http://localhost:5000/${imageURL}`}
+                    src={`https://expressbiz-server-re-deploy.onrender.com/${imageURL}`}
                     alt=""
                   />
                 </a>

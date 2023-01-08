@@ -9,7 +9,7 @@ const PaymentCollection = () => {
     const confirmation = window.confirm("Are You want to Delete?");
 
     if (confirmation) {
-      const url = `http://localhost:5000/api/v1/payment/${id}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/payment/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

@@ -19,7 +19,7 @@ const useActiveUser = () => {
 
       if (id !== undefined) {
         // const response = await fetch(url)
-        const url = `http://localhost:5000/api/v1/user/register/${id}`;
+        const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register/${id}`;
         fetch(url, {
           method: "GET",
           headers: {

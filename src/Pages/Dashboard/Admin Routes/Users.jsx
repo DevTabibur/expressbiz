@@ -8,7 +8,7 @@ const Users = () => {
   const removeUser = (id) => {
     const confirmation = window.confirm("Are you want to delete?");
     if (confirmation) {
-      const url = `http://localhost:5000/api/v1/user/register/${id}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
@@ -33,7 +33,7 @@ const Users = () => {
   const makeAdmin = (email) => {
     const confirmation = window.confirm("Are you want to make admin?");
     if (confirmation) {
-      const url = `http://localhost:5000/api/v1/user/register/admin/${email}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register/admin/${email}`;
       fetch(url, {
         method: "PUT",
         headers: {

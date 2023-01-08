@@ -6,7 +6,7 @@ const useCreateShipping = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/api/v1/shipping`;
+    const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/shipping`;
     fetch(url, {
       method: "GET",
       headers: {

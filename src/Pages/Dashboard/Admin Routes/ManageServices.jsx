@@ -11,7 +11,7 @@ const ManageServices = () => {
   const deleteService = (id) => {
     const confirmation = window.confirm("Are you want to delete?");
     if (confirmation) {
-      const url = `http://localhost:5000/api/v1/products/${id}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/products/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

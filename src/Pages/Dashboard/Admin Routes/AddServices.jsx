@@ -54,7 +54,7 @@ const AddServices = () => {
         } else {
           // everything is perfect
           // console.log("everything is perfect");
-          const url = `http://localhost:5000/api/v1/products`;
+          const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/products`;
           await fetch(url, {
             method: "POST",
             headers: {

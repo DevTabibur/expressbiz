@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useReview = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/api/v1/reviews`;
+    const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/reviews`;
     fetch(url, {
       method: "GET",
       headers: {

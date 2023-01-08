@@ -17,7 +17,7 @@ const RequireUser = () => {
       const decoded = jwt_decode(getTokenDecoded);
       const id = decoded.id;
       // const response = await fetch(url)
-      const url = `http://localhost:5000/api/v1/user/register/${id}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register/${id}`;
       fetch(url, {
         method: "GET",
         headers: {

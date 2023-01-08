@@ -9,7 +9,7 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      const url = `http://localhost:5000/api/v1/user/register/admin/${email}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register/admin/${email}`;
       fetch(url, {
         method: "GET",
         headers: {

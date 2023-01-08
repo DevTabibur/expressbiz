@@ -9,7 +9,7 @@ const MappingServices = ({ service }) => {
         <figure className="w-96">
           <img
             className="relative w-96 h-56"
-            src={`http://localhost:5000/${image}`}
+            src={`https://expressbiz-server-re-deploy.onrender.com/${image}`}
             alt="shipping_images"
           />
         </figure>

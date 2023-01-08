@@ -9,7 +9,7 @@ const ClientReviews = () => {
   const [reviews] = useReview();
 
   const deleteReview = (id) => {
-    const url = `http://localhost:5000/api/v1/reviews/${id}`;
+    const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/reviews/${id}`;
     const confirmation = window.confirm("Are you want to delete?");
     if (confirmation) {
       fetch(url, {

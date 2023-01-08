@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 const usePaymentCollection = () => {
   const [paymentCollection, setPaymentCollection] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/api/v1/payment`;
+    const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/payment`;
     fetch(url, {
       method: "GET",
       headers: {

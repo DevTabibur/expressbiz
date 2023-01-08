@@ -6,7 +6,7 @@ const useUser = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    const url = `http://localhost:5000/api/v1/user/register`;
+    const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register`;
     fetch(url, {
       method: "GET",
       headers: {

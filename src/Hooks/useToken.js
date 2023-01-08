@@ -12,7 +12,7 @@ const useToken = () => {
     const currentUser = { email: email };
 
     if (email) {
-      const url = `http://localhost:5000/users/${email}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/users/${email}`;
       fetch(url, {
         method: "PUT",
         headers: {

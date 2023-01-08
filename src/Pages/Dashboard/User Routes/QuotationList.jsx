@@ -7,7 +7,7 @@ const QuotationList = () => {
   const removeQuotation = (id) => {
     const confirmation = window.confirm("Are you want to delete?");
     if (confirmation) {
-      const url = `http://localhost:5000/quote/${id}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/quote/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

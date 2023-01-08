@@ -22,7 +22,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const getToken = localStorage.getItem("accessToken");
-  const url = `http://localhost:5000/api/v1/user/login`;
+  const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/login`;
 
   const onSubmit = async (data, e) => {
     if (getToken) {

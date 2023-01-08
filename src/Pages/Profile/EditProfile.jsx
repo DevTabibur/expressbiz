@@ -55,7 +55,7 @@ const EditProfile = () => {
         } else {
           // console.log("everything is perfect");
           // everything is perfect
-          const url = `http://localhost:5000/api/v1/user/register/${_id}`;
+          const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register/${_id}`;
           fetch(url, {
             method: "PUT",
             headers: {
@@ -104,7 +104,7 @@ const EditProfile = () => {
                 >
                   <img
                     className="rounded-t-lg w-96 h-56"
-                    src={`http://localhost:5000/${imageURL}`}
+                    src={`https://expressbiz-server-re-deploy.onrender.com/${imageURL}`}
                     alt="profile_image"
                   />
                 </a>

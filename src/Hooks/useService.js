@@ -4,7 +4,7 @@ const useService = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/api/v1/products`;
+    const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/products`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

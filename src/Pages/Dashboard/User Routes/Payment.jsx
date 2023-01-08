@@ -13,7 +13,7 @@ const Payment = () => {
   const [singleOrder, setSingleOrder] = useState({});
 
   useEffect(() => {
-    const url = `http://localhost:5000/api/v1/shipping/${id}`;
+    const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/shipping/${id}`;
     fetch(url, {
       method: "GET",
       headers: {

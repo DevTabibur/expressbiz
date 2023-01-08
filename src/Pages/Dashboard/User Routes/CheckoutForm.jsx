@@ -23,7 +23,7 @@ const CheckoutForm = ({ singleOrder }) => {
   useEffect(() => {
     if (price !== undefined) {
       // Create PaymentIntent as soon as the page loads
-      fetch("http://localhost:5000/api/v1/payment/create-payment-intent", {
+      fetch("https://expressbiz-server-re-deploy.onrender.com/api/v1/payment/create-payment-intent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const CheckoutForm = ({ singleOrder }) => {
         transactionId: paymentIntent.id,
       };
 
-      const url = `http://localhost:5000/api/v1/shipping/${_id}`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/shipping/${_id}`;
       fetch(url, {
         method: "PATCH",
         headers: {

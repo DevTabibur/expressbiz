@@ -37,7 +37,7 @@ const Register = () => {
         icon: "error",
       });
     } else {
-      const url = `http://localhost:5000/api/v1/user/register`;
+      const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/user/register`;
       setRegisterLoading(true);
       fetch(url, {
         method: "POST",

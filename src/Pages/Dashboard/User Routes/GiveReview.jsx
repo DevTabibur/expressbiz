@@ -16,7 +16,7 @@ const GiveReview = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data, e) => {
-    const url = `http://localhost:5000/api/v1/reviews`;
+    const url = `https://expressbiz-server-re-deploy.onrender.com/api/v1/reviews`;
     fetch(url, {
       method: "POST",
       headers: {
