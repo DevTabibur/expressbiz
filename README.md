@@ -8,6 +8,9 @@
 I'm using render for server deploy. It's free service is too slow. that's why sometimes users can get bad user experience. Thank You
 
 ## User Facilities
+
+** mail: habib@gmail.com     pswd: 123456  for user login
+
 1. user can create account
 2. they can make shipment
 3. they can order
@@ -20,6 +23,9 @@ I'm using render for server deploy. It's free service is too slow. that's why so
 
 
 ## Admin Facilities
+
+** mail: tobiburrohman2@gmail.com     pswd: 123456  for admin login
+
 1. an admin can make another user an Admin.
 2. admin can upload products with multer images
 3. admin can delete products
